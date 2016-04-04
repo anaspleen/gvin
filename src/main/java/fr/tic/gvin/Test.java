@@ -5,17 +5,6 @@
 // Projet : 
 //   LAQME
 //
-// Ministère : 
-//   Ministère de l'économie et des finances.
-//
-// Direction : 
-//   DGDDI
-//
-// Prestation : 
-//   Bull
-//
-// Copyright :
-//   DGDDI  2004-2016
 //   
 // Date :
 //  Créé le 4 avr. 2016 à 17:51:08
