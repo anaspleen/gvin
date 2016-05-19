@@ -1,12 +1,21 @@
 {
-"nom":"lll",
-"cepage":"",
-"region":"",
-"chateau":"",
-"dateMiseEnBouteille":"ISODat(),
-"achat":
-{
-"date":
-"magasin":
-"prix"
+   "nom":"TODO",
+   "vignoble":"bordeaux",
+   "aoc":"saint-émilion",
+   "appellation":"saint-émilion grand cru",
+   "chateau":"Galhaud",
+   "anneeMiseEnBouteille":2012,
+   "anneeConsommationOptimale":2020,
+   "achat":{
+      "date":"15/08/2015",
+      "magasin":"Chateau Galhaud",
+      "prix":20
+   },
+   "location":{
+      "type":"Point",
+      "coordinates":[
+         -0.1571643,17,
+         44.8949179
+      ]
+   }
 }
