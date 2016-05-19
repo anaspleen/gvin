@@ -43,10 +43,11 @@ import com.mongodb.client.MongoCollection;
 public class BouteilleDaoMongo extends AbstractDaoMongo implements BouteilleDaoInterface
 {
 
-    /* (non-Javadoc)
-     * @see fr.tic.gvin.dao.BouteilleDaoInterface#persistBouteille(org.bson.Document)
+    /*
+     * (non-Javadoc)
+     * @see fr.tic.gvin.dao.BouteilleDaoInterface#save(org.bson.Document)
      */
-    public void persistBouteille(Document p_Document)
+    public void save(Document p_Document)
     {
         // TODO Auto-generated method stub
 

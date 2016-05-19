@@ -1,40 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>fr.gvin</groupId>
-    <artifactId>gvin</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+	<groupId>fr.gvin</groupId>
+	<artifactId>gvin</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<scm>
 		<connection>scm:svn:https://novaforge.bull.com/svn-default/svn/referentieldouane_svnjavacommun/projets/batch-rosa/batch-rosa-export/trunk</connection>
 	</scm>
 
 	<properties>
-	    <!-- encodage des sources ! -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	
-	<!-- les utils -->
-	<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
-	
+		<!-- encodage des sources ! -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- les utils -->
+		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+
 		<!-- les dépendances du service -->
 		<mongodb.version>3.2.2</mongodb.version>
 
-		<!-- pour les tests (le reste est déjà) dans batch-rosa-commu -->
+		<!-- pour les tests -->
 		<junit.version>4.11</junit.version>
-		<spring-test.version>4.2.1.RELEASE</spring-test.version>
+		<spring.version>4.2.1.RELEASE</spring.version>
 	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver</artifactId>
-            <version>${mongodb.version}</version>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver</artifactId>
+			<version>${mongodb.version}</version>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!-- pour test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
 
 
 	<build>
@@ -48,4 +96,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
+
+
 </project>

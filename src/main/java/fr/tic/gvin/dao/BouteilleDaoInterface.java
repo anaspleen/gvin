@@ -51,5 +51,5 @@ public interface BouteilleDaoInterface
      * @param p_Latitude
      *            latitude
      */
-    void persistBouteille(Document p_Document);
+    void save(Document p_Document);
 }

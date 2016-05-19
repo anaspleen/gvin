@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Projet : Delia -->
+<!-- Client : Bull -->
+<!-- Auteur : tof / Bull S.A.S. -->
+<!-- $Id: globalAC.xml 1081 2015-04-01 15:01:56Z caiati-t $ -->
+<!-- Fichier de configuration globale de l'application. -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<import resource="classpath:module/ambrosia/daoAC.xml" />
+
+</beans>
