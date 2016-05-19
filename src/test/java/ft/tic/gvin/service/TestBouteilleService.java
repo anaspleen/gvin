@@ -33,41 +33,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.tic.gvin.service.BouteilleServiceInterface;
+import ft.tic.gvin.AbstractAmbrosiaTest;
 
 
 /**
  * @author Bull
  *         $Id$
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations =
-{ "/moduleTest/globalAC.xml" })
-public class TestBouteilleService
+public class TestBouteilleService extends AbstractAmbrosiaTest
 {
 
-    @Autowired
-    @Qualifier("bouteilleService")
-    private BouteilleServiceInterface service;
-
     @Test
-    public void testperist() throws Exception
+    public void testEnregistrer() throws Exception
     {
         // TODO
 
-        Map<String, Object> valeurs = new HashMap<String,Object>();
+        Map<String, Object> valeurs = new HashMap<String, Object>();
 
-        valeurs.put("nom","st émou");
-        valeurs.put("prix",20);
-        
-        service.enregistrerBouteille(valeurs, 0, 0, null);
-        
+        valeurs.put("nom", "st émou");
+        valeurs.put("prix", 20);
+
+        getBouteilleService().enregistrerBouteille(valeurs, 0, 0, null);
+
         //        Document bouteille = new Document();
         //        bouteille.put("test", "test");
         //        dao.save(bouteille);

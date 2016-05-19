@@ -31,36 +31,24 @@ package ft.tic.gvin.dao;
 
 import org.bson.Document;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.tic.gvin.dao.BouteilleDaoInterface;
+import ft.tic.gvin.AbstractAmbrosiaTest;
 
 
 /**
  * @author Bull
  *         $Id$
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations =
-{ "/moduleTest/globalAC.xml" })
-public class TestBouteilleDao
+public class TestBouteilleDao extends AbstractAmbrosiaTest
 {
 
-    @Autowired
-    @Qualifier("bouteilleDao")
-    private BouteilleDaoInterface dao;
-
     @Test
-    public void testperist() throws Exception
+    public void testPersist() throws Exception
     {
         // TODO
 
         Document bouteille = new Document();
         bouteille.put("test", "test");
-        dao.save(bouteille);
+        getBouteilleDao().save(bouteille);
     }
 }
