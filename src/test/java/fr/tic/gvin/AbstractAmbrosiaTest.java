@@ -1,6 +1,11 @@
 package fr.tic.gvin;
 
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.bson.Document;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -11,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
@@ -109,12 +115,23 @@ public abstract class AbstractAmbrosiaTest
         return m_BouteilleDao;
     }
 
-    
     /**
      * @return regleDao
      */
     public RegleDaoInterface getRegleDao()
     {
         return m_RegleDao;
+    }
+
+    /**
+     * @param p_CheminFichier
+     *            le chemin du fichier
+     * @return le JSON
+     * @throws IOException
+     *             soucis
+     */
+    protected DBObject createJSONFromFile(String p_CheminFichier) throws IOException
+    {
+        return (DBObject) com.mongodb.util.JSON.parse(FileUtils.readFileToString(new File(p_CheminFichier)));
     }
 }

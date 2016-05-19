@@ -9,6 +9,8 @@ import org.bson.Document;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.mongodb.DBObject;
+
 import fr.tic.gvin.AbstractAmbrosiaTest;
 
 
@@ -34,5 +36,11 @@ public class TestRegleDao extends AbstractAmbrosiaTest
         res = getRegleDao().find("bout");
         Assert.assertNotNull(res);
         System.out.println(res);
+
+        String fichier = "./src/test/resources/regle/regle-bouteille.json";
+
+        // TODO résoudre ce truc dbobject to document
+        DBObject regle = createJSONFromFile(fichier);
+        System.out.println(regle);
     }
 }
