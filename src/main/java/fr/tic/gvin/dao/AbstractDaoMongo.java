@@ -30,8 +30,7 @@ public abstract class AbstractDaoMongo
      */
     protected MongoClient getClient()
     {
-        //        MongoClientOptions optios = MongoClientOptions.builder().connectionsPerHost(500).build();
-        MongoClient client = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+        MongoClient client = new MongoClient(new MongoClientURI(getDatabaseURL()));
         return client;
     }
 
@@ -40,7 +39,7 @@ public abstract class AbstractDaoMongo
      */
     protected MongoDatabase getDatabase()
     {
-        MongoDatabase database = getClient().getDatabase("ambrosia");
+        MongoDatabase database = getClient().getDatabase(getDatabaseNom());
         return database;
     }
 

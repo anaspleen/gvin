@@ -6,12 +6,12 @@
 	<!-- abstract -->
 	<bean id="abstractDao" class="fr.tic.gvin.dao.AbstractDaoMongo"
 		abstract="true">
-		<property name="databaseURL" ref="${ambrosia.db.url}" />
-		<property name="databaseNom" ref="${ambrosia.db.nom}" />
+		<property name="databaseURL" value="${ambrosia.db.url}" />
+		<property name="databaseNom" value="${ambrosia.db.nom}" />
 	</bean>
 
 	<!-- composants -->
-	<bean id="bouteilleDao" class="fr.tic.gvin.dao.BouteilleDaoMongo">
+	<bean id="bouteilleDao" class="fr.tic.gvin.dao.BouteilleDaoMongo" parent="abstractDao" >
 		<!-- <property name="sessionFactory"> -->
 		<!-- <ref bean="sessionFactoryBatchROSAExport" /> -->
 		<!-- </property> -->
