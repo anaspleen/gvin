@@ -7,6 +7,7 @@ package fr.tic.gvin.dao;
 
 import org.bson.Document;
 
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 
 
@@ -25,22 +26,20 @@ public class BouteilleDaoMongo extends AbstractDaoMongo implements BouteilleDaoI
      */
     public void save(Document p_Document)
     {
-        // TODO Auto-generated method stub
-
-        MongoCollection<Document> bouteille = getCollection();
-
+        MongoClient client = getClient();
+        MongoCollection<Document> bouteille = getCollection(client);
         bouteille.insertOne(p_Document);
-
         System.out.println(p_Document.get("_id"));
+        releaseClient(client);
     }
-    
+
     /*
      * (non-Javadoc)
-     * @see fr.tic.gvin.dao.AbstractDaoMongo#getCollection()
+     * @see fr.tic.gvin.dao.AbstractDaoMongo#getCollection(com.mongodb.MongoClient)
      */
     @Override
-    protected MongoCollection<Document> getCollection()
+    protected MongoCollection<Document> getCollection(MongoClient p_Client)
     {
-        return getDatabase().getCollection("bouteille");
+        return getDatabase(p_Client).getCollection("bouteille");
     }
 }

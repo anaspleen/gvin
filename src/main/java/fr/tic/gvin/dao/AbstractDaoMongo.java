@@ -6,6 +6,8 @@ package fr.tic.gvin.dao;
 
 
 import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -22,6 +24,9 @@ import com.mongodb.client.MongoDatabase;
 public abstract class AbstractDaoMongo
 {
 
+    /** le logger... */
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractDaoMongo.class);
+
     /** l'URL database */
     private String m_DatabaseURL;
 
@@ -31,7 +36,7 @@ public abstract class AbstractDaoMongo
     /**
      * @return
      */
-    protected abstract MongoCollection<Document> getCollection();
+    protected abstract MongoCollection<Document> getCollection(MongoClient p_Client);
 
     /**
      * @return le client
@@ -45,10 +50,25 @@ public abstract class AbstractDaoMongo
     /**
      * @return la base
      */
-    protected MongoDatabase getDatabase()
+    protected MongoDatabase getDatabase(MongoClient p_Client)
     {
-        MongoDatabase database = getClient().getDatabase(getDatabaseNom());
+        MongoDatabase database = p_Client.getDatabase(getDatabaseNom());
         return database;
+    }
+
+    /**
+     * @return la base
+     */
+    protected void releaseClient(MongoClient p_Client)
+    {
+        try
+        {
+            p_Client.close();
+        }
+        catch (Exception e)
+        {
+            LOG.error("Impossible de fermer la conenxion", e);
+        }
     }
 
     /**

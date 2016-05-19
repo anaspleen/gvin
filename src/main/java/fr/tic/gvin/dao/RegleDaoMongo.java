@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.bson.Document;
 
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 
 import fr.tic.gvin.utils.ConstantesAMBROSIA;
@@ -30,20 +31,17 @@ public class RegleDaoMongo extends AbstractDaoMongo implements RegleDaoInterface
      */
     public void save(Document p_Document, String p_NomRegle)
     {
-        MongoCollection<Document> bouteille = getCollection();
+        MongoClient client = getClient();
+        MongoCollection<Document> bouteille = getCollection(client);
         p_Document.put(ConstantesAMBROSIA.TAG_ID, p_NomRegle);
         bouteille.insertOne(p_Document);
-        System.out.println(p_Document.get("_id"));
+        releaseClient(client);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see fr.tic.gvin.dao.AbstractDaoMongo#getCollection()
-     */
     @Override
-    protected MongoCollection<Document> getCollection()
+    protected MongoCollection<Document> getCollection(MongoClient p_Client)
     {
-        return getDatabase().getCollection("regle");
+        return getDatabase(p_Client).getCollection("regle");
     }
 
     /*
@@ -55,14 +53,15 @@ public class RegleDaoMongo extends AbstractDaoMongo implements RegleDaoInterface
         Document res = null;
 
         Document filter = new Document(ConstantesAMBROSIA.TAG_ID, p_NomRegle);
-
-        List<Document> all = getCollection().find(filter).into(new ArrayList<Document>());
+        MongoClient client = getClient();
+        List<Document> all = getCollection(client).find(filter).into(new ArrayList<Document>());
 
         if (all != null && all.size() > 0)
         {
             res = all.get(0);
         }
 
+        releaseClient(client);
         return res;
     }
 }
