@@ -19,6 +19,12 @@ import com.mongodb.client.MongoDatabase;
 public abstract class AbstractDaoMongo
 {
 
+    /** l'URL database */
+    private String m_DatabaseURL;
+
+    /** le nom database */
+    private String m_DatabaseNom;
+
     /**
      * @return le client
      */
@@ -36,5 +42,43 @@ public abstract class AbstractDaoMongo
     {
         MongoDatabase database = getClient().getDatabase("ambrosia");
         return database;
+    }
+
+    /**
+     * @return databaseURL
+     */
+    public String getDatabaseURL()
+    {
+        return m_DatabaseURL;
+    }
+
+    /**
+     * Méthode permettant d'initialiser la valeur de databaseURL.
+     * 
+     * @param p_DatabaseURL
+     *            le/la databaseURL à initialiser
+     */
+    public void setDatabaseURL(String p_DatabaseURL)
+    {
+        m_DatabaseURL = p_DatabaseURL;
+    }
+
+    /**
+     * @return databaseNom
+     */
+    public String getDatabaseNom()
+    {
+        return m_DatabaseNom;
+    }
+
+    /**
+     * Méthode permettant d'initialiser la valeur de databaseNom.
+     * 
+     * @param p_DatabaseNom
+     *            le/la databaseNom à initialiser
+     */
+    public void setDatabaseNom(String p_DatabaseNom)
+    {
+        m_DatabaseNom = p_DatabaseNom;
     }
 }

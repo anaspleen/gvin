@@ -3,6 +3,12 @@
 <beans>
 
 	<!-- ***** Section des DAO ***** -->
+	<!-- abstract -->
+	<bean id="abstractDao" class="fr.tic.gvin.dao.AbstractDaoMongo"
+		abstract="true">
+		<property name="databaseURL" ref="${ambrosia.db.url}" />
+		<property name="databaseNom" ref="${ambrosia.db.nom}" />
+	</bean>
 
 	<!-- composants -->
 	<bean id="bouteilleDao" class="fr.tic.gvin.dao.BouteilleDaoMongo">
