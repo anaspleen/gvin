@@ -26,13 +26,13 @@
 // Création.
 //
 //
-package ft.tic.gvin.dao;
+package fr.tic.gvin.dao;
 
 
 import org.bson.Document;
 import org.junit.Test;
 
-import ft.tic.gvin.AbstractAmbrosiaTest;
+import fr.tic.gvin.AbstractAmbrosiaTest;
 
 
 /**

@@ -53,6 +53,6 @@ public interface BouteilleServiceInterface
      * @param p_ValeursAchat
      *            les valeurs achat : prix, date, magasin
      */
-    void enregistrerBouteille(Map<String, Object> p_Valeurs, int p_Longitude, int p_Latitude,
+    void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude,
             Map<String, Object> p_ValeursAchat);
 }

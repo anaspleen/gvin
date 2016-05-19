@@ -7,7 +7,7 @@
 // $Id: DeliaBaseTestCase.java 1923 2013-01-11 11:01:49Z christophe.robine $
 // -----------------------------------------------------------------------------
 
-package ft.tic.gvin;
+package fr.tic.gvin;
 
 
 import org.junit.After;

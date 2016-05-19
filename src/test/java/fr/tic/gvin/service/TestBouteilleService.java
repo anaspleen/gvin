@@ -26,7 +26,7 @@
 // Création.
 //
 //
-package ft.tic.gvin.service;
+package fr.tic.gvin.service;
 
 
 import java.util.HashMap;
@@ -34,7 +34,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import ft.tic.gvin.AbstractAmbrosiaTest;
+import fr.tic.gvin.AbstractAmbrosiaTest;
 
 
 /**
@@ -47,14 +47,17 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
     @Test
     public void testEnregistrer() throws Exception
     {
-        // TODO
-
         Map<String, Object> valeurs = new HashMap<String, Object>();
-
         valeurs.put("nom", "st émou");
         valeurs.put("prix", 20);
 
-        getBouteilleService().enregistrerBouteille(valeurs, 0, 0, null);
+        Map<String, Object> valeursAchat = new HashMap<String, Object>();
+        valeursAchat.put("magasin", "sur place");
+        valeursAchat.put("prix", 20);
+
+        
+        getBouteilleService().enregistrerBouteille(valeurs, -0.1571643,
+                44.8949179, valeursAchat);
 
         //        Document bouteille = new Document();
         //        bouteille.put("test", "test");

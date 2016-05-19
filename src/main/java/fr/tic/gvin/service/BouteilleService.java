@@ -29,6 +29,7 @@
 package fr.tic.gvin.service;
 
 
+import java.util.Arrays;
 import java.util.Map;
 
 import org.bson.Document;
@@ -53,15 +54,15 @@ public class BouteilleService implements BouteilleServiceInterface
 
     /*
      * (non-Javadoc)
-     * @see fr.tic.gvin.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, int, int, java.util.Map)
+     * @see fr.tic.gvin.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, double, double, java.util.Map)
      */
-    public void enregistrerBouteille(Map<String, Object> p_Valeurs, int p_Longitude, int p_Latitude,
+    public void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude,
             Map<String, Object> p_ValeursAchat)
     {
         // TODO Auto-generated method stub
 
         //        {
-        //            "nom":"TODO",
+        //            "nom":"dgfgdqsdq",
         //            "vignoble":"bordeaux",
         //            "aoc":"saint-émilion",
         //            "appellation":"saint-émilion grand cru",
@@ -82,11 +83,21 @@ public class BouteilleService implements BouteilleServiceInterface
         //            }
         //         }
 
+        // TODO les vérifications d'usage
+
+        // init avec les valeurs de base
         Document doc = new Document(p_Valeurs);
 
-        
-        
-        
+        // ajout de l'achat
+        doc.put("achat", p_ValeursAchat);
+
+        // ajout de la location
+        Document loc = new Document();
+        loc.put("type", "Point");
+        // longitude en premier (Mongo)
+        loc.put("coordinates", Arrays.asList(p_Longitude, p_Latitude));
+        doc.put("location", loc);
+
         getBouteilleDao().save(doc);
     }
 
