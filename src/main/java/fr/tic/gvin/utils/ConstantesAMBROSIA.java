@@ -2,30 +2,6 @@
 // Fichier :
 // Etats.java, v 1.0 18 nov. 2015 15:31:18
 //
-// Projet :
-// LAQME
-//
-// Ministère :
-// Ministère de l'économie et des finances.
-//
-// Direction :
-// DGDDI
-//
-// Prestation :
-// Bull
-//
-// Copyright :
-// DGDDI 2004-2015
-//
-// Date :
-// Créé le 18 nov. 2015 à 15:31:18
-//
-// Historique :
-//
-// Révision 1.0 18 nov. 2015 15:31:18 caiatit
-// Création.
-//
-//
 package fr.tic.gvin.utils;
 
 

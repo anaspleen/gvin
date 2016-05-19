@@ -2,30 +2,6 @@
 // Fichier :
 // BouteilleService.java, v 1.0 19 mai 2016 15:54:04
 //
-// Projet :
-// LAQME
-//
-// Ministère :
-// Ministère de l'économie et des finances.
-//
-// Direction :
-// DGDDI
-//
-// Prestation :
-// Bull
-//
-// Copyright :
-// DGDDI 2004-2016
-//
-// Date :
-// Créé le 19 mai 2016 à 15:54:04
-//
-// Historique :
-//
-// Révision 1.0 19 mai 2016 15:54:04 caiatit
-// Création.
-//
-//
 package fr.tic.gvin.service;
 
 
@@ -37,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.tic.gvin.dao.BouteilleDaoInterface;
+import fr.tic.gvin.exception.BusinessException;
+import fr.tic.gvin.exception.TechnicalException;
 import fr.tic.gvin.utils.ConstantesAMBROSIA;
 
 
@@ -58,7 +36,7 @@ public class BouteilleService implements BouteilleServiceInterface
      * @see fr.tic.gvin.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, double, double, java.util.Map)
      */
     public void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude,
-            Map<String, Object> p_ValeursAchat)
+            Map<String, Object> p_ValeursAchat) throws BusinessException, TechnicalException
     {
         // TODO Auto-generated method stub
 

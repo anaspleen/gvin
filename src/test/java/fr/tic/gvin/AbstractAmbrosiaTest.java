@@ -1,12 +1,3 @@
-// -----------------------------------------------------------------------------
-// Projet : Delia
-// Client : Bull
-// Auteur : Tof / Bull S.A.S.
-// Date : 8 avril 2008
-// -----------------------------------------------------------------------------
-// $Id: DeliaBaseTestCase.java 1923 2013-01-11 11:01:49Z christophe.robine $
-// -----------------------------------------------------------------------------
-
 package fr.tic.gvin;
 
 
@@ -30,11 +21,7 @@ import fr.tic.gvin.service.BouteilleServiceInterface;
 
 
 /**
- * Cette classe abstraite sert de base pour tester les services. Elle permet la manipulation d'un
- * service DbUnit et de nettoyer la base entre chaque test. Elle contient également un service de
- * Configuration et FilesUtils, utilisés par les tests de services.<br/>
- * Si des traitements doivent être effectués avant chaque test, il faut surcharger : setUp(); pour
- * des traitements après chaque test : tearDown()
+ * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations =
