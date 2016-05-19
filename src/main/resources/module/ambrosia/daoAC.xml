@@ -10,11 +10,9 @@
 		<property name="databaseNom" value="${ambrosia.db.nom}" />
 	</bean>
 
-	<!-- composants -->
-	<bean id="bouteilleDao" class="fr.tic.gvin.dao.BouteilleDaoMongo" parent="abstractDao" >
-		<!-- <property name="sessionFactory"> -->
-		<!-- <ref bean="sessionFactoryBatchROSAExport" /> -->
-		<!-- </property> -->
-	</bean>
+	<!-- daos -->
+	<bean id="bouteilleDao" class="fr.tic.gvin.dao.BouteilleDaoMongo"
+		parent="abstractDao" />
+	<bean id="regleDao" class="fr.tic.gvin.dao.RegleDaoMongo" parent="abstractDao" />
 
 </beans>

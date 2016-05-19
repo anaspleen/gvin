@@ -18,7 +18,7 @@ public interface BouteilleDaoInterface
 {
 
     /**
-     * enregistre une bouteille
+     * Enregistre une bouteille
      * 
      * @param p_Valeurs
      *            les valeurs

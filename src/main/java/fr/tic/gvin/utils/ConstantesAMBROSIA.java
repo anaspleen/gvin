@@ -34,6 +34,9 @@ public final class ConstantesAMBROSIA
     public static final String TAG_BOUTEILLE_LOCATION_TYPE_POINT = "Point";
     public static final String TAG_BOUTEILLE_LOCATION_COORDINATES = "coordinates";
 
+    /** tags id */
+    public static final String TAG_ID = "_id";
+
     /**
      * Const par défaut
      */

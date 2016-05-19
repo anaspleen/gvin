@@ -5,8 +5,11 @@
 package fr.tic.gvin.dao;
 
 
+import org.bson.Document;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 
@@ -24,6 +27,11 @@ public abstract class AbstractDaoMongo
 
     /** le nom database */
     private String m_DatabaseNom;
+
+    /**
+     * @return
+     */
+    protected abstract MongoCollection<Document> getCollection();
 
     /**
      * @return le client

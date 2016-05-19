@@ -27,10 +27,20 @@ public class BouteilleDaoMongo extends AbstractDaoMongo implements BouteilleDaoI
     {
         // TODO Auto-generated method stub
 
-        MongoCollection<Document> bouteille = getDatabase().getCollection("bouteille");
+        MongoCollection<Document> bouteille = getCollection();
 
         bouteille.insertOne(p_Document);
 
         System.out.println(p_Document.get("_id"));
+    }
+    
+    /*
+     * (non-Javadoc)
+     * @see fr.tic.gvin.dao.AbstractDaoMongo#getCollection()
+     */
+    @Override
+    protected MongoCollection<Document> getCollection()
+    {
+        return getDatabase().getCollection("bouteille");
     }
 }

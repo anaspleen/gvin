@@ -30,6 +30,10 @@ public interface BouteilleServiceInterface
      *            latitude
      * @param p_ValeursAchat
      *            les valeurs achat : prix, date, magasin
+     * @throws BusinessException
+     *             soucis applicatif
+     * @throws TechnicalException
+     *             soucis technique
      */
     void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude,
             Map<String, Object> p_ValeursAchat) throws BusinessException, TechnicalException;

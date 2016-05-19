@@ -16,6 +16,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 
 import fr.tic.gvin.dao.BouteilleDaoInterface;
+import fr.tic.gvin.dao.RegleDaoInterface;
 import fr.tic.gvin.service.BouteilleService;
 import fr.tic.gvin.service.BouteilleServiceInterface;
 
@@ -35,6 +36,10 @@ public abstract class AbstractAmbrosiaTest
     @Autowired
     @Qualifier("bouteilleDao")
     private BouteilleDaoInterface m_BouteilleDao;
+
+    @Autowired
+    @Qualifier("regleDao")
+    private RegleDaoInterface m_RegleDao;
 
     /**
      * Le Service gérant les flux.
@@ -75,7 +80,6 @@ public abstract class AbstractAmbrosiaTest
      */
     protected MongoClient getClient()
     {
-        //        MongoClientOptions optios = MongoClientOptions.builder().connectionsPerHost(500).build();
         MongoClient client = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
         return client;
     }
@@ -85,7 +89,7 @@ public abstract class AbstractAmbrosiaTest
      */
     protected MongoDatabase getDatabase()
     {
-        MongoDatabase database = getClient().getDatabase("ambrosia");
+        MongoDatabase database = getClient().getDatabase("ambrosia_test");
         return database;
     }
 
@@ -103,5 +107,14 @@ public abstract class AbstractAmbrosiaTest
     public BouteilleDaoInterface getBouteilleDao()
     {
         return m_BouteilleDao;
+    }
+
+    
+    /**
+     * @return regleDao
+     */
+    public RegleDaoInterface getRegleDao()
+    {
+        return m_RegleDao;
     }
 }

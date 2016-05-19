@@ -38,8 +38,6 @@ public class BouteilleService implements BouteilleServiceInterface
     public void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude,
             Map<String, Object> p_ValeursAchat) throws BusinessException, TechnicalException
     {
-        // TODO Auto-generated method stub
-
         //        {
         //            "nom":"dgfgdqsdq",
         //            "vignoble":"bordeaux",
@@ -63,6 +61,9 @@ public class BouteilleService implements BouteilleServiceInterface
         //         }
 
         // TODO les vérifications d'usage
+        // utiliser les règles de regle-bouteille.json pour vérifier cela
+        // TODO donc : un service de vérification qui renvoit une liste d'erreur String
+        // prendre uniquement aussi les tags de regle-bouteille.json
 
         // init avec les valeurs de base
         Document doc = new Document(p_Valeurs);
