@@ -37,6 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.tic.gvin.dao.BouteilleDaoInterface;
+import fr.tic.gvin.utils.ConstantesAMBROSIA;
 
 
 /**
@@ -89,16 +90,18 @@ public class BouteilleService implements BouteilleServiceInterface
         Document doc = new Document(p_Valeurs);
 
         // ajout de l'achat
-        doc.put("achat", p_ValeursAchat);
+        doc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT, p_ValeursAchat);
 
         // ajout de la location
         Document loc = new Document();
-        loc.put("type", "Point");
+        loc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION_TYPE, ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION_TYPE_POINT);
         // longitude en premier (Mongo)
-        loc.put("coordinates", Arrays.asList(p_Longitude, p_Latitude));
-        doc.put("location", loc);
+        loc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION_COORDINATES, Arrays.asList(p_Longitude, p_Latitude));
+        doc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION, loc);
 
         getBouteilleDao().save(doc);
+
+        LOG.info("Enregistrement de la bouteille");
     }
 
     /**
