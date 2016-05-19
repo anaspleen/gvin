@@ -8,37 +8,44 @@
     <artifactId>gvin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
+	<scm>
+		<connection>scm:svn:https://novaforge.bull.com/svn-default/svn/referentieldouane_svnjavacommun/projets/batch-rosa/batch-rosa-export/trunk</connection>
+	</scm>
+
+	<properties>
+	    <!-- encodage des sources ! -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
+	<!-- les utils -->
+	<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+	
+		<!-- les dépendances du service -->
+		<mongodb.version>3.2.2</mongodb.version>
+
+		<!-- pour les tests (le reste est déjà) dans batch-rosa-commu -->
+		<junit.version>4.11</junit.version>
+		<spring-test.version>4.2.1.RELEASE</spring-test.version>
+	</properties>
+
     <dependencies>
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>3.2.2</version>
-        </dependency>
-
-        <dependency>
-          <groupId>com.sparkjava</groupId>
-	  <artifactId>spark-core</artifactId>
-	  <version>1.1.1</version>
-        </dependency>
-	
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.19</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.7</version>
+            <version>${mongodb.version}</version>
         </dependency>
 
     </dependencies>
 
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<tagBase>https://novaforge.bull.com/svn-default/svn/referentieldouane_svnjavacommun/projets/batch-rosa/batch-rosa-export/tags</tagBase>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
