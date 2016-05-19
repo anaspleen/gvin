@@ -9,4 +9,5 @@
 
 	<import resource="classpath:module/ambrosia/daoAC.xml" />
 
+	<import resource="classpath:module/ambrosia/bouteilleAC.xml" />
 </beans>

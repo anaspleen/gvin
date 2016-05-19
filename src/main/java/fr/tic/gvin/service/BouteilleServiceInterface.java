@@ -42,7 +42,7 @@ public interface BouteilleServiceInterface
 {
 
     /**
-     * enregistre une bouteille
+     * enregistre une bouteille : gvin/src/test/resources/bouteille/bouteille.json
      * 
      * @param p_Valeurs
      *            les valeurs
@@ -50,6 +50,9 @@ public interface BouteilleServiceInterface
      *            longitude
      * @param p_Latitude
      *            latitude
+     * @param p_ValeursAchat
+     *            les valeurs achat : prix, date, magasin
      */
-    void enregistrerBouteille(Map<String, String> p_Valeurs, int p_Longitude, int p_Latitude);
+    void enregistrerBouteille(Map<String, Object> p_Valeurs, int p_Longitude, int p_Latitude,
+            Map<String, Object> p_ValeursAchat);
 }

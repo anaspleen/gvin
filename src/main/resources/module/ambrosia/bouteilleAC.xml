@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Projet : Delia -->
+<!-- Client : Bull -->
+<!-- Auteur : tof / Bull S.A.S. -->
+<!-- $Id: configurationAC.xml 2917 2015-06-25 13:19:09Z caiati-t $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- Service bouteilleService. -->
+	<bean id="bouteilleService"
+		class="fr.tic.gvin.service.BouteilleService">
+		<property name="bouteilleDao">
+			<ref bean="bouteilleDao" />
+		</property>
+	</bean>
+
+</beans>
