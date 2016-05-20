@@ -36,6 +36,7 @@ import fr.tic.gvin.service.ValidationServiceInterface;
 public abstract class AbstractAmbrosiaTest
 {
 
+    protected static final String BOUTEILLE = "bouteille";
     /** le logger... */
     private static final Logger LOG = LoggerFactory.getLogger(BouteilleService.class);
 

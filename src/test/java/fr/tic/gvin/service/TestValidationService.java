@@ -25,7 +25,6 @@ import fr.tic.gvin.utils.ConstantesAMBROSIA;
 public class TestValidationService extends AbstractAmbrosiaTest
 {
 
-    private static final String BOUTEILLE = "bouteille";
     private static final String TAG_VIGNOBLE = "vignoble";
 
     @Test
