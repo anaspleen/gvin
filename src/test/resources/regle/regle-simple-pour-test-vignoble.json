@@ -1,0 +1,7 @@
+{
+   "vignoble":{
+      "obligatoire":true,
+      "regex":"123456",
+      "type":"string"
+   }
+}

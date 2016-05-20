@@ -28,4 +28,9 @@ public interface ChampInterface
      * @return true si obligatoire
      */
     boolean isObligatoire();
+
+    /**
+     * @return le nom du tag
+     */
+    String getNom();
 }

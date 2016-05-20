@@ -44,21 +44,27 @@ public class ChampBean implements ChampInterface, Serializable
     /** obligatoire */
     private boolean m_Obligatoire;
 
+    /** nom */
+    private String m_Nom;
+
     /**
      * Ici, transformation du document en champ exploitable
      * 
      * @param p_Document
      *            le document
      * @param p_Tag
-     *            le tag "vignoble" par exemple, permet de tracer les erreurs
+     *            le tag "vignoble" par exemple
      */
     public ChampBean(Document p_Document, String p_Tag) throws BusinessException
     {
         try
         {
-            m_Regexp = p_Document.getString(TAG_REGEXP);
-            m_Type = TypeChamp.valueOf(p_Document.getString(TAG_TYPE));
-            m_Obligatoire = p_Document.getBoolean(TAG_OBLIGATOIRE, false);
+            m_Nom = p_Tag;
+            Document donnees = (Document) p_Document.get(p_Tag);
+
+            m_Regexp = donnees.getString(TAG_REGEXP);
+            m_Type = TypeChamp.valueOf(donnees.getString(TAG_TYPE));
+            m_Obligatoire = donnees.getBoolean(TAG_OBLIGATOIRE, false);
         }
         catch (Exception e)
         {
@@ -74,6 +80,15 @@ public class ChampBean implements ChampInterface, Serializable
     private ChampBean()
     {
         // RAF
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see fr.tic.gvin.bean.ChampInterface#getNom()
+     */
+    public String getNom()
+    {
+        return m_Nom;
     }
 
     /*
