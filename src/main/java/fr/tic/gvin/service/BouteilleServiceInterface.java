@@ -20,7 +20,7 @@ public interface BouteilleServiceInterface
 {
 
     /**
-     * enregistre une bouteille : gvin/src/test/resources/bouteille/bouteille.json
+     * enregistre une bouteille : gvin/src/test/resources/bouteille/bouteille-st-emilion-valide.json
      * 
      * @param p_Valeurs
      *            les valeurs

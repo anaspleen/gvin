@@ -5,8 +5,10 @@
 package fr.tic.gvin.service;
 
 
+import java.util.List;
 import java.util.Map;
 
+import org.bson.Document;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -49,5 +51,27 @@ public class TestValidationService extends AbstractAmbrosiaTest
         Assert.assertEquals(TypeChamp.string, regle.getType());
         Assert.assertEquals("123456", regle.getRegexp());
         Assert.assertEquals(TAG_VIGNOBLE, regle.getNom());
+    }
+
+    @Test
+    public void testVerification() throws Exception
+    {
+        // insertion de la régle bouteille
+        String fichier = "./src/test/resources/regle/regle-bouteille.json";
+        getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
+
+        Document docStEmilionValide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-st-emilion-valide.json");
+
+        Map<String, List<String>> res = getValidationService().validerObjet(docStEmilionValide, BOUTEILLE);
+        System.out.println(res);
+        Assert.assertEquals(10, res.size());
+        Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
+
+        Document docStEmilionValideInvalide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-st-emilion-invalide.json");
+
+        res = getValidationService().validerObjet(docStEmilionValideInvalide, BOUTEILLE);
+        System.out.println(res);
+        Assert.assertEquals(10, res.size());
+        Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
     }
 }
