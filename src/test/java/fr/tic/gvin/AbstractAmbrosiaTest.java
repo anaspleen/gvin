@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
@@ -130,8 +129,8 @@ public abstract class AbstractAmbrosiaTest
      * @throws IOException
      *             soucis
      */
-    protected DBObject createJSONFromFile(String p_CheminFichier) throws IOException
+    protected Document createDocumentFromFile(String p_CheminFichier) throws IOException
     {
-        return (DBObject) com.mongodb.util.JSON.parse(FileUtils.readFileToString(new File(p_CheminFichier)));
+        return Document.parse(FileUtils.readFileToString(new File(p_CheminFichier)));
     }
 }

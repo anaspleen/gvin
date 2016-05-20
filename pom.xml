@@ -18,6 +18,7 @@
 		<!-- les utils -->
 		<maven-release-plugin.version>2.5.1</maven-release-plugin.version>
 		<slf4j.version>1.7.21</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
 		<commons-io.version>2.4</commons-io.version>
 
 		<!-- les dépendances du service -->
@@ -30,9 +31,15 @@
 
 	<dependencies>
 
+		<!-- embarqué dans org.slf4j/slf4j-log4j12 -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.slf4j</groupId> -->
+		<!-- <artifactId>slf4j-api</artifactId> -->
+		<!-- <version>${slf4j.version}</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
+			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
 

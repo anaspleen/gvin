@@ -80,7 +80,10 @@ public class BouteilleService implements BouteilleServiceInterface
 
         getBouteilleDao().save(doc);
 
-        LOG.info("Enregistrement de la bouteille");
+        if (LOG.isInfoEnabled())
+        {
+            LOG.info("Enregistrement de la bouteille");
+        }
     }
 
     /**

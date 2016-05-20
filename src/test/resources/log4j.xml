@@ -52,14 +52,14 @@
 	</logger>
 
 	<!-- ********** LOGGERS DEFINITION (begin) ********** -->
-	<!-- Activation log générale -->
+	<!-- Activation log générale douane -->
 	<logger name="ROSA_AUDIT">
 		<level value="INFO" />
 		<appender-ref ref="AMBROSIA_AUDIT_FILE_APPENDER" />
 	</logger>
 
 	<root>
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="ASYNCPROD_AMBROSIA_FILE_APPENDER" />
 		<!-- pas de log direct dans tomcat en production -->
 		<appender-ref ref="AMBROSIA_CONSOLE_APPENDER" />

@@ -39,8 +39,8 @@ public class TestRegleDao extends AbstractAmbrosiaTest
 
         String fichier = "./src/test/resources/regle/regle-bouteille.json";
 
-        // TODO résoudre ce truc dbobject to document
-        DBObject regle = createJSONFromFile(fichier);
+        Document regle = createDocumentFromFile(fichier);
         System.out.println(regle);
+        getRegleDao().save(regle, "bouteille");
     }
 }
