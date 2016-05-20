@@ -54,7 +54,7 @@ public class BouteilleService implements BouteilleServiceInterface
         //            "location":{
         //               "type":"Point",
         //               "coordinates":[
-        //                  -0.1571643,17,
+        //                  -0.1571643,
         //                  44.8949179
         //               ]
         //            }
@@ -65,6 +65,8 @@ public class BouteilleService implements BouteilleServiceInterface
         // TODO donc : un service de vérification qui renvoit une liste d'erreur String
         // prendre uniquement aussi les tags de regle-bouteille.json
 
+        // TODO walider le document avant commit
+        
         // init avec les valeurs de base
         Document doc = new Document(p_Valeurs);
 

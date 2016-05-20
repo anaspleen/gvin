@@ -5,12 +5,15 @@
 package fr.tic.gvin.service;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.tic.gvin.bean.ChampInterface;
 import fr.tic.gvin.dao.RegleDaoInterface;
 import fr.tic.gvin.exception.BusinessException;
 import fr.tic.gvin.exception.TechnicalException;
@@ -36,6 +39,17 @@ public class ValidationService implements ValidationServiceInterface
     public List<String> validerObjet(Document p_Document, String p_TypeObjet) throws BusinessException,
             TechnicalException
     {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+    /*
+     * (non-Javadoc)
+     * @see fr.tic.gvin.service.ValidationServiceInterface#obtenirRegles(java.lang.String)
+     */
+    public Map<String, ChampInterface> obtenirRegles(String p_TypeObjet) throws BusinessException, TechnicalException
+    {
+        Map<String, ChampInterface> res=new HashMap<String, ChampInterface>();
         // TODO Auto-generated method stub
         return null;
     }
