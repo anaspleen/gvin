@@ -34,6 +34,9 @@ public class ValidationService implements ValidationServiceInterface
     /** dao */
     private RegleDaoInterface m_RegleDao;
 
+    /** le cache */
+    private static Map<String, Map<String, ChampInterface>> s_Map = new HashMap<String, Map<String, ChampInterface>>();
+
     /*
      * (non-Javadoc)
      * @see fr.tic.gvin.service.ValidationServiceInterface#validerObjet(org.bson.Document, java.lang.String)
@@ -51,21 +54,29 @@ public class ValidationService implements ValidationServiceInterface
      */
     public Map<String, ChampInterface> obtenirRegles(String p_TypeObjet) throws BusinessException, TechnicalException
     {
-        Map<String, ChampInterface> res = new HashMap<String, ChampInterface>();
+        Map<String, ChampInterface> res = s_Map.get(p_TypeObjet);
 
-        // obtention du document
-        Document regles = getRegleDao().find(p_TypeObjet);
-
-        if (regles != null)
+        if (res == null)
         {
-            // itération sur les clé
-            for (String tag : regles.keySet())
+            res = new HashMap<String, ChampInterface>();
+
+            // obtention du document
+            Document regles = getRegleDao().find(p_TypeObjet);
+
+            if (regles != null)
             {
-                if (!tag.equals(ConstantesAMBROSIA.TAG_ID))
+                // itération sur les clé
+                for (String tag : regles.keySet())
                 {
-                    res.put(tag, new ChampBean((Document) regles.get(tag), tag));
+                    if (!tag.equals(ConstantesAMBROSIA.TAG_ID))
+                    {
+                        res.put(tag, new ChampBean((Document) regles.get(tag), tag));
+                    }
                 }
             }
+
+            // ajout dans la map
+            s_Map.put(p_TypeObjet, res);
         }
 
         return res;

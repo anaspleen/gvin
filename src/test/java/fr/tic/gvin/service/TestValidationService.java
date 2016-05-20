@@ -41,5 +41,13 @@ public class TestValidationService extends AbstractAmbrosiaTest
         Assert.assertEquals(TypeChamp.string, regle.getType());
         Assert.assertEquals("123456", regle.getRegexp());
         Assert.assertEquals(TAG_VIGNOBLE, regle.getNom());
+
+        // dans cache
+        champs = getValidationService().obtenirRegles(BOUTEILLE);
+        regle = champs.get(TAG_VIGNOBLE);
+        Assert.assertTrue(regle.isObligatoire());
+        Assert.assertEquals(TypeChamp.string, regle.getType());
+        Assert.assertEquals("123456", regle.getRegexp());
+        Assert.assertEquals(TAG_VIGNOBLE, regle.getNom());
     }
 }
