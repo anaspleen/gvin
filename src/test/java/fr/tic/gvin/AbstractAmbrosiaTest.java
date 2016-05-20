@@ -24,6 +24,7 @@ import fr.tic.gvin.dao.BouteilleDaoInterface;
 import fr.tic.gvin.dao.RegleDaoInterface;
 import fr.tic.gvin.service.BouteilleService;
 import fr.tic.gvin.service.BouteilleServiceInterface;
+import fr.tic.gvin.service.ValidationServiceInterface;
 
 
 /**
@@ -52,6 +53,13 @@ public abstract class AbstractAmbrosiaTest
     @Autowired
     @Qualifier("bouteilleService")
     private BouteilleServiceInterface m_BouteilleService;
+
+    /**
+     * Le Service gérant les flux.
+     */
+    @Autowired
+    @Qualifier("validationService")
+    private ValidationServiceInterface m_ValidationService;
 
     /**
      * Cette méthode est appelée avant chaque test.<br/>
@@ -120,6 +128,14 @@ public abstract class AbstractAmbrosiaTest
     public RegleDaoInterface getRegleDao()
     {
         return m_RegleDao;
+    }
+
+    /**
+     * @return validationService
+     */
+    public ValidationServiceInterface getValidationService()
+    {
+        return m_ValidationService;
     }
 
     /**
