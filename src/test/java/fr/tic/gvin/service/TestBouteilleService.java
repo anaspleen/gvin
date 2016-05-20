@@ -54,11 +54,10 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
     private Map<String, Object> createBouteilleInvalide()
     {
         Map<String, Object> valeurs = new HashMap<String, Object>();
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_CONSOMMATION_OPTIMALE, "hjkhjk");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_VIGNOBLE, "Bordeaux");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_VIGNOBLE, null);
 
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_MAGASIN, "sur place");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, 20);
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, "jhghgjh");
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_DATE, new Date());
 
         return valeurs;
@@ -76,6 +75,8 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_AOC, "Saint-Emilion");
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_APPELLATION, "Saint-Emilion Grand Cru");
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_VIGNOBLE, "Bordeaux");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_CHATEAU, "Galhaud");
+        
 
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_MAGASIN, "sur place");
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, 20);

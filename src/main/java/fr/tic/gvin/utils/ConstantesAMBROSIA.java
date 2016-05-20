@@ -21,6 +21,7 @@ public final class ConstantesAMBROSIA
     public static final String TAG_BOUTEILLE_APPELLATION = "appellation";
     public static final String TAG_BOUTEILLE_ANNEE_MISE_EN_BOUTEILLE = "anneeMiseEnBouteille";
     public static final String TAG_BOUTEILLE_ANNEE_CONSOMMATION_OPTIMALE = "anneeConsommationOptimale";
+    public static final String TAG_BOUTEILLE_CHATEAU = "chateau";
 
     /** achat bouteille */
     public static final String TAG_BOUTEILLE_ACHAT_DATE = "achatDate";

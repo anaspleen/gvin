@@ -55,28 +55,25 @@ public class ValidationService implements ValidationServiceInterface
         Map<String, ChampInterface> regles = obtenirRegles(p_TypeObjet);
         ChampInterface regle = null;
 
-        List<String> erreurDuTag = null;
-
         if (regles == null)
         {
             throw new TechnicalException("Aucune régle trouvée pour l'objet : " + p_TypeObjet);
         }
 
-        for (String tagObjet : p_DocumentAValider.keySet())
+        // dans l'autre sens, on vérifie que les champs sont bien là
+        for (String tagRegle : regles.keySet())
         {
-            if (!TAGS_PAS_A_VERIFIER.contains(tagObjet))
-            {
-                // prise de la régle
-                regle = regles.get(tagObjet);
+            // prise de la régle
+            regle = regles.get(tagRegle);
 
-                if (regle == null)
-                {
-                    // si pas de régle, on ne fait rien
-                }
-                else
-                {
-                    res.put(tagObjet, regle.valideDonnee(p_DocumentAValider.get(tagObjet)));
-                }
+            if (p_DocumentAValider.containsKey(tagRegle))
+            {
+                // ici on vérife
+                res.put(tagRegle, regle.valideDonnee(p_DocumentAValider.get(tagRegle)));
+            }
+            else
+            {
+                res.put(tagRegle, Arrays.asList("tag.inexistant"));
             }
         }
 
