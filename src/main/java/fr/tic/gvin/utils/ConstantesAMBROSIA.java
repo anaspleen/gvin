@@ -23,10 +23,9 @@ public final class ConstantesAMBROSIA
     public static final String TAG_BOUTEILLE_ANNEE_CONSOMMATION_OPTIMALE = "anneeConsommationOptimale";
 
     /** achat bouteille */
-    public static final String TAG_BOUTEILLE_ACHAT = "achat";
-    public static final String TAG_BOUTEILLE_ACHAT_DATE = "date";
-    public static final String TAG_BOUTEILLE_ACHAT_MAGASIN = "magasin";
-    public static final String TAG_BOUTEILLE_ACHAT_PRIX = "prix";
+    public static final String TAG_BOUTEILLE_ACHAT_DATE = "achatDate";
+    public static final String TAG_BOUTEILLE_ACHAT_MAGASIN = "achatMagasin";
+    public static final String TAG_BOUTEILLE_ACHAT_PRIX = "achatPrix";
 
     /** location bouteille mongo */
     public static final String TAG_BOUTEILLE_LOCATION = "location";

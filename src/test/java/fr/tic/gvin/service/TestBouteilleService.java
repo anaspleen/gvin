@@ -33,12 +33,11 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_APPELLATION, "Saint-Emilion Grand Cru");
         valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_VIGNOBLE, "Bordeaux");
 
-        Map<String, Object> valeursAchat = new HashMap<String, Object>();
-        valeursAchat.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_MAGASIN, "sur place");
-        valeursAchat.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, 20);
-        valeursAchat.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_DATE, new Date());
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_MAGASIN, "sur place");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, 20);
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_DATE, new Date());
 
-        getBouteilleService().enregistrerBouteille(valeurs, -0.1571643, 44.8949179, valeursAchat);
+        getBouteilleService().enregistrerBouteille(valeurs, -0.1571643, 44.8949179);
 
         //        Document bouteille = new Document();
         //        bouteille.put("test", "test");

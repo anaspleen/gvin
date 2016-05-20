@@ -1,7 +1,7 @@
 {
    "vignoble":{
       "obligatoire":true,
-      "regex":"123456",
+      "regexp":"123456",
       "type":"string"
    }
 }

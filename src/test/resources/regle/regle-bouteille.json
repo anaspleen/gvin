@@ -1,54 +1,52 @@
 {
    "nom":{
       "obligatoire":true,
-      "regex":"",
+      "regexp":"",
       "type":"string"
    },
    "vignoble":{
       "obligatoire":true,
-      "regex":"",
+      "regexp":"123456",
       "type":"string"
    },
    "aoc":{
       "obligatoire":true,
-      "regex":"",
+      "regexp":"",
       "type":"string"
    },
    "appellation":{
       "obligatoire":false,
-      "regex":"",
+      "regexp":"",
       "type":"string"
    },
    "chateau":{
       "obligatoire":true,
-      "regex":"",
+      "regexp":"",
       "type":"string"
    },
    "anneeMiseEnBouteille":{
       "obligatoire":true,
-      "regex":"",
+      "regexp":"",
       "type":"integer"
    },
    "anneeConsommationOptimale":{
       "obligatoire":false,
-      "regex":"",
+      "regexp":"",
       "type":"integer"
    },
-   "achat":{
-      "date":{
-         "obligatoire":false,
-         "regex":"",
-         "type":"date"
-      },
-      "magasin":{
-         "obligatoire":false,
-         "regex":"",
-         "type":"string"
-      },
-      "prix":{
-         "obligatoire":false,
-         "regex":"",
-         "type":"integer"
-      }
+   "achatDate":{
+      "obligatoire":false,
+      "regexp":"",
+      "type":"date"
+   },
+   "achatMagasin":{
+      "obligatoire":false,
+      "regexp":"",
+      "type":"string"
+   },
+   "achatPrix":{
+      "obligatoire":false,
+      "regexp":"",
+      "type":"integer"
    }
 }

@@ -31,7 +31,7 @@ public class ChampBean implements ChampInterface, Serializable
     private static final Logger LOG = LoggerFactory.getLogger(ChampBean.class);
 
     // les tags 
-    private static final String TAG_REGEXP = "regex";
+    private static final String TAG_REGEXP = "regexp";
     private static final String TAG_TYPE = "type";
     private static final String TAG_OBLIGATOIRE = "obligatoire";
 
@@ -60,11 +60,9 @@ public class ChampBean implements ChampInterface, Serializable
         try
         {
             m_Nom = p_Tag;
-            Document donnees = (Document) p_Document.get(p_Tag);
-
-            m_Regexp = donnees.getString(TAG_REGEXP);
-            m_Type = TypeChamp.valueOf(donnees.getString(TAG_TYPE));
-            m_Obligatoire = donnees.getBoolean(TAG_OBLIGATOIRE, false);
+            m_Regexp = p_Document.getString(TAG_REGEXP);
+            m_Type = TypeChamp.valueOf(p_Document.getString(TAG_TYPE));
+            m_Obligatoire = p_Document.getBoolean(TAG_OBLIGATOIRE, false);
         }
         catch (Exception e)
         {

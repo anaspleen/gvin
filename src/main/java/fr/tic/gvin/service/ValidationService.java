@@ -13,10 +13,12 @@ import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.tic.gvin.bean.ChampBean;
 import fr.tic.gvin.bean.ChampInterface;
 import fr.tic.gvin.dao.RegleDaoInterface;
 import fr.tic.gvin.exception.BusinessException;
 import fr.tic.gvin.exception.TechnicalException;
+import fr.tic.gvin.utils.ConstantesAMBROSIA;
 
 
 /**
@@ -42,16 +44,31 @@ public class ValidationService implements ValidationServiceInterface
         // TODO Auto-generated method stub
         return null;
     }
-    
+
     /*
      * (non-Javadoc)
      * @see fr.tic.gvin.service.ValidationServiceInterface#obtenirRegles(java.lang.String)
      */
     public Map<String, ChampInterface> obtenirRegles(String p_TypeObjet) throws BusinessException, TechnicalException
     {
-        Map<String, ChampInterface> res=new HashMap<String, ChampInterface>();
-        // TODO Auto-generated method stub
-        return null;
+        Map<String, ChampInterface> res = new HashMap<String, ChampInterface>();
+
+        // obtention du document
+        Document regles = getRegleDao().find(p_TypeObjet);
+
+        if (regles != null)
+        {
+            // itération sur les clé
+            for (String tag : regles.keySet())
+            {
+                if (!tag.equals(ConstantesAMBROSIA.TAG_ID))
+                {
+                    res.put(tag, new ChampBean((Document) regles.get(tag), tag));
+                }
+            }
+        }
+
+        return res;
     }
 
     /**

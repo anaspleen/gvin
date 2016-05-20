@@ -6,11 +6,9 @@
    "chateau":"Galhaud",
    "anneeMiseEnBouteille":2012,
    "anneeConsommationOptimale":2020,
-   "achat":{
-      "date":"15/08/2015",
-      "magasin":"Chateau Galhaud",
-      "prix":20
-   },
+   "achatDate":"15/08/2015",
+   "achatMagasin":"Chateau Galhaud",
+   "achatPrix":20,
    "location":{
       "type":"Point",
       "coordinates":[

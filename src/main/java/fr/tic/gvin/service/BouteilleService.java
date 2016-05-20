@@ -33,24 +33,22 @@ public class BouteilleService implements BouteilleServiceInterface
 
     /*
      * (non-Javadoc)
-     * @see fr.tic.gvin.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, double, double, java.util.Map)
+     * @see fr.tic.gvin.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, double, double)
      */
-    public void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude,
-            Map<String, Object> p_ValeursAchat) throws BusinessException, TechnicalException
+    public void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude)
+            throws BusinessException, TechnicalException
     {
         //        {
-        //            "nom":"dgfgdqsdq",
+        //            "nom":"TODO",
         //            "vignoble":"bordeaux",
         //            "aoc":"saint-émilion",
         //            "appellation":"saint-émilion grand cru",
         //            "chateau":"Galhaud",
         //            "anneeMiseEnBouteille":2012,
         //            "anneeConsommationOptimale":2020,
-        //            "achat":{
-        //               "date":"15/08/2015",
-        //               "magasin":"Chateau Galhaud",
-        //               "prix":20
-        //            },
+        //            "achat.date":"15/08/2015",
+        //            "achat.magasin":"Chateau Galhaud",
+        //            "achat.prix":20,
         //            "location":{
         //               "type":"Point",
         //               "coordinates":[
@@ -66,12 +64,9 @@ public class BouteilleService implements BouteilleServiceInterface
         // prendre uniquement aussi les tags de regle-bouteille.json
 
         // TODO walider le document avant commit
-        
+
         // init avec les valeurs de base
         Document doc = new Document(p_Valeurs);
-
-        // ajout de l'achat
-        doc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT, p_ValeursAchat);
 
         // ajout de la location
         Document loc = new Document();
