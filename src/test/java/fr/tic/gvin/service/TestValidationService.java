@@ -15,6 +15,7 @@ import org.junit.Test;
 import fr.tic.gvin.AbstractAmbrosiaTest;
 import fr.tic.gvin.bean.ChampInterface;
 import fr.tic.gvin.bean.TypeChamp;
+import fr.tic.gvin.utils.ConstantesAMBROSIA;
 
 
 /**
@@ -60,18 +61,35 @@ public class TestValidationService extends AbstractAmbrosiaTest
         String fichier = "./src/test/resources/regle/regle-bouteille.json";
         getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
 
+        // valide
         Document docStEmilionValide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-st-emilion-valide.json");
-
         Map<String, List<String>> res = getValidationService().validerObjet(docStEmilionValide, BOUTEILLE);
         System.out.println(res);
         Assert.assertEquals(10, res.size());
         Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
 
-        Document docStEmilionValideInvalide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-st-emilion-invalide.json");
-
+        // ligne en plus
+        Document docStEmilionValideInvalide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-invalide-ligne-en-plus.json");
         res = getValidationService().validerObjet(docStEmilionValideInvalide, BOUTEILLE);
         System.out.println(res);
         Assert.assertEquals(10, res.size());
         Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
+        
+        // un champ obligatoire vide
+        Document docStEmilionValideInvalide2 = createDocumentFromFile("./src/test/resources/bouteille/bouteille-invalide-champ-obligatoire-vide.json");
+        res = getValidationService().validerObjet(docStEmilionValideInvalide2, BOUTEILLE);
+        System.out.println(res);
+        Assert.assertEquals(10, res.size());
+        Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
+        Assert.assertEquals("champ.obligatoire", res.get(ConstantesAMBROSIA.TAG_BOUTEILLE_NOM).get(0));
+        
+        // un champ integer pas integer
+        Document docStEmilionValideInvalide3 = createDocumentFromFile("./src/test/resources/bouteille/bouteille-invalide-champ-integer-texte.json");
+        res = getValidationService().validerObjet(docStEmilionValideInvalide3, BOUTEILLE);
+        System.out.println(res);
+        Assert.assertEquals(10, res.size());
+        Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
+        Assert.assertEquals("champ.pasInteger", res.get(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_MISE_EN_BOUTEILLE).get(0));
+
     }
 }
