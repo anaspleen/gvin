@@ -5,6 +5,9 @@
 package fr.tic.gvin.bean;
 
 
+import java.util.List;
+
+
 /**
  * Définition d'une régle
  * 
@@ -33,4 +36,11 @@ public interface ChampInterface
      * @return le nom du tag
      */
     String getNom();
+
+    /**
+     * @param p_DonneeAVerifier
+     *            la donnnée à vérifier
+     * @return les erreurs relevées
+     */
+    List<String> valideDonnee(Object p_DonneeAVerifier);
 }

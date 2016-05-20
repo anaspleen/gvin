@@ -6,6 +6,8 @@ package fr.tic.gvin.bean;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.Document;
 import org.slf4j.Logger;
@@ -116,4 +118,48 @@ public class ChampBean implements ChampInterface, Serializable
         return m_Type;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see fr.tic.gvin.bean.ChampInterface#valideDonnee(java.lang.Object)
+     */
+    public List<String> valideDonnee(Object p_DonneeAVerifier)
+    {
+        List<String> erreurs = new ArrayList<String>();
+
+        // oblig
+        if (isObligatoire() && p_DonneeAVerifier == null)
+        {
+            erreurs.add("champ.obligatoire");
+        }
+
+        // le type
+        switch (getType())
+        {
+            case date:
+                // TODO later
+                break;
+            case integer:
+                try
+                {
+                    Integer.valueOf(p_DonneeAVerifier + "");
+                }
+                catch (Exception e)
+                {
+                    LOG.error("Erreur lors du cast de : " + p_DonneeAVerifier, e);
+                    erreurs.add("champ.pasInteger");
+                }
+
+                break;
+            case string:
+                // rien à faire, c'est valide
+                break;
+            default:
+                break;
+        }
+
+        // TODO la regex
+
+        // retourne les erreurs
+        return erreurs;
+    }
 }

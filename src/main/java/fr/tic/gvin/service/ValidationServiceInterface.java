@@ -26,17 +26,18 @@ public interface ValidationServiceInterface
     /**
      * Valide un objet et retourne les erreurs
      * 
-     * @param p_Document
+     * @param p_DocumentAValider
      *            le document à valider
      * @param p_TypeObjet
      *            le type, exemple : "bouteille"
-     * @return les erreurs
+     * @return les erreurs : nomTag / liste erreurs
      * @throws BusinessException
      *             soucis applicatif
      * @throws TechnicalException
      *             soucis technique
      */
-    List<String> validerObjet(Document p_Document, String p_TypeObjet) throws BusinessException, TechnicalException;
+    Map<String, List<String>> validerObjet(Document p_DocumentAValider, String p_TypeObjet) throws BusinessException,
+            TechnicalException;
 
     /**
      * Obtention de la régle. Méthode utile pour testU et appelée par validerObjet

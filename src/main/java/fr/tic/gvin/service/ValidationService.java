@@ -41,8 +41,8 @@ public class ValidationService implements ValidationServiceInterface
      * (non-Javadoc)
      * @see fr.tic.gvin.service.ValidationServiceInterface#validerObjet(org.bson.Document, java.lang.String)
      */
-    public List<String> validerObjet(Document p_Document, String p_TypeObjet) throws BusinessException,
-            TechnicalException
+    public Map<String, List<String>> validerObjet(Document p_DocumentAValider, String p_TypeObjet)
+            throws BusinessException, TechnicalException
     {
         // TODO Auto-generated method stub
         return null;
