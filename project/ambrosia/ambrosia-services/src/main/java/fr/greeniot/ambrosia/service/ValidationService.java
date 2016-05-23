@@ -2,7 +2,7 @@
 // Fichier :
 // ValidationService.java, v 1.0 20 mai 2016 11:35:18
 //
-package fr.greeniot.ambrosia.services;
+package fr.greeniot.ambrosia.service;
 
 
 import java.util.Arrays;
@@ -15,8 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.greeniot.ambrosia.dao.RegleDaoInterface;
-import fr.greeniot.ambrosia.services.bean.ChampBean;
-import fr.greeniot.ambrosia.services.bean.ChampInterface;
+import fr.greeniot.ambrosia.service.bean.ChampBean;
+import fr.greeniot.ambrosia.service.bean.ChampInterface;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.TechnicalException;
 import fr.greeniot.utils.ConstantesAMBROSIA;

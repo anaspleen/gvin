@@ -1,7 +1,7 @@
 //
 // Fichier :
 // enregistrerBouteille.java, v 1.0 19 mai 2016 14:54:35
-package fr.greeniot.ambrosia.services;
+package fr.greeniot.ambrosia.service;
 
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.bson.Document;
 
-import fr.greeniot.ambrosia.services.bean.ChampInterface;
+import fr.greeniot.ambrosia.service.bean.ChampInterface;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.TechnicalException;
 

@@ -1,7 +1,7 @@
 //
 // Fichier :
 // enregistrerBouteille.java, v 1.0 19 mai 2016 14:54:35
-package fr.greeniot.ambrosia.services;
+package fr.greeniot.ambrosia.service;
 
 
 import java.util.Map;

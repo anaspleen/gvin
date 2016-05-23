@@ -1,7 +1,7 @@
 // Fichier :
 // TypeChamp.java, v 1.0 20 mai 2016 12:50:50
 //
-package fr.greeniot.ambrosia.services.bean;
+package fr.greeniot.ambrosia.service.bean;
 
 
 /**
