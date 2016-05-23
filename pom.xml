@@ -32,7 +32,7 @@
 
 	<dependencies>
 
-		<!-- embarqué dans org.slf4j/slf4j-log4j12 -->
+		<!-- embarqué dans org.slf4j/slf4j-log4j12 TCA -->
 		<!-- <dependency> -->
 		<!-- <groupId>org.slf4j</groupId> -->
 		<!-- <artifactId>slf4j-api</artifactId> -->
