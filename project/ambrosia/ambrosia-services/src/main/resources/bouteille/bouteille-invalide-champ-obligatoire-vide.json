@@ -1,0 +1,21 @@
+{
+   "nom":null,
+   "vignoble":"bordeaux",
+   "aoc":"saint-émilion",
+   "appellation":"saint-émilion grand cru",
+   "chateau":"Galhaud",
+   "anneeMiseEnBouteille":2012,
+   "anneeConsommationOptimale":2020,
+   "achatDate":"15/08/2015",
+   "achatMagasin":"Chateau Galhaud",
+   "achatPrix":20,
+   "tagEnPlus1":20,
+   "tagEnPlus2":"jkljlk",
+   "location":{
+      "type":"Point",
+      "coordinates":[
+         -0.1571643,
+         44.8949179
+      ]
+   }
+}

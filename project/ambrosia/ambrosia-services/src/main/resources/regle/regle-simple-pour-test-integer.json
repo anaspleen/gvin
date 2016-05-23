@@ -1,0 +1,7 @@
+
+
+{
+   "obligatoire":true,
+   "regexp":"123456",
+   "type":"integer"
+}
