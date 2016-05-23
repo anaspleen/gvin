@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- Service bouteilleService. -->
+	<bean id="bouteilleService" class="fr.greeniot.ambrosia.service.BouteilleService">
+		<property name="bouteilleDao">
+			<ref bean="bouteilleDao" />
+		</property>
+		<property name="validationService">
+			<ref bean="validationService" />
+		</property>
+	</bean>
+</beans>
