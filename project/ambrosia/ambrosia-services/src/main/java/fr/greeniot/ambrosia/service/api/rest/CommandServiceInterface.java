@@ -5,7 +5,7 @@
 package fr.greeniot.ambrosia.service.api.rest;
 
 
-import org.json.JSONObject;
+import org.bson.Document;
 
 import fr.greeniot.ambrosia.bean.UtilisateurInterface;
 import fr.greeniot.commun.exception.BusinessException;
@@ -37,6 +37,6 @@ public interface CommandServiceInterface
      * @throws TechnicalException
      *             soucis technique
      */
-    JSONObject execute(String p_Domaine, String p_Action, JSONObject p_Requete, UtilisateurInterface p_Usager)
+    Document execute(String p_Domaine, String p_Action, Document p_Requete, UtilisateurInterface p_Usager)
             throws BusinessException, TechnicalException;
 }
