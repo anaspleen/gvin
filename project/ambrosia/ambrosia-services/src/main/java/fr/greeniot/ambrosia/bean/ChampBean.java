@@ -2,7 +2,7 @@
 // Fichier :
 // ChampBean.java, v 1.0 20 mai 2016 13:06:07
 //
-package fr.greeniot.ambrosia.service.bean;
+package fr.greeniot.ambrosia.bean;
 
 
 import java.io.Serializable;

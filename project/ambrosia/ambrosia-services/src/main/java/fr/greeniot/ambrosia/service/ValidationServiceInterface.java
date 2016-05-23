@@ -9,7 +9,7 @@ import java.util.Map;
 
 import org.bson.Document;
 
-import fr.greeniot.ambrosia.service.bean.ChampInterface;
+import fr.greeniot.ambrosia.bean.ChampInterface;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.TechnicalException;
 

@@ -13,8 +13,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fr.greeniot.ambrosia.AbstractAmbrosiaTest;
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.utils.ConstantesAMBROSIA;
 
 
 /**

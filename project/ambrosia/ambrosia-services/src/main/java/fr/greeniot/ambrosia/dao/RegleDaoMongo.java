@@ -13,7 +13,7 @@ import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 
-import fr.greeniot.utils.ConstantesAMBROSIA;
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 
 
 /**

@@ -13,9 +13,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fr.greeniot.ambrosia.AbstractAmbrosiaTest;
-import fr.greeniot.ambrosia.service.bean.ChampInterface;
-import fr.greeniot.ambrosia.service.bean.TypeChamp;
-import fr.greeniot.utils.ConstantesAMBROSIA;
+import fr.greeniot.ambrosia.bean.ChampInterface;
+import fr.greeniot.ambrosia.bean.TypeChamp;
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 
 
 /**

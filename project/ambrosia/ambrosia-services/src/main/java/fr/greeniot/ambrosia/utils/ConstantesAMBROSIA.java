@@ -2,7 +2,7 @@
 // Fichier :
 // Etats.java, v 1.0 18 nov. 2015 15:31:18
 //
-package fr.greeniot.utils;
+package fr.greeniot.ambrosia.utils;
 
 
 /**

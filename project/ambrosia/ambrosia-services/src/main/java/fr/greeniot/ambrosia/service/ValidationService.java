@@ -14,12 +14,12 @@ import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.greeniot.ambrosia.bean.ChampBean;
+import fr.greeniot.ambrosia.bean.ChampInterface;
 import fr.greeniot.ambrosia.dao.RegleDaoInterface;
-import fr.greeniot.ambrosia.service.bean.ChampBean;
-import fr.greeniot.ambrosia.service.bean.ChampInterface;
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.TechnicalException;
-import fr.greeniot.utils.ConstantesAMBROSIA;
 
 
 /**

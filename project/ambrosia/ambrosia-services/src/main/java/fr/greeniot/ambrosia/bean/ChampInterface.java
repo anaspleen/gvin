@@ -2,7 +2,7 @@
 // Fichier :
 // RegleInterface.java, v 1.0 20 mai 2016 12:50:50
 //
-package fr.greeniot.ambrosia.service.bean;
+package fr.greeniot.ambrosia.bean;
 
 
 import java.util.List;
