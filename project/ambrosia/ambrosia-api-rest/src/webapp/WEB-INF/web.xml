@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<display-name>lila</display-name>
+	<description>Application LILA</description>
+
+	<!-- on indique que la webapp est distribuable, i.e. clusterisable... -->
+	<distributable />
+
+	<!-- Parametres pour Spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+	<!-- Nom du paramètre système qui va donner le nom du répertoire de configuration 
+		(par le service de paramétrage) -->
+	<context-param>
+		<param-name>property.app.conf.dir</param-name>
+		<param-value>LILA_CONF</param-value>
+	</context-param>
+
+	<!-- Nom du fichier de configuration utilise (par le service de paramétrage) -->
+	<context-param>
+		<param-name>app.conf.file</param-name>
+		<param-value>infoLegales.properties</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>Authentification Filter</filter-name>
+		<filter-class>fr.gouv.finances.douane.referentiel.session.AuthentificationFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>Session Filter</filter-name>
+		<filter-class>fr.gouv.finances.douane.referentiel.session.SessionFilter</filter-class>
+		<init-param>
+			<param-name>appelant</param-name>
+			<param-value>LILA-WAR</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>fr.gouv.finances.douane.referentiel.session.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF8</param-value>
+		</init-param>
+	</filter>
+
+	<!-- IHM -->
+	<filter-mapping>
+		<filter-name>Authentification Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- IHM fait dans le bloc api-lila -->
+	<!-- <filter-mapping> -->
+	<!-- <filter-name>Authentification Filter API</filter-name> -->
+	<!-- <url-pattern>/api-url/*</url-pattern> -->
+	<!-- </filter-mapping> -->
+
+	<filter-mapping>
+		<filter-name>Session Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Servlet d'initialisation du paramétrage -->
+	<servlet>
+		<servlet-name>initParametrage</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.api.parametre.servlet.InitialiserParametrageServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<!-- Servlet pour initialiser les services utilisés par la webapp -->
+	<servlet>
+		<servlet-name>initWebapp</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.InitialiserServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- la servlet about -->
+	<servlet>
+		<servlet-name>aboutServlet</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.AboutServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet D'url de vie -->
+	<servlet>
+		<servlet-name>UrlDeVie</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.UrlDeVieServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet D'url de vie du SGBD -->
+	<servlet>
+		<servlet-name>UrlDeVieSGBD</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.UrlDeVieSGBDServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet D'url de vie du API RUSH -->
+	<servlet>
+		<servlet-name>UrlDeVieAPIRUSH</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.UrlDeVieAPIRUSHServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet D'url de vie du API ROSA -->
+	<servlet>
+		<servlet-name>UrlDeVieAPIROSA</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.UrlDeVieAPIROSAServlet</servlet-class>
+	</servlet>
+
+	<!-- Servlet clean cache -->
+	<servlet>
+		<servlet-name>cleanCache</servlet-name>
+		<servlet-class>fr.gouv.finances.douane.referentiel.lila.servlet.CleanCacheServlet</servlet-class>
+	</servlet>
+
+	<!-- le rest agent -->
+	<servlet>
+		<servlet-name>rest-ws-lila</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>fr.gouv.finances.douane.referentiel.lila.resources</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- les api -->
+	<servlet>
+		<servlet-name>api-lila</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>fr.gouv.finances.douane.referentiel.lila.api</param-value>
+		</init-param>
+		<!-- Filtres sur requêtes -->
+		<init-param>
+			<param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
+			<param-value>fr.gouv.finances.douane.referentiel.lila.api.filter.AuthJerseyFilter</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.config.feature.Trace</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Listener des cron pour arret propre de ces crons -->
+	<listener>
+		<listener-class>fr.gouv.finances.douane.referentiel.lila.servlet.EndCronListener</listener-class>
+	</listener>
+
+	<!-- la about -->
+	<servlet-mapping>
+		<servlet-name>aboutServlet</servlet-name>
+		<url-pattern>/about</url-pattern>
+	</servlet-mapping>
+
+	<!-- url de vie -->
+	<servlet-mapping>
+		<servlet-name>UrlDeVie</servlet-name>
+		<url-pattern>/url.vie</url-pattern>
+	</servlet-mapping>
+
+	<!-- url de vie sgbd -->
+	<servlet-mapping>
+		<servlet-name>UrlDeVieSGBD</servlet-name>
+		<url-pattern>/sgbd.vie</url-pattern>
+	</servlet-mapping>
+
+	<!-- url de vie API RUSH -->
+	<servlet-mapping>
+		<servlet-name>UrlDeVieAPIRUSH</servlet-name>
+		<url-pattern>/apiRush.vie</url-pattern>
+	</servlet-mapping>
+
+	<!-- url de vie API ROSA -->
+	<servlet-mapping>
+		<servlet-name>UrlDeVieAPIROSA</servlet-name>
+		<url-pattern>/apiRosa.vie</url-pattern>
+	</servlet-mapping>
+
+	<!-- url de vie API ROSA -->
+	<servlet-mapping>
+		<servlet-name>cleanCache</servlet-name>
+		<url-pattern>/cleanCache</url-pattern>
+	</servlet-mapping>
+
+	<!-- rest utilisateur -->
+	<servlet-mapping>
+		<servlet-name>rest-ws-lila</servlet-name>
+		<url-pattern>/api-rest/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- api -->
+	<servlet-mapping>
+		<servlet-name>api-lila</servlet-name>
+		<url-pattern>/api-lila/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Angular est sur le "/" -->
+
+	<!-- Le listener Spring -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>quartz:shutdown-on-unload</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>quartz:wait-on-shutdown</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>quartz:start-on-load</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+</web-app>

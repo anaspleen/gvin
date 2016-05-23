@@ -25,6 +25,10 @@
 		<log4j.version>1.2.17</log4j.version>
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
+		<json.version>20140107</json.version>
+
+		<!-- war -->
+		<jersey.version>1.18.1</jersey.version>
 
 		<!-- les dépendances du service -->
 		<mongodb.version>3.2.2</mongodb.version>
@@ -42,6 +46,13 @@
 	<dependencyManagement>
 
 		<dependencies>
+
+			<!-- le service -->
+			<dependency>
+				<groupId>fr.greeniot.ambrosia</groupId>
+				<artifactId>ambrosia-services</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 
 			<!-- embarqué dans org.slf4j/slf4j-log4j12 TCA -->
 			<!-- <dependency> -->
@@ -103,7 +114,11 @@
 				<version>${spring.version}</version>
 				<scope>test</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>${json.version}</version>
+			</dependency>
 
 			<!-- pour test -->
 			<dependency>

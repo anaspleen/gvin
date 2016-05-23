@@ -14,6 +14,7 @@
 	<name>Ambrosia services</name>
 	<description>Services de Ambrosia</description>
 
+
 	<dependencies>
 
 		<dependency>
@@ -60,6 +61,11 @@
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- le json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+		</dependency>
 
 		<!-- pour test -->
 		<dependency>
@@ -75,5 +81,17 @@
 		</dependency>
 
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
