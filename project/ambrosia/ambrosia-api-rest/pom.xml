@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>ambrosia-api-rest</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>Ambrosia API REST</name>
 	<description>API REST de Ambrosia</description>
 
@@ -65,20 +65,20 @@
 
 	<build>
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-surefire-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <skipTests>true</skipTests> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-war-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <failOnMissingWebXml>false</failOnMissingWebXml> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
