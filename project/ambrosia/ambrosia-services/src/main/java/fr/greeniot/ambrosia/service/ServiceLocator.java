@@ -14,6 +14,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import fr.greeniot.ambrosia.service.api.rest.APIRESTServiceInterface;
+import fr.greeniot.commun.exception.TechnicalException;
+
 
 /**
  * @author thomas Classe qui permet d'obtenir la factory de service.
@@ -104,7 +107,7 @@ public final class ServiceLocator
                 }
 
                 s_ContextSpring = new ClassPathXmlApplicationContext(fichierConf);
-                initialiserServiceFactory(s_ContextSpring);
+                s_ServiceFactory = initialiserServiceFactory(s_ContextSpring);
             }
             catch (Exception e)
             {
@@ -135,7 +138,7 @@ public final class ServiceLocator
                         LOG.info("Services spring : " + services);
                     }
                 }
-                s_ServiceFactory = (ServiceFactory) p_Context.getBean("lilaServiceFactory");
+                s_ServiceFactory = (ServiceFactory) p_Context.getBean("ambrosiaServiceFactory");
 
                 // OK pour Tomcat
                 LOG.info("Version Services : " + s_ServiceFactory.getInformationsVersion());
@@ -163,5 +166,33 @@ public final class ServiceLocator
     public static void setGlobalACTest()
     {
         GLOBAL_AC = "classpath:/moduleTest/globalAC.xml";
+    }
+
+    /**
+     * Permet d'obtenir le bon service avec un minimum de filtre au cast
+     * 
+     * @param p_NomBean
+     *            le nom du bean
+     * @return le service s'il existe
+     * @throws TechnicalException
+     */
+    public static APIRESTServiceInterface getService(String p_NomBean) throws TechnicalException
+    {
+
+        if (s_ContextSpring == null)
+        {
+            initialiserServiceFactory(GLOBAL_AC);
+        }
+
+        try
+        {
+            return (APIRESTServiceInterface) s_ContextSpring.getBean(p_NomBean);
+        }
+        catch (Exception e)
+        {
+            String msg = "Impossible d'obtenir le bean : " + p_NomBean;
+            LOG.error(msg, e);
+            throw new TechnicalException(msg);
+        }
     }
 }

@@ -148,20 +148,55 @@ public class ObtenirAmbrosia
      * @return le retour
      */
     @POST
-    @Path("/execute/{domaine}/{action}")
+    @Path("/execute/{domaine}")
     @Consumes("application/json; charset=UTF-8")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response execute(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine,
-            @PathParam("action") final String p_Action)
+    public Response executePOST(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine)
+    {
+        return executeImpl(p_JsonInputStream, p_Domaine, "POST");
+    }
+
+    /**
+     * Action générale
+     * 
+     * @param p_Json
+     *            le json
+     * @return le retour
+     */
+    @GET
+    @Path("/execute/{domaine}")
+    @Consumes("application/json; charset=UTF-8")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response executeGET(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine)
+    {
+        return executeImpl(p_JsonInputStream, p_Domaine, "GET");
+    }
+
+    /**
+     * La vraie méthode appelée
+     * 
+     * @param p_JsonInputStream
+     *            le input
+     * @param p_Domaine
+     *            le domaine
+     * @param p_Action
+     *            l'action GET, POST, ...
+     * @return le res
+     */
+    private Response executeImpl(InputStream p_JsonInputStream, String p_Domaine, String p_Action)
     {
         String retour = "";
         int codeRetour = 500;
 
+        LOG.info("GET");
+        
         try
         {
             // chope la session courante qui contient le login de l'agent connecté
             //            Session session = GestionnaireSessions.donnerSession(true);
 
+            JSONObject requeteJsonPureJSOn = new JSONObject(IOUtils.toString(p_JsonInputStream, "UTF-8"));
+            
             Document requeteJsonPure = Document.parse(IOUtils.toString(p_JsonInputStream, "UTF-8"));
 
             // ajout de code avant le message car ça peut servir à faire passer des trucs du front au back facilement

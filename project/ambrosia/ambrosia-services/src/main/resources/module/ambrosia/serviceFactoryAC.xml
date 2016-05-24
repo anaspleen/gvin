@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Projet : Delia -->
+<!-- Client : Bull -->
+<!-- Auteur : thomas / Bull S.A.S. -->
+<!-- $Id: serviceFactoryAC.xml 3050 2015-07-03 11:13:22Z caiati-t $ -->
+<!-- Factory regroupant les services utilisables par d'autres projets. -->
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- Service Factory -->
+	<bean id="ambrosiaServiceFactory" class="fr.greeniot.ambrosia.service.ServiceFactory">
+		<property name="commandService">
+			<ref bean="commandService" />
+		</property>
+	</bean>
+
+</beans>

@@ -6,6 +6,7 @@ package fr.greeniot.ambrosia.service;
 
 import java.util.Map;
 
+import fr.greeniot.ambrosia.service.api.rest.APIRESTServiceInterface;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.TechnicalException;
 
@@ -16,7 +17,7 @@ import fr.greeniot.commun.exception.TechnicalException;
  * @author Bull
  *         $Id$
  */
-public interface BouteilleServiceInterface
+public interface BouteilleServiceInterface extends APIRESTServiceInterface
 {
 
     /**

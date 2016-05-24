@@ -7,6 +7,8 @@ package fr.greeniot.ambrosia.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.greeniot.ambrosia.bean.UtilisateurInterface;
 import fr.greeniot.ambrosia.dao.BouteilleDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 import fr.greeniot.commun.exception.BusinessException;
@@ -158,5 +161,48 @@ public class BouteilleService implements BouteilleServiceInterface
     public void setValidationService(ValidationServiceInterface p_ValidationService)
     {
         m_ValidationService = p_ValidationService;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.service.api.rest.APIRESTServiceInterface#commandGET(org.bson.Document, fr.greeniot.ambrosia.bean.UtilisateurInterface)
+     */
+    public Document commandGET(Document p_Requete, UtilisateurInterface p_Usager) throws BusinessException,
+            TechnicalException
+    {
+        // TODO Auto-generated method stub
+        return new Document(createBouteilleValide());
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.service.api.rest.APIRESTServiceInterface#commandPOST(org.bson.Document, fr.greeniot.ambrosia.bean.UtilisateurInterface)
+     */
+    public Document commandPOST(Document p_Requete, UtilisateurInterface p_Usager) throws BusinessException,
+            TechnicalException
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    /**
+     * @return
+     */
+    private Map<String, Object> createBouteilleValide()
+    {
+        Map<String, Object> valeurs = new HashMap<String, Object>();
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_NOM, "à faire");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_CONSOMMATION_OPTIMALE, 2020);
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_MISE_EN_BOUTEILLE, 2012);
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_AOC, "Saint-Emilion");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_APPELLATION, "Saint-Emilion Grand Cru");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_VIGNOBLE, "Bordeaux");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_CHATEAU, "Galhaud");
+
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_MAGASIN, "sur place");
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, 20);
+        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_DATE, new Date());
+
+        return valeurs;
     }
 }

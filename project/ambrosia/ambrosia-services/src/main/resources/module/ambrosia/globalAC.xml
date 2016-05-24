@@ -5,4 +5,6 @@
 	<import resource="propertiesAC.xml" />
 	<import resource="bouteilleAC.xml" />
 	<import resource="validationAC.xml" />
+	<import resource="commandAC.xml" />
+	<import resource="serviceFactoryAC.xml" />
 </beans>
