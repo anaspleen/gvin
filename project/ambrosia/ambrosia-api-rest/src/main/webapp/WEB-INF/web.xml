@@ -32,7 +32,7 @@
 	<!-- Servlet pour initialiser les services utilisés par la webapp -->
 	<servlet>
 		<servlet-name>initWebapp</servlet-name>
-		<servlet-class>fr.greeniot.ambrosia.api.rest.resource.servlet.InitialiserServlet</servlet-class>
+		<servlet-class>fr.greeniot.ambrosia.api.rest.servlet.InitialiserServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 

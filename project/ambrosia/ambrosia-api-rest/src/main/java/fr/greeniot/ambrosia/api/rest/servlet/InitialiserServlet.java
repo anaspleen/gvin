@@ -2,7 +2,7 @@
 // Fichier :
 // ConfigurationServiceInterface.java, v 1.0 12 mars 2015 10:42:58
 // /
-package fr.greeniot.ambrosia.api.rest.resource.servlet;
+package fr.greeniot.ambrosia.api.rest.servlet;
 
 
 import javax.servlet.ServletException;
