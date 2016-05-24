@@ -153,17 +153,7 @@ public class ObtenirAmbrosia
     @Produces(MediaType.APPLICATION_JSON)
     public Response executePOST(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine)
     {
-        String res = "";
-        try
-        {
-            res = IOUtils.toString(p_JsonInputStream, "UTF-8");
-        }
-        catch (IOException e)
-        {
-            LOG.error("dd", e);
-        }
-
-        return executeImpl(res, p_Domaine, "POST");
+        return executeImpl(p_JsonInputStream, p_Domaine, "POST");
     }
 
     /**
@@ -179,17 +169,7 @@ public class ObtenirAmbrosia
     @Produces(MediaType.APPLICATION_JSON)
     public Response executeGET(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine)
     {
-        String res = "";
-        try
-        {
-            res = IOUtils.toString(p_JsonInputStream, "UTF-8");
-        }
-        catch (IOException e)
-        {
-            LOG.error("dd", e);
-        }
-
-        return executeImpl(res, p_Domaine, "GET");
+        return executeImpl(p_JsonInputStream, p_Domaine, "GET");
     }
 
     /**
@@ -203,7 +183,7 @@ public class ObtenirAmbrosia
      *            l'action GET, POST, ...
      * @return le res
      */
-    private Response executeImpl(String p_JsonInputStream, String p_Domaine, String p_Action)
+    private Response executeImpl(InputStream p_JsonInputStream, String p_Domaine, String p_Action)
     {
         String retour = "";
         int codeRetour = 500;
@@ -215,7 +195,7 @@ public class ObtenirAmbrosia
             // chope la session courante qui contient le login de l'agent connecté
             //            Session session = GestionnaireSessions.donnerSession(true);
 
-            Document requeteJsonPure = Document.parse(p_JsonInputStream);
+            Document requeteJsonPure = Document.parse(IOUtils.toString(p_JsonInputStream, "UTF-8"));
 
             // ajout de code avant le message car ça peut servir à faire passer des trucs du front au back facilement
             Document requeteJsonTravaillee = new Document();
