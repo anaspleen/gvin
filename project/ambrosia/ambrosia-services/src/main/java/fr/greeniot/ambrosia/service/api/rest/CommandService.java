@@ -17,7 +17,7 @@ import fr.greeniot.commun.exception.TechnicalException;
 
 
 /**
- * @author Bull
+ * @author thomas
  *         $Id$
  */
 public class CommandService implements CommandServiceInterface
