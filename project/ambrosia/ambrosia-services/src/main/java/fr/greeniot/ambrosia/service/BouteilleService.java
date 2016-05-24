@@ -182,7 +182,7 @@ public class BouteilleService implements BouteilleServiceInterface
             TechnicalException
     {
         // TODO Auto-generated method stub
-        return null;
+        return new Document(createBouteilleValide());
     }
 
     /**

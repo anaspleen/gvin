@@ -5,6 +5,7 @@
 package fr.greeniot.ambrosia.api.rest.resource;
 
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -22,7 +23,6 @@ import javax.ws.rs.core.Response.Status;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bson.Document;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,7 +83,7 @@ public class ObtenirAmbrosia
 
     private Response getResponse(Document p_JsonObjet)
     {
-        return Response.status(Status.OK).entity(p_JsonObjet.toString()).header("Vary", "Accept, Accept-Encoding")
+        return Response.status(Status.OK).entity(p_JsonObjet.toJson()).header("Vary", "Accept, Accept-Encoding")
                 .header(CACHE_CONTROL, "public, max-age=3600").header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT").build();
     }
@@ -99,7 +99,7 @@ public class ObtenirAmbrosia
      */
     private String traitementErreur(String p_Msg, Exception p_E)
     {
-        JSONObject json = new JSONObject();
+        Document json = new Document();
         LOG.error(p_Msg);
         json.put(ERREUR_SERVEUR, p_Msg);
 
@@ -153,7 +153,17 @@ public class ObtenirAmbrosia
     @Produces(MediaType.APPLICATION_JSON)
     public Response executePOST(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine)
     {
-        return executeImpl(p_JsonInputStream, p_Domaine, "POST");
+        String res = "";
+        try
+        {
+            res = IOUtils.toString(p_JsonInputStream, "UTF-8");
+        }
+        catch (IOException e)
+        {
+            LOG.error("dd", e);
+        }
+
+        return executeImpl(res, p_Domaine, "POST");
     }
 
     /**
@@ -169,7 +179,17 @@ public class ObtenirAmbrosia
     @Produces(MediaType.APPLICATION_JSON)
     public Response executeGET(InputStream p_JsonInputStream, @PathParam("domaine") final String p_Domaine)
     {
-        return executeImpl(p_JsonInputStream, p_Domaine, "GET");
+        String res = "";
+        try
+        {
+            res = IOUtils.toString(p_JsonInputStream, "UTF-8");
+        }
+        catch (IOException e)
+        {
+            LOG.error("dd", e);
+        }
+
+        return executeImpl(res, p_Domaine, "GET");
     }
 
     /**
@@ -183,21 +203,19 @@ public class ObtenirAmbrosia
      *            l'action GET, POST, ...
      * @return le res
      */
-    private Response executeImpl(InputStream p_JsonInputStream, String p_Domaine, String p_Action)
+    private Response executeImpl(String p_JsonInputStream, String p_Domaine, String p_Action)
     {
         String retour = "";
         int codeRetour = 500;
 
         LOG.info("GET");
-        
+
         try
         {
             // chope la session courante qui contient le login de l'agent connecté
             //            Session session = GestionnaireSessions.donnerSession(true);
 
-            JSONObject requeteJsonPureJSOn = new JSONObject(IOUtils.toString(p_JsonInputStream, "UTF-8"));
-            
-            Document requeteJsonPure = Document.parse(IOUtils.toString(p_JsonInputStream, "UTF-8"));
+            Document requeteJsonPure = Document.parse(p_JsonInputStream);
 
             // ajout de code avant le message car ça peut servir à faire passer des trucs du front au back facilement
             Document requeteJsonTravaillee = new Document();
