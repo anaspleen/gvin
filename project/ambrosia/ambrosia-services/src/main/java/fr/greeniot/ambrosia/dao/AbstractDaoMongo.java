@@ -5,7 +5,11 @@
 package fr.greeniot.ambrosia.dao;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +17,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 
 
 /**
@@ -108,4 +114,42 @@ public abstract class AbstractDaoMongo
     {
         m_DatabaseNom = p_DatabaseNom;
     }
+    
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.dao.BouteilleDaoInterface#save(org.bson.Document)
+     */
+    public String save(Document p_Document)
+    {
+        MongoClient client = getClient();
+        MongoCollection<Document> bouteille = getCollection(client);
+        bouteille.insertOne(p_Document);
+
+        releaseClient(client);
+        return p_Document.get(ConstantesAMBROSIA.TAG_ID).toString();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.dao.BouteilleDaoInterface#find(java.lang.String)
+     */
+    public Document findById(String p_Id)
+    {
+        Document res = null;
+        MongoClient client = getClient();
+        Document filter = new Document(ConstantesAMBROSIA.TAG_ID, new ObjectId(p_Id));
+
+        MongoCollection<Document> bouteille = getCollection(client);
+        List<Document> docs = bouteille.find(filter).into(new ArrayList<Document>());
+
+        if (docs != null && docs.size() > 0)
+        {
+            res = docs.get(0);
+        }
+
+        releaseClient(client);
+
+        return res;
+    }
+
 }

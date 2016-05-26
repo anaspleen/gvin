@@ -26,6 +26,19 @@ public interface BouteilleDaoInterface
      *            longitude
      * @param p_Latitude
      *            latitude
+     * @return l'id : Objectid en string
      */
-    void save(Document p_Document);
+    String save(Document p_Document);
+
+    /**
+     * Obtention d'une bouteille suivant sont id
+     * 
+     * @param p_Valeurs
+     *            les valeurs
+     * @param p_Longitude
+     *            longitude
+     * @param p_Latitude
+     *            latitude
+     */
+    Document findById(String p_Id);
 }

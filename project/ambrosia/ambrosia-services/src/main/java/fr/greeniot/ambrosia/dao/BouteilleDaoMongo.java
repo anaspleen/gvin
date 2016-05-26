@@ -5,10 +5,16 @@
 package fr.greeniot.ambrosia.dao;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
+
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 
 
 /**
@@ -19,19 +25,6 @@ import com.mongodb.client.MongoCollection;
  */
 public class BouteilleDaoMongo extends AbstractDaoMongo implements BouteilleDaoInterface
 {
-
-    /*
-     * (non-Javadoc)
-     * @see fr.tic.gvin.dao.BouteilleDaoInterface#save(org.bson.Document)
-     */
-    public void save(Document p_Document)
-    {
-        MongoClient client = getClient();
-        MongoCollection<Document> bouteille = getCollection(client);
-        bouteille.insertOne(p_Document);
-        System.out.println(p_Document.get("_id"));
-        releaseClient(client);
-    }
 
     /*
      * (non-Javadoc)

@@ -7,8 +7,6 @@ package fr.greeniot.ambrosia.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import fr.greeniot.ambrosia.bean.UtilisateurInterface;
 import fr.greeniot.ambrosia.dao.BouteilleDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
+import fr.greeniot.ambrosia.utils.ConstantesAPIREST;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.BusinessException.BusinessExceptionEnum;
 import fr.greeniot.commun.exception.TechnicalException;
@@ -43,13 +42,13 @@ public class BouteilleService implements BouteilleServiceInterface
 
     /*
      * (non-Javadoc)
-     * @see fr.tic.gvin.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, double, double)
+     * @see fr.greeniot.ambrosia.service.BouteilleServiceInterface#enregistrerBouteille(java.util.Map, double, double)
      */
-    public void enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude)
+    public String enregistrerBouteille(Map<String, Object> p_Valeurs, double p_Longitude, double p_Latitude)
             throws BusinessException, TechnicalException
     {
         //        {
-        //            "nom":"TODO",
+        //            "nom":"La rose brisson",
         //            "vignoble":"bordeaux",
         //            "aoc":"saint-émilion",
         //            "appellation":"saint-émilion grand cru",
@@ -68,12 +67,7 @@ public class BouteilleService implements BouteilleServiceInterface
         //            }
         //         }
 
-        // TODO les vérifications d'usage
-        // utiliser les règles de regle-bouteille.json pour vérifier cela
-        // TODO donc : un service de vérification qui renvoit une liste d'erreur String
-        // prendre uniquement aussi les tags de regle-bouteille.json
-
-        // TODO walider le document avant commit
+        String id = null;
 
         // init avec les valeurs de base
         Document doc = new Document();
@@ -116,13 +110,15 @@ public class BouteilleService implements BouteilleServiceInterface
             loc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION_COORDINATES, Arrays.asList(p_Longitude, p_Latitude));
             doc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION, loc);
 
-            getBouteilleDao().save(doc);
+            id = getBouteilleDao().save(doc);
 
             if (LOG.isInfoEnabled())
             {
                 LOG.info("Enregistrement de la bouteille");
             }
         }
+
+        return id;
     }
 
     /**
@@ -171,7 +167,8 @@ public class BouteilleService implements BouteilleServiceInterface
             TechnicalException
     {
         // TODO Auto-generated method stub
-        return new Document(createBouteilleValide());
+        //        return new Document(createBouteilleValide());
+        return null;
     }
 
     /*
@@ -181,28 +178,71 @@ public class BouteilleService implements BouteilleServiceInterface
     public Document commandPOST(Document p_Requete, UtilisateurInterface p_Usager) throws BusinessException,
             TechnicalException
     {
-        // TODO Auto-generated method stub
-        return new Document(createBouteilleValide());
+        Document res = null;
+
+        String id = null;
+        String action = "";
+
+        try
+        {
+            action = p_Requete.getString(ConstantesAPIREST.ACTION);
+
+            if (action.equals(ConstantesAPIREST.ACTION_CONSULTER))
+            {
+                id = p_Requete.getString(ConstantesAMBROSIA.TAG_ID);
+                res = obtenirBouteille(id);
+                if (res == null)
+                {
+                    throw new BusinessException(BusinessExceptionEnum.CODE_1_ARGUMENT_INVALIDE,
+                            "Aucune bouteille d'id : " + id + " trouvée");
+                }
+            }
+            else if (action.equals("rechercher"))
+            {
+                // TODO
+                //                res.put(ConstantesAPIREST.TAG_CONTENU,
+                //                        importerAlerteAncientFormat(p_Usager.getIdentifiant(), p_Usager, p_Requete));
+            }
+            else
+            {
+                throw new TechnicalException("Aucune action : " + action + " trouvée");
+            }
+        }
+        catch (BusinessException e)
+        {
+            throw e;
+        }
+        catch (TechnicalException e)
+        {
+            throw e;
+        }
+        catch (Exception e)
+        {
+            LOG.error("Impossible de lire la requête : " + p_Requete, e);
+            throw new TechnicalException("Impossible de lire la requête");
+        }
+
+        return res;
+
     }
 
-    /**
-     * @return
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.service.BouteilleServiceInterface#obtenirBouteille(java.lang.String)
      */
-    private Map<String, Object> createBouteilleValide()
+    public Document obtenirBouteille(String p_ObjectId) throws BusinessException, TechnicalException
     {
-        Map<String, Object> valeurs = new HashMap<String, Object>();
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_NOM, "à faire");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_CONSOMMATION_OPTIMALE, 2020);
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_MISE_EN_BOUTEILLE, 2012);
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_AOC, "Saint-Emilion");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_APPELLATION, "Saint-Emilion Grand Cru");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_VIGNOBLE, "Bordeaux");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_CHATEAU, "Galhaud");
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_MAGASIN, "sur place");
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_PRIX, 20);
-        valeurs.put(ConstantesAMBROSIA.TAG_BOUTEILLE_ACHAT_DATE, new Date());
-
-        return valeurs;
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.service.BouteilleServiceInterface#obtenirBouteilles(java.util.Map)
+     */
+    public List<Document> obtenirBouteilles(Map<String, String> p_Valeurs) throws BusinessException, TechnicalException
+    {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
