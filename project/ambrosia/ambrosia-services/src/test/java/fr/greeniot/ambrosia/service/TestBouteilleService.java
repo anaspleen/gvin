@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bson.Document;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -45,6 +46,27 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
             System.err.println(e);
         }
 
+    }
+
+    @Test
+    public void testEnregistrerPuisRecuperation() throws Exception
+    {
+        // insertion de la régle bouteille
+        String fichier = "./src/test/resources/regle/regle-bouteille.json";
+        getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
+
+        // valide
+        String id = getBouteilleService().enregistrerBouteille(createBouteilleValide(), -0.1571643, 44.8949179);
+
+        System.out.println(id);
+
+        // reprise
+        Document boutRecup = getBouteilleService().obtenirBouteille(id);
+        Assert.assertNotNull(boutRecup);
+        Assert.assertEquals("Galhaud", boutRecup.getString(ConstantesAMBROSIA.TAG_BOUTEILLE_CHATEAU));
+
+        boutRecup = getBouteilleService().obtenirBouteille("57470ec31a59e2335dcd31fa");
+        Assert.assertNull(boutRecup);
     }
 
     /**

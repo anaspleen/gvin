@@ -36,6 +36,9 @@ public final class ConstantesAPIREST
     public static final String ACTION_ADMIN_LISTER = "lister";
     public static final String ACTION_SUPPRIMER = "supprimer";
 
+    /** tag identifiant - nom fonctionnel de l'objet */
+    public static final String TAG_IDENTIFIANT = "identifiant";
+    
     /**
      * Const par défaut
      */

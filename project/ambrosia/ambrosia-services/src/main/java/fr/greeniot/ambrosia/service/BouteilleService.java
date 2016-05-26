@@ -189,7 +189,7 @@ public class BouteilleService implements BouteilleServiceInterface
 
             if (action.equals(ConstantesAPIREST.ACTION_CONSULTER))
             {
-                id = p_Requete.getString(ConstantesAMBROSIA.TAG_ID);
+                id = p_Requete.getString(ConstantesAPIREST.TAG_IDENTIFIANT);
                 res = obtenirBouteille(id);
                 if (res == null)
                 {
@@ -232,8 +232,7 @@ public class BouteilleService implements BouteilleServiceInterface
      */
     public Document obtenirBouteille(String p_ObjectId) throws BusinessException, TechnicalException
     {
-        // TODO Auto-generated method stub
-        return null;
+        return getBouteilleDao().findById(p_ObjectId);
     }
 
     /*
