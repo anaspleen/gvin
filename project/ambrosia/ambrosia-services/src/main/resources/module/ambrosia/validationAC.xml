@@ -4,8 +4,8 @@
 
 	<!-- Service validationService. -->
 	<bean id="validationService" class="fr.greeniot.ambrosia.service.ValidationService">
-		<property name="regleDao">
-			<ref bean="regleDao" />
+		<property name="parametreDao">
+			<ref bean="parametreDao" />
 		</property>
 	</bean>
 

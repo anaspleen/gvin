@@ -30,7 +30,7 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
     {
         // insertion de la régle bouteille
         String fichier = "./src/test/resources/regle/regle-bouteille.json";
-        getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
+        getParametreDao().save(createDocumentFromFile(fichier), BOUTEILLE);
 
         // valide
         //        Document docStEmilionValide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-st-emilion-valide.json");
@@ -53,7 +53,7 @@ public class TestBouteilleService extends AbstractAmbrosiaTest
     {
         // insertion de la régle bouteille
         String fichier = "./src/test/resources/regle/regle-bouteille.json";
-        getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
+        getParametreDao().save(createDocumentFromFile(fichier), BOUTEILLE);
 
         // valide
         String id = getBouteilleService().enregistrerBouteille(createBouteilleValide(), -0.1571643, 44.8949179);

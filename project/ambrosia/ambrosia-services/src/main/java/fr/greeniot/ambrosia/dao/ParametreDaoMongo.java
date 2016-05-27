@@ -1,6 +1,6 @@
 //
 // Fichier :
-// BouteilleDaoMongo.java, v 1.0 19 mai 2016 15:00:03
+// ParametreDaoMongo.java, v 1.0 19 mai 2016 15:00:03
 //
 package fr.greeniot.ambrosia.dao;
 
@@ -22,7 +22,7 @@ import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
  * @author Bull
  *         $Id$
  */
-public class RegleDaoMongo extends AbstractDaoMongo implements RegleDaoInterface
+public class ParametreDaoMongo extends AbstractDaoMongo implements ParametreDaoInterface
 {
 
     /*

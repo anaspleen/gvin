@@ -32,7 +32,7 @@ public class TestValidationService extends AbstractAmbrosiaTest
     {
         // insertion de la régle bouteille
         String fichier = "./src/test/resources/regle/regle-bouteille.json";
-        getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
+        getParametreDao().save(createDocumentFromFile(fichier), BOUTEILLE);
 
         // on le recherche
         Map<String, ChampInterface> champs = getValidationService().obtenirRegles(BOUTEILLE);
@@ -58,7 +58,7 @@ public class TestValidationService extends AbstractAmbrosiaTest
     {
         // insertion de la régle bouteille
         String fichier = "./src/test/resources/regle/regle-bouteille.json";
-        getRegleDao().save(createDocumentFromFile(fichier), BOUTEILLE);
+        getParametreDao().save(createDocumentFromFile(fichier), BOUTEILLE);
 
         // valide
         Document docStEmilionValide = createDocumentFromFile("./src/test/resources/bouteille/bouteille-st-emilion-valide.json");

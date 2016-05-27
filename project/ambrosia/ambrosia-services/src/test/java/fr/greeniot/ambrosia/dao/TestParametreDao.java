@@ -16,7 +16,7 @@ import fr.greeniot.ambrosia.AbstractAmbrosiaTest;
  * @author Bull
  *         $Id$
  */
-public class TestRegleDao extends AbstractAmbrosiaTest
+public class TestParametreDao extends AbstractAmbrosiaTest
 {
 
     @Test
@@ -25,13 +25,13 @@ public class TestRegleDao extends AbstractAmbrosiaTest
         // save
         Document bouteille = new Document();
         bouteille.put("test", "test");
-        getRegleDao().save(bouteille, "bout");
+        getParametreDao().save(bouteille, "bout");
 
         // recup
-        Document res = getRegleDao().find("bouty");
+        Document res = getParametreDao().find("bouty");
         Assert.assertNull(res);
 
-        res = getRegleDao().find("bout");
+        res = getParametreDao().find("bout");
         Assert.assertNotNull(res);
         System.out.println(res);
 
@@ -39,6 +39,6 @@ public class TestRegleDao extends AbstractAmbrosiaTest
 
         Document regle = createDocumentFromFile(fichier);
         System.out.println(regle);
-        getRegleDao().save(regle, "bouteille");
+        getParametreDao().save(regle, "bouteille");
     }
 }

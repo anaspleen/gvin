@@ -21,7 +21,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoDatabase;
 
 import fr.greeniot.ambrosia.dao.BouteilleDaoInterface;
-import fr.greeniot.ambrosia.dao.RegleDaoInterface;
+import fr.greeniot.ambrosia.dao.ParametreDaoInterface;
 import fr.greeniot.ambrosia.service.BouteilleService;
 import fr.greeniot.ambrosia.service.BouteilleServiceInterface;
 import fr.greeniot.ambrosia.service.ValidationServiceInterface;
@@ -45,8 +45,8 @@ public abstract class AbstractAmbrosiaTest
     private BouteilleDaoInterface m_BouteilleDao;
 
     @Autowired
-    @Qualifier("regleDao")
-    private RegleDaoInterface m_RegleDao;
+    @Qualifier("parametreDao")
+    private ParametreDaoInterface m_ParametreDao;
 
     /**
      * Le Service gérant les flux.
@@ -126,9 +126,9 @@ public abstract class AbstractAmbrosiaTest
     /**
      * @return regleDao
      */
-    public RegleDaoInterface getRegleDao()
+    public ParametreDaoInterface getParametreDao()
     {
-        return m_RegleDao;
+        return m_ParametreDao;
     }
 
     /**

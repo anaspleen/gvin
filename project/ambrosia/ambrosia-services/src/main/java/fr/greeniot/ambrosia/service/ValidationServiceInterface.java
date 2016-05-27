@@ -1,6 +1,6 @@
 //
 // Fichier :
-// enregistrerBouteille.java, v 1.0 19 mai 2016 14:54:35
+// ValidationServiceInterface.java, v 1.0 19 mai 2016 14:54:35
 package fr.greeniot.ambrosia.service;
 
 
@@ -51,4 +51,14 @@ public interface ValidationServiceInterface
      *             soucis technique
      */
     Map<String, ChampInterface> obtenirRegles(String p_TypeObjet) throws BusinessException, TechnicalException;
+
+    /**
+     * Initialise les régles (vidage du cache map)
+     * 
+     * @throws BusinessException
+     *             soucis applicatif
+     * @throws TechnicalException
+     *             soucis technique
+     */
+    void initialiserRegles() throws BusinessException, TechnicalException;
 }

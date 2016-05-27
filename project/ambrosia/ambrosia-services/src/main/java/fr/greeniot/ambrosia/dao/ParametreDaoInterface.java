@@ -1,6 +1,6 @@
 //
 // Fichier :
-// BouteilleDaoInterface.java, v 1.0 19 mai 2016 14:56:51
+// ParametreDaoInterface.java, v 1.0 19 mai 2016 14:56:51
 //
 package fr.greeniot.ambrosia.dao;
 
@@ -9,21 +9,20 @@ import org.bson.Document;
 
 
 /**
- * Dao de gestion des régles
+ * Dao de gestion des paramètres : régles, parametres, ... 1 fichier JSON par entrée
  * 
  * @author Bull
  *         $Id$
  */
-public interface RegleDaoInterface
+public interface ParametreDaoInterface
 {
 
     /**
-     * Enregistre une régle
+     * Enregistre un paramètre 
      * 
      * @param p_Document
      *            le document
-     * @param p_NomRegle
-     *            le nom de la régle (l'id)
+     * @param p_NomRegle : "regleBouteille", "parametreApplication", ... (id)
      */
     void save(Document p_Document, String p_NomRegle);
 

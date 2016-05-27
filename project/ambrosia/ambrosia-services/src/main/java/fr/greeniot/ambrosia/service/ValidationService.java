@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.greeniot.ambrosia.bean.ChampBean;
 import fr.greeniot.ambrosia.bean.ChampInterface;
-import fr.greeniot.ambrosia.dao.RegleDaoInterface;
+import fr.greeniot.ambrosia.dao.ParametreDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 import fr.greeniot.commun.exception.BusinessException;
 import fr.greeniot.commun.exception.TechnicalException;
@@ -33,14 +33,10 @@ public class ValidationService implements ValidationServiceInterface
     private static final Logger LOG = LoggerFactory.getLogger(ValidationService.class);
 
     /** dao */
-    private RegleDaoInterface m_RegleDao;
+    private ParametreDaoInterface m_ParametreDao;
 
     /** le cache */
     private static Map<String, Map<String, ChampInterface>> s_Map = new HashMap<String, Map<String, ChampInterface>>();
-
-    /** les tags pas à vérifier */
-    private static final List<String> TAGS_PAS_A_VERIFIER = Arrays.asList(ConstantesAMBROSIA.TAG_ID,
-            ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION);
 
     /*
      * (non-Javadoc)
@@ -92,7 +88,7 @@ public class ValidationService implements ValidationServiceInterface
             res = new HashMap<String, ChampInterface>();
 
             // obtention du document
-            Document regles = getRegleDao().find(p_TypeObjet);
+            Document regles = getParametreDao().find(p_TypeObjet);
 
             if (regles != null)
             {
@@ -114,21 +110,32 @@ public class ValidationService implements ValidationServiceInterface
     }
 
     /**
-     * @return regleDao
+     * @return parametreDao
      */
-    public RegleDaoInterface getRegleDao()
+    public ParametreDaoInterface getParametreDao()
     {
-        return m_RegleDao;
+        return m_ParametreDao;
     }
 
     /**
-     * Méthode permettant d'initialiser la valeur de regleDao.
+     * Méthode permettant d'initialiser la valeur de parametreDao.
      * 
-     * @param p_RegleDao
-     *            le/la regleDao à initialiser
+     * @param p_ParametreDao
+     *            le/la parametreDao à initialiser
      */
-    public void setRegleDao(RegleDaoInterface p_RegleDao)
+    public void setParametreDao(ParametreDaoInterface p_ParametreDao)
     {
-        m_RegleDao = p_RegleDao;
+        m_ParametreDao = p_ParametreDao;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see fr.greeniot.ambrosia.service.ValidationServiceInterface#initialiserRegles()
+     */
+    public synchronized void initialiserRegles() throws BusinessException, TechnicalException
+    {
+        LOG.info("Intialisation des régles");
+        s_Map = new HashMap<String, Map<String, ChampInterface>>();
+        LOG.info("Intialisation des régles : fait");
     }
 }
