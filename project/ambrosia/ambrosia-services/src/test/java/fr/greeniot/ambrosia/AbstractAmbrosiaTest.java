@@ -24,6 +24,7 @@ import fr.greeniot.ambrosia.dao.BouteilleDaoInterface;
 import fr.greeniot.ambrosia.dao.ParametreDaoInterface;
 import fr.greeniot.ambrosia.service.BouteilleService;
 import fr.greeniot.ambrosia.service.BouteilleServiceInterface;
+import fr.greeniot.ambrosia.service.ParametreServiceInterface;
 import fr.greeniot.ambrosia.service.ValidationServiceInterface;
 
 
@@ -61,6 +62,13 @@ public abstract class AbstractAmbrosiaTest
     @Autowired
     @Qualifier("validationService")
     private ValidationServiceInterface m_ValidationService;
+
+    /**
+     * Le Service gérant les flux.
+     */
+    @Autowired
+    @Qualifier("parametreService")
+    private ParametreServiceInterface m_ParametreService;
 
     /**
      * Cette méthode est appelée avant chaque test.<br/>
@@ -137,6 +145,14 @@ public abstract class AbstractAmbrosiaTest
     public ValidationServiceInterface getValidationService()
     {
         return m_ValidationService;
+    }
+
+    /**
+     * @return parametreService
+     */
+    public ParametreServiceInterface getParametreService()
+    {
+        return m_ParametreService;
     }
 
     /**

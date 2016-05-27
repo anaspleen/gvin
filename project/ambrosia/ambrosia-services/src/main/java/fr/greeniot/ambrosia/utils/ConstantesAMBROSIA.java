@@ -37,6 +37,9 @@ public final class ConstantesAMBROSIA
     /** tags id */
     public static final String TAG_ID = "_id";
 
+    // les params
+    public static final String CLE_PARAMETRE_PARAMETRAGE = "parametreAmbrosia";
+
     /**
      * Const par défaut
      */

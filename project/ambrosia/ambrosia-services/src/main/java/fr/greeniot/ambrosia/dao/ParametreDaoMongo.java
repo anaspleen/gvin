@@ -41,7 +41,7 @@ public class ParametreDaoMongo extends AbstractDaoMongo implements ParametreDaoI
     @Override
     protected MongoCollection<Document> getCollection(MongoClient p_Client)
     {
-        return getDatabase(p_Client).getCollection("regle");
+        return getDatabase(p_Client).getCollection("parametre");
     }
 
     /*

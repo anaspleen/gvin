@@ -14,7 +14,7 @@ import fr.greeniot.commun.exception.TechnicalException;
  * @author Bull
  *         $Id$
  */
-public interface ParametrageServiceInterface
+public interface ParametreServiceInterface
 {
 
     /**
