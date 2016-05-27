@@ -12,7 +12,7 @@
 	<description>Gestion de vin libre</description>
 
 	<scm>
-		<connection>scm:svn:https://novaforge.bull.com/svn-default/svn/referentieldouane_svnjavacommun/projets/batch-rosa/batch-rosa-export/trunk</connection>
+		<connection></connection>
 	</scm>
 
 	<properties>
@@ -137,7 +137,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>${maven-release-plugin.version}</version>
 				<configuration>
-					<tagBase>https://novaforge.bull.com/svn-default/svn/referentieldouane_svnjavacommun/projets/batch-rosa/batch-rosa-export/tags</tagBase>
+					<tagBase></tagBase>
 				</configuration>
 			</plugin>
 		</plugins>
