@@ -40,6 +40,7 @@
 	<modules>
 		<module>ambrosia-services</module>
 		<module>ambrosia-api-rest</module>
+		<module>ambrosia-angular</module>
 	</modules>
 
 	<dependencyManagement>
