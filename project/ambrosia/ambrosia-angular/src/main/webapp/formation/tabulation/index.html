@@ -24,24 +24,24 @@
         </ul>
       </section>
 
-      <section class="tab" ng-controller="TabController as store">
+      <section class="tab" ng-controller="TabController as tab">
         <ul class="nav nav-pills">
-          <li>
-            <a href ng-click="store.setTab(1)">Description</a></li>
-          <li>
-            <a href ng-click="store.setTab(2)">Specs</a></li>
-          <li>
-            <a href ng-click="store.setTab(3)">Reviews</a></li>
+          <li ng-class="{ active:tab.isSet(1) }">
+            <a href ng-click="tab.setTab(1)">Description</a></li>
+          <li ng-class="{ active:tab.isSet(2) }">
+            <a href ng-click="tab.setTab(2)">Specs</a></li>
+          <li ng-class="{ active:tab.isSet(3) }">
+            <a href ng-click="tab.setTab(3)">Reviews</a></li>
         </ul>
-        <div ng-show="store.isSet(1)">
+        <div ng-show="tab.isSet(1)">
           <h4>Description</h4>
-          <blockquote></blockquote>
+          <blockquote>{{product.description}}</blockquote>
         </div>
-        <div ng-show="store.isSet(2)">
+        <div ng-show="tab.isSet(2)">
           <h4>Specs</h4>
-          <blockquote>Shine: </blockquote>
+          <blockquote>Shine: {{product.shine}}</blockquote>
         </div>
-        <div ng-show="store.isSet(3)">
+        <div ng-show="tab.isSet(3)">
           <h4>Reviews</h4>
           <blockquote></blockquote>
         </div>
