@@ -12,6 +12,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,6 +68,8 @@ public class BouteilleService implements BouteilleServiceInterface
         //            }
         //         }
 
+        // ici tester la modification si existe un tag _id=ddd
+
         String id = null;
 
         // init avec les valeurs de base
@@ -109,6 +112,13 @@ public class BouteilleService implements BouteilleServiceInterface
             // longitude en premier (Mongo)
             loc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION_COORDINATES, Arrays.asList(p_Longitude, p_Latitude));
             doc.put(ConstantesAMBROSIA.TAG_BOUTEILLE_LOCATION, loc);
+
+            // mise du _id
+            // FIXME l'update ne fonctionne pas encore
+            if (p_Valeurs.get(ConstantesAMBROSIA.TAG_ID) != null)
+            {
+                doc.put(ConstantesAMBROSIA.TAG_ID, new ObjectId(p_Valeurs.get(ConstantesAMBROSIA.TAG_ID) + ""));
+            }
 
             id = getBouteilleDao().save(doc);
 
@@ -200,6 +210,17 @@ public class BouteilleService implements BouteilleServiceInterface
             else if (action.equals("rechercher"))
             {
                 // TODO
+                //                res.put(ConstantesAPIREST.TAG_CONTENU,
+                //                        importerAlerteAncientFormat(p_Usager.getIdentifiant(), p_Usager, p_Requete));
+            }
+            else if (action.equals("creer"))
+            {
+                Document bout = (Document) p_Requete.get("bouteille");
+
+                double longitude = ((Document) bout.get("location")).getDouble("longitude");
+                double latitude = ((Document) bout.get("location")).getDouble("latitude");
+
+                enregistrerBouteille(bout, longitude, latitude);
                 //                res.put(ConstantesAPIREST.TAG_CONTENU,
                 //                        importerAlerteAncientFormat(p_Usager.getIdentifiant(), p_Usager, p_Requete));
             }
