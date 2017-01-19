@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Projet : Delia -->
+<!-- Client : Bull -->
+<!-- Auteur : tof / Bull S.A.S. -->
+<!-- $Id: alimentationAC.xml 2102 2015-05-20 10:30:47Z robine-c $ -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Service commandService. -->
+	<bean id="commandService"
+		class="fr.greeniot.ambrosia.service.api.rest.CommandService">
+	</bean>
+
+</beans>

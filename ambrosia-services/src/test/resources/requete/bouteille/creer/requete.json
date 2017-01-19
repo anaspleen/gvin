@@ -1,0 +1,19 @@
+{
+   "action":"creer",
+   "bouteille":{
+      "nom":"La rose brisson 2",
+      "vignoble":"bordeaux",
+      "aoc":"saint-émilion",
+      "appellation":"saint-émilion grand cru",
+      "chateau":"Galhaud",
+      "anneeMiseEnBouteille":2012,
+      "anneeConsommationOptimale":2020,
+      "achatDate":"15/08/2015",
+      "achatMagasin":"Chateau Galhaud",
+      "achatPrix":20,
+      "location":{
+         "longitude":-0.1571643,
+         "latitude":44.8949179
+      }
+   }
+}

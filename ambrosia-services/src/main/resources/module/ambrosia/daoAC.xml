@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- ***** Section des DAO ***** -->
+	<!-- abstract -->
+	<bean id="abstractDao" class="fr.greeniot.ambrosia.dao.AbstractDaoMongo"
+		abstract="true">
+		<property name="databaseURL" value="${ambrosia.db.url}" />
+		<property name="databaseNom" value="${ambrosia.db.nom}" />
+	</bean>
+
+	<!-- daos -->
+	<bean id="bouteilleDao" class="fr.greeniot.ambrosia.dao.BouteilleDaoMongo"
+		parent="abstractDao" />
+	<bean id="parametreDao" class="fr.greeniot.ambrosia.dao.ParametreDaoMongo"
+		parent="abstractDao" />
+
+</beans>

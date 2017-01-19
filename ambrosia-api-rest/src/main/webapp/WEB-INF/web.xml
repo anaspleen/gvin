@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<display-name>ambrosia</display-name>
+	<description>Application Ambrosia</description>
+
+	<!-- on indique que la webapp est distribuable, i.e. clusterisable... -->
+	<distributable />
+
+	<!-- Parametres pour Spring -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>fr.greeniot.ambrosia.commun.filter.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Servlet pour initialiser les services utilisés par la webapp -->
+	<servlet>
+		<servlet-name>initWebapp</servlet-name>
+		<servlet-class>fr.greeniot.ambrosia.api.rest.servlet.InitialiserServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- le rest agent -->
+	<servlet>
+		<servlet-name>ambrosia-api-rest</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>fr.greeniot.ambrosia.api.rest.resource</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- rest utilisateur -->
+	<servlet-mapping>
+		<servlet-name>ambrosia-api-rest</servlet-name>
+		<url-pattern>/api-rest/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Angular est sur le "/" -->
+
+</web-app>
