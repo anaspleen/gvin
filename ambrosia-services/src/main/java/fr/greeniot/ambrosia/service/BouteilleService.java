@@ -20,9 +20,9 @@ import fr.greeniot.ambrosia.bean.UtilisateurInterface;
 import fr.greeniot.ambrosia.dao.BouteilleDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 import fr.greeniot.ambrosia.utils.ConstantesAPIREST;
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.BusinessException.BusinessExceptionEnum;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.BusinessException.BusinessExceptionEnum;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

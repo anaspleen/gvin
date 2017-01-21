@@ -2,7 +2,7 @@
 // Fichier :
 // BusinessException.java , v 1.0 21 janv. 2015
 
-package fr.greeniot.commun.exception;
+package fr.greeniot.exception;
 
 
 import org.slf4j.Logger;

@@ -4,8 +4,8 @@
 package fr.greeniot.ambrosia.service;
 
 
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

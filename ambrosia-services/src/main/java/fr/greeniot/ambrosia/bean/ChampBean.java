@@ -13,8 +13,8 @@ import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.BusinessException.BusinessExceptionEnum;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.BusinessException.BusinessExceptionEnum;
 
 
 /**

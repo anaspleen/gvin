@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import fr.greeniot.ambrosia.dao.ParametreDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

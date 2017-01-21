@@ -18,8 +18,8 @@ import fr.greeniot.ambrosia.bean.ChampBean;
 import fr.greeniot.ambrosia.bean.ChampInterface;
 import fr.greeniot.ambrosia.dao.ParametreDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

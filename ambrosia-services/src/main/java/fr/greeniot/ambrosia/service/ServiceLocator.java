@@ -15,7 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import fr.greeniot.ambrosia.service.api.rest.APIRESTServiceInterface;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

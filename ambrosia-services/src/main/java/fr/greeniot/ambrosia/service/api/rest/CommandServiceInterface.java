@@ -8,8 +8,8 @@ package fr.greeniot.ambrosia.service.api.rest;
 import org.bson.Document;
 
 import fr.greeniot.ambrosia.bean.UtilisateurInterface;
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

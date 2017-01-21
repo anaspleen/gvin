@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import fr.greeniot.ambrosia.AbstractAmbrosiaTest;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

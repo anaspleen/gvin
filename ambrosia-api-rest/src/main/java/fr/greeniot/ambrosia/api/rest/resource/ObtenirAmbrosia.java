@@ -5,7 +5,6 @@
 package fr.greeniot.ambrosia.api.rest.resource;
 
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -29,8 +28,8 @@ import org.slf4j.LoggerFactory;
 import fr.greeniot.ambrosia.service.ServiceLocator;
 import fr.greeniot.ambrosia.service.api.rest.CommandServiceInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAPIREST;
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**

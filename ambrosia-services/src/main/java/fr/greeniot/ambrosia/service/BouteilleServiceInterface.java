@@ -10,8 +10,8 @@ import java.util.Map;
 import org.bson.Document;
 
 import fr.greeniot.ambrosia.service.api.rest.APIRESTServiceInterface;
-import fr.greeniot.commun.exception.BusinessException;
-import fr.greeniot.commun.exception.TechnicalException;
+import fr.greeniot.exception.BusinessException;
+import fr.greeniot.exception.TechnicalException;
 
 
 /**
