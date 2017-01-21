@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>fr.greeniot.ambrosia</groupId>
+        <artifactId>ambrosia</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>ambrosia-ng</artifactId>
+    <name>Ambrosia :: NG</name>
+    <description>Ambrosia IHM aNGular</description>
+    <packaging>war</packaging>
+
+    <properties>
+        <node.version>v4.2.4</node.version>
+        <npm.version>2.14.12</npm.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>ambrosia-angular</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>gulp build</id>
+                        <goals>
+                            <goal>gulp</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <npmVersion>${npm.version}</npmVersion>
+                    <installDirectory>${java.io.tmpdir}/ambrosia_nodejs</installDirectory>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>gulp-webapp</directory>
+                            <includes>
+                                <include>**/*.html</include>
+                                <include>**/*.jsp</include>
+                                <include>**/*.js</include>
+                                <include>**/*.css</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                    <packagingExcludes>
+                        **/*.min.js,**/*.min.css,app/js/app.js,app/js/controllers/*.js,app/js/directives/**/*.js,app/js/services/*.js,**/bootstrap.js,**/npm.js,**/backToTop.js,**/dataTables.bootstrap.js,**/html5shiv.js,**/jquery-ui-1.10.4.custom.js,**/TreeView.js,**/*.json,
+                        **/teleservices.css,**/infos-legale.css,**/bootstrap.css,**/bootstrap-theme.css,**/font-awesome.css,**/douane-icone-more.css,**/douane-icone-more-ie7.css,**/douanes-font.css,**/douane-update031214.css,**/filetypes.css,**/jquery-ui-1.10.4.custom.css
+                    </packagingExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
