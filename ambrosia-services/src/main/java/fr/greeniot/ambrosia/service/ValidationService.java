@@ -4,138 +4,118 @@
 //
 package fr.greeniot.ambrosia.service;
 
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.bson.Document;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import fr.greeniot.ambrosia.bean.ChampBean;
 import fr.greeniot.ambrosia.bean.ChampInterface;
 import fr.greeniot.ambrosia.dao.ParametreDaoInterface;
 import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 import fr.greeniot.exception.BusinessException;
 import fr.greeniot.exception.TechnicalException;
+import org.bson.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-/**
- * @author Bull
- *         $Id$
- */
 public class ValidationService implements ValidationServiceInterface
 {
+  /** le logger... */
+  private static final Logger LOG = LoggerFactory.getLogger(ValidationService.class);
 
-    /** le logger... */
-    private static final Logger LOG = LoggerFactory.getLogger(ValidationService.class);
+  /** dao */
+  private ParametreDaoInterface m_ParametreDao;
 
-    /** dao */
-    private ParametreDaoInterface m_ParametreDao;
+  /** le cache */
+  private static Map<String, Map<String, ChampInterface>> s_Map = new HashMap<String, Map<String, ChampInterface>>();
 
-    /** le cache */
-    private static Map<String, Map<String, ChampInterface>> s_Map = new HashMap<String, Map<String, ChampInterface>>();
+  public Map<String, List<String>> validerObjet(Document p_DocumentAValider, String p_TypeObjet)
+      throws BusinessException, TechnicalException
+  {
+    Map<String, List<String>> res = new HashMap<String, List<String>>();
 
-    /*
-     * (non-Javadoc)
-     * @see fr.tic.gvin.service.ValidationServiceInterface#validerObjet(org.bson.Document, java.lang.String)
-     */
-    public Map<String, List<String>> validerObjet(Document p_DocumentAValider, String p_TypeObjet)
-            throws BusinessException, TechnicalException
+    Map<String, ChampInterface> regles = obtenirRegles(p_TypeObjet);
+    ChampInterface              regle  = null;
+
+    if (regles == null)
     {
-        Map<String, List<String>> res = new HashMap<String, List<String>>();
+      throw new TechnicalException("Aucune régle trouvée pour l'objet : " + p_TypeObjet);
+    }
 
-        Map<String, ChampInterface> regles = obtenirRegles(p_TypeObjet);
-        ChampInterface regle = null;
+    // dans l'autre sens, on vérifie que les champs sont bien là
+    for (String tagRegle : regles.keySet())
+    {
+      // prise de la régle
+      regle = regles.get(tagRegle);
 
-        if (regles == null)
+      if (p_DocumentAValider.containsKey(tagRegle))
+      {
+        // ici on vérife
+        res.put(tagRegle, regle.valideDonnee(p_DocumentAValider.get(tagRegle)));
+      }
+      else
+      {
+        res.put(tagRegle, Arrays.asList("tag.inexistant"));
+      }
+    }
+
+    return res;
+  }
+
+  public Map<String, ChampInterface> obtenirRegles(String p_TypeObjet) throws BusinessException, TechnicalException
+  {
+    Map<String, ChampInterface> res = s_Map.get(p_TypeObjet);
+
+    if (res == null)
+    {
+      res = new HashMap<String, ChampInterface>();
+
+      // obtention du document
+      Document regles = getParametreDao().find(p_TypeObjet);
+
+      if (regles != null)
+      {
+        // itération sur les clé
+        for (String tag : regles.keySet())
         {
-            throw new TechnicalException("Aucune régle trouvée pour l'objet : " + p_TypeObjet);
+          if (!tag.equals(ConstantesAMBROSIA.TAG_ID))
+          {
+            res.put(tag, new ChampBean((Document) regles.get(tag), tag));
+          }
         }
 
-        // dans l'autre sens, on vérifie que les champs sont bien là
-        for (String tagRegle : regles.keySet())
-        {
-            // prise de la régle
-            regle = regles.get(tagRegle);
-
-            if (p_DocumentAValider.containsKey(tagRegle))
-            {
-                // ici on vérife
-                res.put(tagRegle, regle.valideDonnee(p_DocumentAValider.get(tagRegle)));
-            }
-            else
-            {
-                res.put(tagRegle, Arrays.asList("tag.inexistant"));
-            }
-        }
-
-        return res;
+        // ajout dans la map si pas null
+        s_Map.put(p_TypeObjet, res);
+      }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see fr.tic.gvin.service.ValidationServiceInterface#obtenirRegles(java.lang.String)
-     */
-    public Map<String, ChampInterface> obtenirRegles(String p_TypeObjet) throws BusinessException, TechnicalException
-    {
-        Map<String, ChampInterface> res = s_Map.get(p_TypeObjet);
+    return res;
+  }
 
-        if (res == null)
-        {
-            res = new HashMap<String, ChampInterface>();
+  /**
+   * @return parametreDao
+   */
+  public ParametreDaoInterface getParametreDao()
+  {
+    return m_ParametreDao;
+  }
 
-            // obtention du document
-            Document regles = getParametreDao().find(p_TypeObjet);
+  /**
+   * Méthode permettant d'initialiser la valeur de parametreDao.
+   *
+   * @param p_ParametreDao
+   *     le/la parametreDao à initialiser
+   */
+  public void setParametreDao(ParametreDaoInterface p_ParametreDao)
+  {
+    m_ParametreDao = p_ParametreDao;
+  }
 
-            if (regles != null)
-            {
-                // itération sur les clé
-                for (String tag : regles.keySet())
-                {
-                    if (!tag.equals(ConstantesAMBROSIA.TAG_ID))
-                    {
-                        res.put(tag, new ChampBean((Document) regles.get(tag), tag));
-                    }
-                }
-
-                // ajout dans la map si pas null
-                s_Map.put(p_TypeObjet, res);
-            }
-        }
-
-        return res;
-    }
-
-    /**
-     * @return parametreDao
-     */
-    public ParametreDaoInterface getParametreDao()
-    {
-        return m_ParametreDao;
-    }
-
-    /**
-     * Méthode permettant d'initialiser la valeur de parametreDao.
-     * 
-     * @param p_ParametreDao
-     *            le/la parametreDao à initialiser
-     */
-    public void setParametreDao(ParametreDaoInterface p_ParametreDao)
-    {
-        m_ParametreDao = p_ParametreDao;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see fr.greeniot.ambrosia.service.ValidationServiceInterface#initialiserRegles()
-     */
-    public synchronized void initialiserRegles() throws BusinessException, TechnicalException
-    {
-        LOG.info("Intialisation des régles");
-        s_Map = new HashMap<String, Map<String, ChampInterface>>();
-        LOG.info("Intialisation des régles : fait");
-    }
+  public synchronized void initialiserRegles() throws BusinessException, TechnicalException
+  {
+    LOG.info("Intialisation des régles");
+    s_Map = new HashMap<String, Map<String, ChampInterface>>();
+    LOG.info("Intialisation des régles : fait");
+  }
 }

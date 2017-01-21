@@ -4,11 +4,6 @@
 //
 package fr.greeniot.ambrosia.bean;
 
-
-/**
- * @author Bull
- *         $Id$
- */
 public interface UtilisateurInterface
 {
 

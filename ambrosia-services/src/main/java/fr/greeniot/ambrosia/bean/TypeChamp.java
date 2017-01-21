@@ -3,14 +3,10 @@
 //
 package fr.greeniot.ambrosia.bean;
 
-
 /**
- * Type de champ
- * 
- * @author Bull
- *         $Id$
+ * Type de champ.
  */
 public enum TypeChamp
 {
-    string, date, integer;
+  string, date, integer
 }

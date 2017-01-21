@@ -4,43 +4,31 @@
 //
 package fr.greeniot.ambrosia.bean;
 
-
 import java.util.List;
 
-
 /**
- * Définition d'une régle
- * 
- * @author Bull
- *         $Id$
+ * Définition d'une régle.
  */
 public interface ChampInterface
 {
 
-    /**
-     * @return la regex
-     */
-    String getRegexp();
+  /** @return la regex */
+  String getRegexp();
 
-    /**
-     * @return le type
-     */
-    TypeChamp getType();
+  /** @return le type */
+  TypeChamp getType();
 
-    /**
-     * @return true si obligatoire
-     */
-    boolean isObligatoire();
+  /** @return true si obligatoire */
+  boolean isObligatoire();
 
-    /**
-     * @return le nom du tag
-     */
-    String getNom();
+  /** @return le nom du tag */
+  String getNom();
 
-    /**
-     * @param p_DonneeAVerifier
-     *            la donnnée à vérifier
-     * @return les erreurs relevées
-     */
-    List<String> valideDonnee(Object p_DonneeAVerifier);
+  /**
+   * @param p_DonneeAVerifier
+   *     la donnnée à vérifier
+   *
+   * @return les erreurs relevées
+   */
+  List<String> valideDonnee(Object p_DonneeAVerifier);
 }
