@@ -27,9 +27,12 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 gen/*
+*.log
 R.java
 .classpath
 .idea
 .project
 .settings
 *.iml
+
+# npm
