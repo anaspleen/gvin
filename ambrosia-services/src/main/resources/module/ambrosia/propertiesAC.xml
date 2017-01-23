@@ -4,11 +4,11 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	<bean id="propertyBatchROSAExport"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="ignoreUnresolvablePlaceholders" value="true" />
-		<property name="location"
-			value="classpath:ambrosia-configuration.properties" />
-	</bean>
+  <bean id="propertyBatchROSAExport"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    <property name="location"
+              value="classpath:ambrosia-configuration.properties"/>
+  </bean>
 
 </beans>

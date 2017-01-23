@@ -7,9 +7,9 @@
   <artifactId>ambrosia</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
-  <packaging>pom</packaging>
   <name>Ambrosia :: Gestion de vin</name>
   <description>Gestion de vin libre</description>
+  <packaging>pom</packaging>
 
   <organization>
     <name>Green IoT</name>
@@ -27,8 +27,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <!-- dependencies versions -->
-    <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-    <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
     <slf4j.version>1.7.21</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
     <commons-io.version>2.4</commons-io.version>
@@ -39,8 +37,19 @@
     <jsp-api.version>2.0</jsp-api.version>
     <rs-api.version>2.0-m01</rs-api.version>
     <jsr311-api.version>1.1.1</jsr311-api.version>
-    <front-end.version>1.3</front-end.version>
     <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+    <maven-resources-plugin.version>3.0.1</maven-resources-plugin.version>
+    <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+    <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
+    <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+    <wro4j.version>1.8.0</wro4j.version>
+    <!-- JS -->
+    <angularjs.version>1.5.5</angularjs.version>
+    <angular-bootstrap.version>1.3.3</angular-bootstrap.version>
+    <html5-boilerplate.version>5.2.0</html5-boilerplate.version>
+    <bootstrap.version>3.3.6</bootstrap.version>
+    <angular-ui-router.version>1.0.0-beta.1</angular-ui-router.version>
+    <angular-toastr.version>1.5.0</angular-toastr.version>
     <!-- pour les tests -->
     <junit.version>4.11</junit.version>
     <spring.version>4.2.1.RELEASE</spring.version>
@@ -48,18 +57,13 @@
   </properties>
 
   <modules>
+    <module>ambrosia-ng</module>
     <module>ambrosia-services</module>
     <module>ambrosia-api-rest</module>
-    <module>ambrosia-ng</module>
   </modules>
 
   <dependencyManagement>
     <dependencies>
-      <!-- le service -->
-      <dependency>
-        <groupId>fr.greeniot.ambrosia</groupId>
-        <artifactId>ambrosia-services</artifactId>
-      </dependency>
       <!-- utils -->
       <dependency>
         <groupId>org.slf4j</groupId>
@@ -184,9 +188,9 @@
           <version>${maven-war-plugin.version}</version>
         </plugin>
         <plugin>
-          <groupId>com.github.eirslett</groupId>
-          <artifactId>frontend-maven-plugin</artifactId>
-          <version>${front-end.version}</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>

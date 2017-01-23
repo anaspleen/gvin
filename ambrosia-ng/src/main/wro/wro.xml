@@ -1,0 +1,26 @@
+<groups xmlns="http://www.isdc.ro/wro">
+  <group name="ng">
+    <!-- Angular -->
+    <js>webjar:angularjs/${angularjs.version}/angular.js</js>
+    <js>webjar:angularjs/${angularjs.version}/angular-resource.js</js>
+    <js>webjar:angularjs/${angularjs.version}/angular-animate.js</js>
+    <js>webjar:angularjs/${angularjs.version}/angular-touch.js</js>
+    <js>webjar:angularjs/${angularjs.version}/angular-route.js</js>
+    <js>webjar:angularjs/${angularjs.version}/angular-cookies.js</js>
+    <!-- Angular UI Router-->
+    <js>webjar:angular-ui-router/${angular-ui-router.version}/release/angular-ui-router.js</js>
+    <js>webjar:angular-ui-router/${angular-ui-router.version}/release/stateEvents.js</js>
+    <!-- Angular Toastr -->
+    <js>webjar:angular-toastr/${angular-toastr.version}/angular-toastr.js</js>
+    <js>webjar:angular-toastr/${angular-toastr.version}/angular-toastr.tpls.js</js>
+    <!-- Bootstrap -->
+    <js>webjar:angular-ui-bootstrap/${angular-bootstrap.version}/ui-bootstrap.js</js>
+    <js>webjar:angular-ui-bootstrap/${angular-bootstrap.version}/ui-bootstrap-tpls.js</js>
+    <!-- All project js -->
+    <js>file:${project.basedir}/src/main/resources/**.js</js>
+  </group>
+  <group name="styles">
+    <css>webjar:angular-toastr/${angular-toastr.version}/angular-toastr.css</css>
+    <css>file:${prepared-less.directory}/app.less</css>
+  </group>
+</groups>

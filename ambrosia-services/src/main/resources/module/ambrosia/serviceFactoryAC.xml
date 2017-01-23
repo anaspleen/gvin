@@ -9,11 +9,11 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	<!-- Service Factory -->
-	<bean id="ambrosiaServiceFactory" class="fr.greeniot.ambrosia.service.ServiceFactory">
-		<property name="commandService">
-			<ref bean="commandService" />
-		</property>
-	</bean>
+  <!-- Service Factory -->
+  <bean id="ambrosiaServiceFactory" class="fr.greeniot.ambrosia.service.ServiceFactory">
+    <property name="commandService">
+      <ref bean="commandService"/>
+    </property>
+  </bean>
 
 </beans>

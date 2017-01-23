@@ -4,65 +4,65 @@
 <!-- ALL < DEBUG < INFO < WARN < ERROR < FATAL < OFF -->
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
-	debug="false">
+                     debug="false">
 
-	<appender name="AMBROSIA_CONSOLE_APPENDER" class="org.apache.log4j.ConsoleAppender">
-		<param name="Target" value="System.out" />
-		<param name="Threshold" value="DEBUG" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%d{yyyy-MM-dd HH:mm:ss,SSS} %X{idRequete}-%X{idTeleservice} %-5p [%c.%M:%L] %m%n" />
-		</layout>
-	</appender>
+  <appender name="AMBROSIA_CONSOLE_APPENDER" class="org.apache.log4j.ConsoleAppender">
+    <param name="Target" value="System.out"/>
+    <param name="Threshold" value="DEBUG"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS} %X{idRequete}-%X{idTeleservice} %-5p [%c.%M:%L] %m%n"/>
+    </layout>
+  </appender>
 
-	<!-- ********** APPENDERS DEFINITION (begin) ********** -->
-	<appender name="AMBROSIA_FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="../logs/ambrosia.log" />
-		<param name="Threshold" value="DEBUG" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="AMBROSIA %d{yyyy-MM-dd HH:mm:ss,SSS} %X{idRequete}-%X{idTeleservice} %-5p [%c] %m%n" />
-		</layout>
-	</appender>
+  <!-- ********** APPENDERS DEFINITION (begin) ********** -->
+  <appender name="AMBROSIA_FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="../logs/ambrosia.log"/>
+    <param name="Threshold" value="DEBUG"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+             value="AMBROSIA %d{yyyy-MM-dd HH:mm:ss,SSS} %X{idRequete}-%X{idTeleservice} %-5p [%c] %m%n"/>
+    </layout>
+  </appender>
 
-	<!-- asynchrone -->
-	<appender name="ASYNCPROD_AMBROSIA_FILE_APPENDER" class="org.apache.log4j.AsyncAppender">
-		<appender-ref ref="AMBROSIA_FILE_APPENDER" />
-	</appender>
+  <!-- asynchrone -->
+  <appender name="ASYNCPROD_AMBROSIA_FILE_APPENDER" class="org.apache.log4j.AsyncAppender">
+    <appender-ref ref="AMBROSIA_FILE_APPENDER"/>
+  </appender>
 
-	<!-- ********** APPENDERS DEFINITION (begin) ********** -->
-	<appender name="AMBROSIA_AUDIT_FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="../logs/rosa-audit.log" />
-		<param name="Threshold" value="DEBUG" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="%d{yyyy-MM-dd HH:mm:ss,SSS} %X{idTeleservice} %X{url} %X{code_retour} %X{duree}%n" />
-		</layout>
-	</appender>
+  <!-- ********** APPENDERS DEFINITION (begin) ********** -->
+  <appender name="AMBROSIA_AUDIT_FILE_APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="../logs/rosa-audit.log"/>
+    <param name="Threshold" value="DEBUG"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+             value="%d{yyyy-MM-dd HH:mm:ss,SSS} %X{idTeleservice} %X{url} %X{code_retour} %X{duree}%n"/>
+    </layout>
+  </appender>
 
-	<!-- asynchrone -->
-	<appender name="ASYNCPROD_AMBROSIA_FILE_APPENDER" class="org.apache.log4j.AsyncAppender">
-		<appender-ref ref="AMBROSIA_FILE_APPENDER" />
-	</appender>
+  <!-- asynchrone -->
+  <appender name="ASYNCPROD_AMBROSIA_FILE_APPENDER" class="org.apache.log4j.AsyncAppender">
+    <appender-ref ref="AMBROSIA_FILE_APPENDER"/>
+  </appender>
 
-	<!-- ********** LOGGERS DEFINITION (begin) ********** -->
-	<!-- Activation log générale -->
-	<logger name="fr.tic.gvin">
-		<level value="DEBUG" />
-	</logger>
+  <!-- ********** LOGGERS DEFINITION (begin) ********** -->
+  <!-- Activation log générale -->
+  <logger name="fr.tic.gvin">
+    <level value="DEBUG"/>
+  </logger>
 
-	<!-- ********** LOGGERS DEFINITION (begin) ********** -->
-	<!-- Activation log générale douane -->
-	<logger name="ROSA_AUDIT">
-		<level value="INFO" />
-		<appender-ref ref="AMBROSIA_AUDIT_FILE_APPENDER" />
-	</logger>
+  <!-- ********** LOGGERS DEFINITION (begin) ********** -->
+  <!-- Activation log générale douane -->
+  <logger name="ROSA_AUDIT">
+    <level value="INFO"/>
+    <appender-ref ref="AMBROSIA_AUDIT_FILE_APPENDER"/>
+  </logger>
 
-	<root>
-		<level value="INFO" />
-		<appender-ref ref="ASYNCPROD_AMBROSIA_FILE_APPENDER" />
-		<!-- pas de log direct dans tomcat en production -->
-		<appender-ref ref="AMBROSIA_CONSOLE_APPENDER" />
-	</root>
+  <root>
+    <level value="INFO"/>
+    <appender-ref ref="ASYNCPROD_AMBROSIA_FILE_APPENDER"/>
+    <!-- pas de log direct dans tomcat en production -->
+    <appender-ref ref="AMBROSIA_CONSOLE_APPENDER"/>
+  </root>
 
 </log4j:configuration>

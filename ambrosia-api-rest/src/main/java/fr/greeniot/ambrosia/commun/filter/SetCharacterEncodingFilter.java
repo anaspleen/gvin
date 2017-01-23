@@ -46,8 +46,8 @@ public class SetCharacterEncodingFilter implements Filter
   /**
    * {@inheritDoc}
    *
-   * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse,
-   * javax.servlet.FilterChain)
+   * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, * javax.servlet
+   * .FilterChain)
    */
   public void doFilter(ServletRequest p_Request, ServletResponse p_Response, FilterChain p_Chain)
       throws IOException, ServletException
