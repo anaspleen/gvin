@@ -47,31 +47,31 @@ public class ServiceFactory
   public static String getInformationsVersionWebapp(InputStream p_WebappManifest)
   {
     String informations = "Aucune information de version.";
-    try
-    {
-      Manifest manifest = new Manifest(p_WebappManifest);
-
-      Iterator<Object> it     = manifest.getMainAttributes().keySet().iterator();
-      boolean          trouve = false;
-
-      while (it.hasNext() && false == trouve)
-      {
-        Object tmp = it.next();
-        String key = tmp.toString();
-        if (key.equals("Build-Tag"))
-        {
-          informations = manifest.getMainAttributes().get(tmp).toString();
-          trouve = true;
-        }
-      }
-    }
-    catch (Throwable t)
-    {
-      t.printStackTrace();
-      informations =
-          "Erreur lors de la lecture des informations de version de l'application " + "lila" + " (" + t.getMessage()
-              + ")";
-    }
+//    try
+//    {
+//      Manifest manifest = new Manifest(p_WebappManifest);
+//
+//      Iterator<Object> it     = manifest.getMainAttributes().keySet().iterator();
+//      boolean          trouve = false;
+//
+//      while (it.hasNext() && false == trouve)
+//      {
+//        Object tmp = it.next();
+//        String key = tmp.toString();
+//        if (key.equals("Build-Tag"))
+//        {
+//          informations = manifest.getMainAttributes().get(tmp).toString();
+//          trouve = true;
+//        }
+//      }
+//    }
+//    catch (Throwable t)
+//    {
+//      t.printStackTrace();
+//      informations =
+//          "Erreur lors de la lecture des informations de version de l'application lila (" + t.getMessage()
+//              + ")";
+//    }
     return informations;
   }
 

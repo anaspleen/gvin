@@ -86,7 +86,7 @@
                   <version>${project.version}</version>
                   <type>jar</type>
                   <overWrite>false</overWrite>
-                  <outputDirectory>${project.build.directory}/generated-resources/static</outputDirectory>
+                  <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
                 </artifactItem>
               </artifactItems>
             </configuration>
@@ -95,6 +95,14 @@
         <configuration>
           <outputDirectory>${project.build.outputDirectory}</outputDirectory>
           <excludes>META-INF/**</excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <configuration>
+          <port>8080</port>
+          <path>/</path>
         </configuration>
       </plugin>
     </plugins>

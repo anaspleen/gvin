@@ -1,0 +1,1 @@
+angular.module('ambrosia.commons', ['ambrosia.commons.constants']);

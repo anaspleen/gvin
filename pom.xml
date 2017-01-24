@@ -54,6 +54,7 @@
     <junit.version>4.11</junit.version>
     <spring.version>4.2.1.RELEASE</spring.version>
     <assertj.version>3.6.1</assertj.version>
+    <tomcat.version>2.2</tomcat.version>
   </properties>
 
   <modules>
@@ -191,6 +192,11 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>${maven-resources-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>${tomcat.version}</version>
         </plugin>
       </plugins>
     </pluginManagement>

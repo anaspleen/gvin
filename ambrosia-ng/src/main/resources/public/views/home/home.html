@@ -1,0 +1,51 @@
+<div class="home-view">
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="homeCtrl.isCollapsed = !homeCtrl.isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="{{homeCtrl.homeLinkName}}"><i class="glyphicon glyphicon-home"></i></a>
+    </div>
+    <!-- Collect the nav links, dropdown for toggling -->
+    <div class="collapse navbar-collapse" ng-class="!homeCtrl.isCollapsed && 'in'">
+      <form class="nav navbar-nav navbar-form" role="select">
+        <div class="form-group customselect customselect-dark" ng-show="homeCtrl.userContracts.length > 0">
+          <select class="form-control customselect-select"
+                  name="contractSelect"
+                  id="contractSelect"
+                  ng-model="homeCtrl.selectedContract"
+                  ng-options="contract.contractName for contract in homeCtrl.userContracts | orderBy:'contractName' track by contract.id"
+                  ng-change="homeCtrl.changeContract(homeCtrl.selectedContract)">
+          </select>
+        </div>
+      </form>
+      <ul class="nav navbar-nav" ng-repeat="link in homeCtrl.navLinks">
+        <li ng-class="{active: link.active}">
+          <a ui-sref="{{link.name}}"><i ng-class="link.iconClass"
+                                        aria-hidden="true"></i>{{link.title | translate}}</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li uib-dropdown>
+          <a href="#" uib-dropdown-toggle><i class="fa fa-user" aria-hidden="true"></i>
+            {{homeCtrl.user}}<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#" ng-click="homeCtrl.downUserGuide()"><i class="fa fa-book"
+                                                                 aria-hidden="true"></i>{{'HOME.USER.GUIDE' | translate}}</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li class="nav-link-logout">
+              <a href ng-click="homeCtrl.logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>{{'HOME.USER.LOGOUT'
+                                                                                                    | translate}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div ui-view></div>
