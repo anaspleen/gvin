@@ -47,6 +47,12 @@
 
 		<dependencies>
 
+			<dependency>
+				<groupId>com.pi4j</groupId>
+				<artifactId>pi4j-core</artifactId>
+				<version>1.1</version>
+			</dependency>
+
 			<!-- le service -->
 			<dependency>
 				<groupId>fr.greeniot.ambrosia</groupId>

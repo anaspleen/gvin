@@ -18,6 +18,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>com.pi4j</groupId>
+			<artifactId>pi4j-core</artifactId>
+		</dependency>
+
+
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 		</dependency>
@@ -75,7 +81,7 @@
 		</dependency>
 
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
