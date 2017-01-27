@@ -11,7 +11,7 @@ var modules = [
 ];
 
 angular.module('ambrosia', modules)
-    .config(function ($stateProvider, $urlRouterProvider, NG_ROUTE, ROLES)
+    .config(function ($stateProvider, $urlRouterProvider, NG_ROUTE)
     {
       // For any unmatched url
       $urlRouterProvider.otherwise("/");
@@ -46,13 +46,6 @@ angular.module('ambrosia', modules)
             }
           });
     })
-    .config(function ($httpProvider)
-    {
-      // Http settings
-      $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
-      $httpProvider.defaults.withCredentials = true;
-      $httpProvider.interceptors.push('httpInterceptor');
-    })
     .config(function (toastrConfig)
     {
       angular.extend(toastrConfig, {
@@ -66,13 +59,13 @@ angular.module('ambrosia', modules)
       });
     })
     .controller('AppController',
-        function ($rootScope, $translate)
+        function ($rootScope)
         {
           var appCtrl = this;
           $rootScope.$on('$stateChangeSuccess',
               function (event, toState)
               {
-                appCtrl.title = 'NTA :: ' + toState.name.toUpperCase();
+                appCtrl.title = 'Ambrosia :: ' + toState.name.toUpperCase();
               }
           );
         })

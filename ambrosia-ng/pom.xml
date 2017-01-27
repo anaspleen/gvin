@@ -11,6 +11,7 @@
   <artifactId>ambrosia-ng</artifactId>
   <name>Ambrosia :: NG</name>
   <description>Ambrosia IHM aNGular</description>
+  <packaging>war</packaging>
 
   <properties>
     <prepared-less.directory>${project.build.directory}/prepared-less</prepared-less.directory>
@@ -61,26 +62,7 @@
         <artifactId>maven-resources-plugin</artifactId>
         <executions>
           <execution>
-            <id>copy-less-proj-pour-proj-priv</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${prepared-less.directory}</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/src/main/resources</directory>
-                  <includes>
-                    <include>**/*.less</include>
-                  </includes>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-less-bootstrap</id>
+            <id>copy-less-bootstrap-du-proj-pour-proj-priv</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -104,7 +86,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>copy-fonts-bootstrap</id>
+            <id>copy-fonts-bootstrap-et-plus-si-affinite</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -126,7 +108,7 @@
           </execution>
           <execution>
             <!-- Filter the wro.xml so it can get an absolute path for the project -->
-            <id>wro-filtering</id>
+            <id>wro-filtering-c-est-plus-humain</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>copy-resources</goal>
@@ -196,6 +178,26 @@
             <version>${angular-toastr.version}</version>
           </dependency>
         </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}/classes</directory>
+              <targetPath>/</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
       </plugin>
     </plugins>
   </build>

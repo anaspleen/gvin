@@ -21,6 +21,5 @@
   </group>
   <group name="styles">
     <css>webjar:angular-toastr/${angular-toastr.version}/angular-toastr.css</css>
-    <css>file:${prepared-less.directory}/app.less</css>
   </group>
 </groups>

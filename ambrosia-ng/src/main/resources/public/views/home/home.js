@@ -29,8 +29,4 @@ angular.module('ambrosia.public.home', [])
           {
             activeLink(toState);
           });
-
-          })
-        }
-    )
-;
+       });

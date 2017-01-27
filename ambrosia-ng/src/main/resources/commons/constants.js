@@ -2,32 +2,15 @@ angular.module('ambrosia.commons.constants', [])
     .factory('REST_URL', function ()
     {
       var _root                = '/',
-          _api_prefix          = _root + '/api',;
+          _api_prefix          = _root + '/api-rest';
 
       return {
-        ROOT                      : _root,
+        ROOT     : _root,
+        AMB_REST : _api_prefix
       };
     })
     .constant('NG_ROUTE', {
       ROOT         : 'root',
       HOME         : 'home',
       BOUTEILLES    : 'bouteilles'
-    })
-    .constant('ERRORS', {
-      CODES   : {
-        COMMONS   : {
-
-        },
-        BOUTEILLES : {
-
-        }
-      },
-      MESSAGES: {
-        COMMONS   : {
-          INVALID_PARAMS   : 'Invalid Params',
-        },
-        BOUTEILLES : {
-
-        }
-      }
     });
