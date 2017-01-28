@@ -1,3 +1,2 @@
 angular.module('ambrosia.public',
-    ['ambrosia.public.home',
-    'ambrosia.public.bouteilles'])
+    ['ambrosia.public.bouteilles'])

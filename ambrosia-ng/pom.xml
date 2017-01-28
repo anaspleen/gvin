@@ -15,7 +15,6 @@
 
   <properties>
     <prepared-less.directory>${project.build.directory}/prepared-less</prepared-less.directory>
-    <prepared-less-deps.directory>${prepared-less.directory}/deps</prepared-less-deps.directory>
   </properties>
   <build>
     <resources>
@@ -68,7 +67,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${prepared-less-deps.directory}/bootstrap</outputDirectory>
+              <outputDirectory>${prepared-less.directory}/bootstrap</outputDirectory>
               <resources>
                 <resource>
                   <directory>
@@ -164,11 +163,6 @@
           </dependency>
           <dependency>
             <groupId>org.webjars.bower</groupId>
-            <artifactId>html5-boilerplate</artifactId>
-            <version>${html5-boilerplate.version}</version>
-          </dependency>
-          <dependency>
-            <groupId>org.webjars.bower</groupId>
             <artifactId>angular-ui-router</artifactId>
             <version>${angular-ui-router.version}</version>
           </dependency>
@@ -176,6 +170,11 @@
             <groupId>org.webjars</groupId>
             <artifactId>angular-toastr</artifactId>
             <version>${angular-toastr.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>angular-ui-router</artifactId>
+            <version>${angular-ui-router.version}</version>
           </dependency>
         </dependencies>
       </plugin>

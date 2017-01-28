@@ -11,6 +11,11 @@ angular.module('ambrosia.commons.constants', [])
     })
     .constant('NG_ROUTE', {
       ROOT         : 'root',
-      HOME         : 'home',
       BOUTEILLES    : 'bouteilles'
+    })
+    .constant('CONSTANTS', {
+      BOUTEILLES         :
+        {
+          TITLE : 'Bouteilles'
+        }
     });
