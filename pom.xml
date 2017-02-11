@@ -43,6 +43,8 @@
     <maven-release-plugin.version>2.5.1</maven-release-plugin.version>
     <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     <wro4j.version>1.8.0</wro4j.version>
+    <pi4j.version>1.1</pi4j.version>
+    <pdfbox.version>2.0.4</pdfbox.version>
     <!-- JS -->
     <angularjs.version>1.5.5</angularjs.version>
     <angular-bootstrap.version>1.3.3</angular-bootstrap.version>
@@ -80,6 +82,16 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
         <version>${commons-lang3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.pi4j</groupId>
+        <artifactId>pi4j-core</artifactId>
+        <version>${pi4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.pdfbox</groupId>
+        <artifactId>pdfbox</artifactId>
+        <version>${pdfbox.version}</version>
       </dependency>
       <!-- javax -->
       <dependency>

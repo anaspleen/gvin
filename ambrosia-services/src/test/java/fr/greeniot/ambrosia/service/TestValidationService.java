@@ -84,7 +84,12 @@ public class TestValidationService extends AbstractAmbrosiaTest
     System.out.println(res);
     Assert.assertEquals(10, res.size());
     Assert.assertTrue(res.containsKey(TAG_VIGNOBLE));
-    Assert.assertEquals("champ.pasInteger", res.get(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_MISE_EN_BOUTEILLE).get(0));
+    List<String> resAnneeMEB = res.get(ConstantesAMBROSIA.TAG_BOUTEILLE_ANNEE_MISE_EN_BOUTEILLE);
+    Assert.assertNotNull(resAnneeMEB);
+    Assert.assertTrue(resAnneeMEB.size() > 0);
+    String anneeMiseEnBouteille = resAnneeMEB.get(0);
+    Assert.assertNotNull(anneeMiseEnBouteille);
+    Assert.assertEquals("champ.pasInteger", anneeMiseEnBouteille);
 
   }
 }
