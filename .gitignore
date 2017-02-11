@@ -8,7 +8,6 @@ hs_err_pid*
 *.class
 # Package Files #
 *.jar
-*.pdf
 *.war
 *.ear
 *.lnk
@@ -29,5 +28,6 @@ R.java
 .project
 .settings
 *.iml
+*.pdf
 
 # npm
