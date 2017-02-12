@@ -1,1 +1,115 @@
 <div>{{bouteillesCtrl.title}}</div>
+<form>
+  <div class="row form-group text-center">
+    <div class="col-sm-2">
+      <label for="name" class="control-label">Nom</label>
+      <input
+          id="name"
+          name="name"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.name">
+    </div>
+    <div class="col-sm-2">
+      <label for="vignoble" class="control-label">Vignoble</label>
+      <input
+          id="vignoble"
+          name="vignoble"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.vignoble">
+    </div>
+  </div>
+  <div class="row form-group text-center">
+    <div class="col-sm-2">
+      <label for="aoc" class="control-label">AOC</label>
+      <input
+          id="aoc"
+          name="aoc"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.aoc">
+    </div>
+    <div class="col-sm-2">
+      <label for="appellation" class="control-label">Appellation</label>
+      <input
+          id="appellation"
+          name="appellation"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.appellation">
+    </div>
+  </div>
+  <div class="row form-group text-center">
+    <div class="col-sm-2">
+      <label for="chateau" class="control-label">Chateau</label>
+      <input
+          id="chateau"
+          name="chateau"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.chateau">
+    </div>
+  </div>
+  <div class="row form-group text-center">
+    <div class="col-sm-2">
+      <label for="anneeMEB" class="control-label">Année de Mise En Bouteille</label>
+      <input
+          id="anneeMEB"
+          name="anneeMEB"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.anneeMEB">
+    </div>
+    <div class="col-sm-2">
+      <label for="anneeConsoOpt" class="control-label">Année de Consommation Optimale</label>
+      <input
+          id="anneeConsoOpt"
+          name="anneeConsoOpt"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.anneeConsoOpt">
+    </div>
+  </div>
+  <div class="row form-group text-center">
+    <div class="col-sm-2">
+      <label for="achatDate" class="control-label">Date d'achat</label>
+      <input
+          id="achatDate"
+          name="achatDate"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.achatDate">
+    </div>
+  </div>
+  <div class="row form-group text-center">
+    <div class="col-sm-2">
+      <label for="achatMagasin" class="control-label">Magasin d'achat</label>
+      <input
+          id="achatMagasin"
+          name="achatMagasin"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.achatMagasin">
+    </div>
+    <div class="col-sm-2">
+      <label for="achatPrix" class="control-label">Prix d'achat</label>
+      <input
+          id="achatPrix"
+          name="achatPrix"
+          type="text"
+          class="form-control"
+          ng-model="bouteillesCtrl.achatPrix">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-8">
+      <div class="col-xs-6">
+        <button ng-click="bouteillesCtrl.save()"
+                class="btn btn-primary">Enregistrer
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

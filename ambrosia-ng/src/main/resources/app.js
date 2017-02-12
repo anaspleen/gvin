@@ -5,6 +5,7 @@ var modules = [
   'ui.router',
   'ui.router.state.events',
   'ui.bootstrap',
+  'ngAnimate',
   'toastr',
   'ambrosia.commons',
   'ambrosia.public'
@@ -51,4 +52,5 @@ angular.module('ambrosia', modules)
                 appCtrl.title = 'Ambrosia :: ' + toState.name.toUpperCase();
               }
           );
-        });
+        }
+    );

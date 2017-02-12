@@ -10,12 +10,24 @@ angular.module('ambrosia.commons.constants', [])
       };
     })
     .constant('NG_ROUTE', {
-      ROOT         : 'root',
+      ROOT          : 'root',
       BOUTEILLES    : 'bouteilles'
     })
     .constant('CONSTANTS', {
-      BOUTEILLES         :
+      BOUTEILLES :
         {
           TITLE : 'Bouteilles'
         }
+    })
+    .factory('TOOLING', function ()
+    {
+      return {
+        copyObject : function (pObjectToCopy) {
+          var copy = {};
+          for (var attr in pObjectToCopy) {
+              if (obj.hasOwnProperty(attr)) copy[attr] = clone(pObjectToCopy[attr]);
+          }
+          return copy;
+        }
+      }
     });

@@ -1,1 +1,4 @@
-angular.module('ambrosia.commons', ['ambrosia.commons.constants']);
+angular.module('ambrosia.commons', [
+            'ambrosia.commons.constants',
+            'ambrosia.commons.httpservices'
+            ]);
