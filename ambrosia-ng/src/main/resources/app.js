@@ -20,10 +20,10 @@ angular.module('ambrosia', modules)
       // Route Settings
       $stateProvider
           .state({
-            name  : NG_ROUTE.BOUTEILLES,
-            url   : "/" + NG_ROUTE.BOUTEILLES,
-            views : {
-              ""                     : {
+            name : NG_ROUTE.BOUTEILLES,
+            url  : "/" + NG_ROUTE.BOUTEILLES,
+            views: {
+              "": {
                 templateUrl: 'public/views/bouteilles/bouteilles.html',
                 controller : 'BouteillesController as bouteillesCtrl'
               }

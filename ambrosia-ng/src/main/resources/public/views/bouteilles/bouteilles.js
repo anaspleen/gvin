@@ -22,36 +22,37 @@ angular.module('ambrosia.public.bouteilles', ['ambrosia.commons'])
           bouteillesCtrl.longitude = 0.0;
           bouteillesCtrl.latitude = 0.0;
 
-          bouteillesCtrl.save = function (){
+          bouteillesCtrl.save = function ()
+          {
             // TODO Dunno if every field are required so no check for now
             var aBottleToAdd =
-            {
-              'nom': bouteillesCtrl.name,
-              'vignoble': bouteillesCtrl.vignoble,
-              'aoc': bouteillesCtrl.aoc,
-              'appellation': bouteillesCtrl.appellation,
-              'chateau': bouteillesCtrl.chateau,
-              'anneeMiseEnBouteille': bouteillesCtrl.anneeMEB,
-              'anneeConsommationOptimale': bouteillesCtrl.anneeConsoOpt,
-              'achatDate': bouteillesCtrl.achatDate,
-              'achatMagasin': bouteillesCtrl.achatMagasin,
-              'achatPrix': bouteillesCtrl.achatPrix,
-              'location': {
-                'longitude':bouteillesCtrl.longitude,
-                'latitude':bouteillesCtrl.latitude
-              }
-            };
+                {
+                  'nom'                      : bouteillesCtrl.name,
+                  'vignoble'                 : bouteillesCtrl.vignoble,
+                  'aoc'                      : bouteillesCtrl.aoc,
+                  'appellation'              : bouteillesCtrl.appellation,
+                  'chateau'                  : bouteillesCtrl.chateau,
+                  'anneeMiseEnBouteille'     : bouteillesCtrl.anneeMEB,
+                  'anneeConsommationOptimale': bouteillesCtrl.anneeConsoOpt,
+                  'achatDate'                : bouteillesCtrl.achatDate,
+                  'achatMagasin'             : bouteillesCtrl.achatMagasin,
+                  'achatPrix'                : bouteillesCtrl.achatPrix,
+                  'location'                 : {
+                    'longitude': bouteillesCtrl.longitude,
+                    'latitude' : bouteillesCtrl.latitude
+                  }
+                };
 
-            httpService.addBottle(aBottleToAdd).then (
-              function onSuccess ()
-              {
-                // TODO show the added bottle ?
-                 toastr.success('Bouteille Ajoutée !', 'Success');
-              },
-              function onError ()
-              {
-                toastr.error('Erreur lors de l\'ajout de la bouteille', 'Error');
-              }
+            httpService.addBottle(aBottleToAdd).then(
+                function onSuccess()
+                {
+                  // TODO show the added bottle ?
+                  toastr.success('Bouteille Ajoutée !', 'Success');
+                },
+                function onError()
+                {
+                  toastr.error('Erreur lors de l\'ajout de la bouteille', 'Error');
+                }
             );
           }
         }

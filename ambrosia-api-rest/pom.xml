@@ -55,10 +55,23 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <warSourceDirectory>${project.basedir}/src/main/webapp</warSourceDirectory>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}/classes</directory>
+              <targetPath>/</targetPath>
+            </resource>
+          </webResources>
         </configuration>
       </plugin>
       <plugin>
@@ -86,7 +99,7 @@
                   <version>${project.version}</version>
                   <type>jar</type>
                   <overWrite>false</overWrite>
-                  <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+                  <outputDirectory>${project.build.directory}/classes</outputDirectory>
                 </artifactItem>
               </artifactItems>
             </configuration>
