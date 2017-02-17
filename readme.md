@@ -8,3 +8,6 @@ Sources for Ambrosia Modules : Wine collection management
 
 For developers :
 - use the intelliJ formatter in dev folder
+
+Well listen, let the developer do the job, be sure I'll push as soon as possible okey ?
+
