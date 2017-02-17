@@ -7,5 +7,6 @@
   <import resource="validationAC.xml"/>
   <import resource="commandAC.xml"/>
   <import resource="parametreAC.xml"/>
+  <import resource="configurationAC.xml"/>
   <import resource="serviceFactoryAC.xml"/>
 </beans>
