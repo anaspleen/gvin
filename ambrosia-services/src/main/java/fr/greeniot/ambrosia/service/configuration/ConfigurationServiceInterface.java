@@ -7,7 +7,7 @@ import fr.greeniot.exception.BusinessException;
 import fr.greeniot.exception.TechnicalException;
 
 /**
- * Parameter service to access to properties
+ * Service de configuration d'accès aux properties
  * 
  * @author anaspleen
  */

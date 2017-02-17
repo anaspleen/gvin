@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import fr.greeniot.ambrosia.AbstractAmbrosiaTest;
 
 /**
- * test class of Action Service of ConfigurationService
+ * test de ConfigurationService
  * 
  * @author anaspleen
  *
@@ -26,6 +26,6 @@ public class TestConfigurationService extends AbstractAmbrosiaTest {
 		Assert.assertEquals("ambrosia_test", parameterString);
 		
 		parameterString = configurationService.getParameterString(ConfigurationConstant.DATABASE_URL);
-		Assert.assertEquals("mongodb://192.168.1.90:27017", parameterString);
+		Assert.assertEquals("mongodb://localhost:27017", parameterString);
 	}
 }
