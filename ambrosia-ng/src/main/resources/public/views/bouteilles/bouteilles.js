@@ -55,5 +55,14 @@ angular.module('ambrosia.public.bouteilles', ['ambrosia.commons'])
                 }
             );
           }
+
+          bouteillesCtrl.buyDatePicker = {
+            opened: false
+          };
+
+          bouteillesCtrl.openBuyDate = function ()
+          {
+            bouteillesCtrl.buyDatePicker.opened = true;
+          };
         }
     );

@@ -1,101 +1,117 @@
-<div>{{bouteillesCtrl.title}}</div>
-<div>
-  <form>
-    <div class="row form-group text-center">
-      <label for="name" class="control-label">Nom</label>
-      <input
-          id="name"
-          name="name"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.name">
+<h3>{{bouteillesCtrl.title}}</h3>
+
+<form class="form-vertical container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="row form-group">
+        <label for="name" class="control-label">Nom</label>
+        <input
+            id="name"
+            name="name"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.name">
+      </div>
+      <div class="row form-group">
+        <label for="vignoble" class="control-label">Vignoble</label>
+        <input
+            id="vignoble"
+            name="vignoble"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.vignoble">
+      </div>
+      <div class="row form-group">
+        <label for="aoc" class="control-label">AOC</label>
+        <input
+            id="aoc"
+            name="aoc"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.aoc">
+      </div>
+      <div class="row form-group">
+        <label for="appellation" class="control-label">Appellation</label>
+        <input
+            id="appellation"
+            name="appellation"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.appellation">
+      </div>
+      <div class="row form-group">
+        <label for="chateau" class="control-label">Chateau</label>
+        <input
+            id="chateau"
+            name="chateau"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.chateau">
+      </div>
     </div>
-    <div class="row form-group text-center">
-      <label for="vignoble" class="control-label">Vignoble</label>
-      <input
-          id="vignoble"
-          name="vignoble"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.vignoble">
+    <div class="col-sm-6">
+      <div class="row form-group">
+        <label for="anneeMEB" class="control-label">Année de Mise En Bouteille</label>
+        <input
+            id="anneeMEB"
+            name="anneeMEB"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.anneeMEB">
+      </div>
+      <div class="row form-group">
+        <label for="anneeConsoOpt" class="control-label">Année de Consommation Optimale</label>
+        <input
+            id="anneeConsoOpt"
+            name="anneeConsoOpt"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.anneeConsoOpt">
+      </div>
+      <div class="row form-group">
+        <label for="achatDate" class="control-label">Date d'achat</label>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button type="button"
+                    class="btn btn-default"
+                    ng-click="bouteillesCtrl.openBuyDate()">
+            <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+          </span>
+          <input type="text"
+                 class="form-control"
+                 id="achatDate"
+                 name="achatDate"
+                 uib-datepicker-popup="dd/MM/yyyy"
+                 is-open="bouteillesCtrl.buyDatePicker.opened"
+                 ng-model="bouteillesCtrl.achatDate" />
+        </div>
+      </div>
+      <div class="row form-group">
+        <label for="achatMagasin" class="control-label">Magasin d'achat</label>
+        <input
+            id="achatMagasin"
+            name="achatMagasin"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.achatMagasin">
+      </div>
+      <div class="row form-group">
+        <label for="achatPrix" class="control-label">Prix d'achat</label>
+        <input
+            id="achatPrix"
+            name="achatPrix"
+            type="text"
+            class="form-control"
+            ng-model="bouteillesCtrl.achatPrix">
+      </div>
     </div>
-    <div class="row form-group text-center">
-      <label for="aoc" class="control-label">AOC</label>
-      <input
-          id="aoc"
-          name="aoc"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.aoc">
-    </div>
-    <div class="row form-group text-center">
-      <label for="appellation" class="control-label">Appellation</label>
-      <input
-          id="appellation"
-          name="appellation"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.appellation">
-    </div>
-    <div class="row form-group text-center">
-      <label for="chateau" class="control-label">Chateau</label>
-      <input
-          id="chateau"
-          name="chateau"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.chateau">
-    </div>
-    <div class="row form-group text-center">
-      <label for="anneeMEB" class="control-label">Année de Mise En Bouteille</label>
-      <input
-          id="anneeMEB"
-          name="anneeMEB"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.anneeMEB">
-    </div>
-    <div class="row form-group text-center">
-      <label for="anneeConsoOpt" class="control-label">Année de Consommation Optimale</label>
-      <input
-          id="anneeConsoOpt"
-          name="anneeConsoOpt"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.anneeConsoOpt">
-    </div>
-    <div class="row form-group text-center">
-      <label for="achatDate" class="control-label">Date d'achat</label>
-      <input
-          id="achatDate"
-          name="achatDate"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.achatDate">
-    </div>
-    <div class="row form-group text-center">
-      <label for="achatMagasin" class="control-label">Magasin d'achat</label>
-      <input
-          id="achatMagasin"
-          name="achatMagasin"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.achatMagasin">
-    </div>
-    <div class="row form-group text-center">
-      <label for="achatPrix" class="control-label">Prix d'achat</label>
-      <input
-          id="achatPrix"
-          name="achatPrix"
-          type="text"
-          class="form-control"
-          ng-model="bouteillesCtrl.achatPrix">
-    </div>
-    <div class="row">
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
       <button ng-click="bouteillesCtrl.save()" type="submit"
               class="btn btn-primary">Enregistrer
       </button>
     </div>
-  </form>
-</div>
+  </div>
 </form>

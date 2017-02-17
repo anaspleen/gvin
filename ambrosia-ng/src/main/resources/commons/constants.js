@@ -1,10 +1,11 @@
 angular.module('ambrosia.commons.constants', [])
     .factory('REST_URL', function ()
     {
-      var _api_prefix = '/api-rest';
+      var _api_prefix = '/ambrosia-api-rest/api-rest';
 
       return {
-        AMB_REST: _api_prefix
+        AMB_REST       : _api_prefix,
+        DOM_BOUTEILLES : _api_prefix + "/execute/BouteilleService"
       };
     })
     .constant('NG_ROUTE', {
