@@ -18,4 +18,4 @@ To test the NG app :
 Well listen, let the developer do the job, be sure I'll push as soon as possible okay ?
 
 Vel lytte, la utbygger gjøre jobben, være sikker på at jeg vil presse så fort som mulig i orden?
-
+.
