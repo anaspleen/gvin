@@ -5,7 +5,7 @@ angular.module('ambrosia.commons.constants', [])
 
       return {
         AMB_REST       : _api_prefix,
-        DOM_BOUTEILLES : _api_prefix + "/execute/BouteilleService"
+        DOM_BOUTEILLES : _api_prefix + "/execute/bouteilleService"
       };
     })
     .constant('NG_ROUTE', {

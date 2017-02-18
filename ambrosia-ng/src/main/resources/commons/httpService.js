@@ -15,7 +15,7 @@ angular.module('ambrosia.commons.httpService', [])
               if (pBottleToAdd) {
                 dataSent['bouteille'] = pBottleToAdd;
 
-                $http.post(REST_URL.DOM_BOUTEILLES, pBottleToAdd).then(
+                $http.post(REST_URL.DOM_BOUTEILLES, dataSent).then(
                     function onSuccess()
                     {
                       deferred.resolve();

@@ -19,29 +19,29 @@ angular.module('ambrosia.public.bouteilles', ['ambrosia.commons'])
           bouteillesCtrl.achatPrix = '';
 
           // TODO with a visual map
-          bouteillesCtrl.longitude = 0.0;
-          bouteillesCtrl.latitude = 0.0;
+          bouteillesCtrl.longitude = 0.1;
+          bouteillesCtrl.latitude = 0.1;
 
           bouteillesCtrl.save = function ()
           {
             // TODO Dunno if every field are required so no check for now
-            var aBottleToAdd =
-                {
-                  'nom'                      : bouteillesCtrl.name,
-                  'vignoble'                 : bouteillesCtrl.vignoble,
-                  'aoc'                      : bouteillesCtrl.aoc,
-                  'appellation'              : bouteillesCtrl.appellation,
-                  'chateau'                  : bouteillesCtrl.chateau,
-                  'anneeMiseEnBouteille'     : bouteillesCtrl.anneeMEB,
-                  'anneeConsommationOptimale': bouteillesCtrl.anneeConsoOpt,
-                  'achatDate'                : bouteillesCtrl.achatDate,
-                  'achatMagasin'             : bouteillesCtrl.achatMagasin,
-                  'achatPrix'                : bouteillesCtrl.achatPrix,
-                  'location'                 : {
-                    'longitude': bouteillesCtrl.longitude,
-                    'latitude' : bouteillesCtrl.latitude
-                  }
-                };
+            var aBottleToAdd = {};
+            aBottleToAdd['nom'] = bouteillesCtrl.name;
+            aBottleToAdd['vignoble'] = bouteillesCtrl.vignoble;
+            aBottleToAdd['aoc'] = bouteillesCtrl.aoc;
+            aBottleToAdd['appellation'] = bouteillesCtrl.appellation;
+            aBottleToAdd['chateau'] = bouteillesCtrl.chateau;
+            aBottleToAdd['anneeMiseEnBouteille'] = bouteillesCtrl.anneeMEB;
+            aBottleToAdd['anneeConsommationOptimale'] = bouteillesCtrl.anneeConsoOpt;
+            aBottleToAdd['achatDate'] = bouteillesCtrl.achatDate;
+            aBottleToAdd['achatMagasin'] = bouteillesCtrl.achatMagasin;
+            aBottleToAdd['achatPrix'] = bouteillesCtrl.achatPrix;
+
+            var location = {};
+            location['longitude'] = bouteillesCtrl.longitude;
+            location['latitude'] = bouteillesCtrl.latitude;
+
+            aBottleToAdd['location'] = location;
 
             httpService.addBottle(aBottleToAdd).then(
                 function onSuccess()

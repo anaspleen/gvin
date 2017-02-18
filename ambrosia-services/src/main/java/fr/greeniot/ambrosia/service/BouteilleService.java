@@ -66,7 +66,7 @@ public class BouteilleService implements BouteilleServiceInterface
     // init avec les valeurs de base
     Document doc = new Document();
 
-    List<String> erreurs      = new ArrayList<String>();
+    List<String> erreurs      = new ArrayList<>();
     List<String> erreursDuTag = null;
 
     // vérif
