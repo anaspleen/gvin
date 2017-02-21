@@ -29,5 +29,6 @@ R.java
 .settings
 *.iml
 *.pdf
+*.agent
 
 # npm

@@ -15,6 +15,16 @@
 
 	<dependencies>
 
+		<!-- <dependency> -->
+		<!-- <groupId>org.snmp4j</groupId> -->
+		<!-- <artifactId>snmp4j</artifactId> -->
+		<!-- <version>2.5.5</version> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.snmp4j</groupId>
+			<artifactId>snmp4j-agent</artifactId>
+			<version>2.5.3</version>
+		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jgit</groupId>
 			<artifactId>org.eclipse.jgit</artifactId>
