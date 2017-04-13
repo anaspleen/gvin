@@ -4,7 +4,10 @@
 package paho;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
@@ -22,27 +25,53 @@ public class TestPahoSubscriber {
 
 	public static void main(String[] args) throws IOException {
 		String topic = "TCA/ex";
-		String content = "Message from MqttPublishSample by TCA";
-		int qos = 2;
 		String broker = "tcp://192.168.1.119:1883";
 		String clientId = "JavaSample";
 		MemoryPersistence persistence = new MemoryPersistence();
 
+		// pour publier en ligne de commande :
+		// mosquitto_pub -h localhost -t TCA/ex -m "here à moi"
+
+		// pour s'abonner en ligne de commande :
+		// mosquitto_sub -h localhost -t "TCA/ex"
+
+		// logs de mosquitto :
+		// tail -1000f /var/log/mosquitto/mosquitto.log
+		
 		try {
 			MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
 			connOpts.setCleanSession(true);
 			System.out.println("Connecting to broker: " + broker);
 			sampleClient.connect(connOpts);
-			System.out.println("Connected");
-			System.out.println("Publishing message: " + content);
-			MqttMessage message = new MqttMessage(content.getBytes());
-			message.setQos(qos);
-			sampleClient.publish(topic, message);
-			System.out.println("Message published");
-			sampleClient.disconnect();
-			System.out.println("Disconnected");
-			System.exit(0);
+			sampleClient.subscribe(topic);
+
+			System.out.println("Connected to broker: " + broker);
+
+			// MqttTopic statusTopic = sampleClient.getTopic(topic + "/Status");
+
+			sampleClient.setCallback(new MqttCallback() {
+
+				public void messageArrived(String topic, MqttMessage message) throws Exception {
+					String time = new Timestamp(System.currentTimeMillis()).toString();
+					System.out.println(
+							"\nReceived a Message!" + "\n\tTime:    " + time + "\n\tTopic:   " + topic + "\n\tMessage: "
+									+ new String(message.getPayload()) + "\n\tQoS:     " + message.getQos() + "\n");
+					// latch.countDown(); // unblock main thread
+				}
+
+				public void connectionLost(Throwable cause) {
+					System.out.println("Connection to Solace broker lost!" + cause.getMessage());
+					// latch.countDown();
+				}
+
+				public void deliveryComplete(IMqttDeliveryToken token) {
+				}
+			});
+
+			// Thread t = new Thread(new Status(statusTopic)));
+			// t.start();
+
 		} catch (MqttException me) {
 			System.out.println("reason " + me.getReasonCode());
 			System.out.println("msg " + me.getMessage());
