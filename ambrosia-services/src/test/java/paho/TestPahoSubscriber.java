@@ -6,6 +6,7 @@ package paho;
 import java.io.IOException;
 import java.sql.Timestamp;
 
+import org.bson.Document;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -32,12 +33,17 @@ public class TestPahoSubscriber {
 		// pour publier en ligne de commande :
 		// mosquitto_pub -h localhost -t TCA/ex -m "here à moi"
 
+		// pour passer du JSON en ligne de commande :
+		// mosquitto_pub -h localhost -t TCA/ex -m "{\"cle\":\"valeur\"}"
+		// ou
+		// mosquitto_pub -h localhost -t TCA/ex -m "{'cle':'valeur'}"
+
 		// pour s'abonner en ligne de commande :
 		// mosquitto_sub -h localhost -t "TCA/ex"
 
 		// logs de mosquitto :
 		// tail -1000f /var/log/mosquitto/mosquitto.log
-		
+
 		try {
 			MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
@@ -48,16 +54,25 @@ public class TestPahoSubscriber {
 
 			System.out.println("Connected to broker: " + broker);
 
-			// MqttTopic statusTopic = sampleClient.getTopic(topic + "/Status");
-
+			// listen to
 			sampleClient.setCallback(new MqttCallback() {
 
 				public void messageArrived(String topic, MqttMessage message) throws Exception {
 					String time = new Timestamp(System.currentTimeMillis()).toString();
-					System.out.println(
-							"\nReceived a Message!" + "\n\tTime:    " + time + "\n\tTopic:   " + topic + "\n\tMessage: "
-									+ new String(message.getPayload()) + "\n\tQoS:     " + message.getQos() + "\n");
+					String response = new String(message.getPayload());
+					System.out.println("\nReceived a Message!" + "\n\tTime:    " + time + "\n\tTopic:   " + topic
+							+ "\n\tMessage: " + response + "\n\tQoS:     " + message.getQos() + "\n");
 					// latch.countDown(); // unblock main thread
+
+					try {
+						Document doc = Document.parse(response);
+
+						System.out.println(doc);
+						System.out.println(doc.get("cle"));
+					} catch (Exception e) {
+						System.err.println(e);
+					}
+
 				}
 
 				public void connectionLost(Throwable cause) {
@@ -68,9 +83,6 @@ public class TestPahoSubscriber {
 				public void deliveryComplete(IMqttDeliveryToken token) {
 				}
 			});
-
-			// Thread t = new Thread(new Status(statusTopic)));
-			// t.start();
 
 		} catch (MqttException me) {
 			System.out.println("reason " + me.getReasonCode());
