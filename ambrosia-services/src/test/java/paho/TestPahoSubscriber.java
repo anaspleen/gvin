@@ -3,9 +3,11 @@
  */
 package paho;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 
+import org.apache.commons.io.FileUtils;
 import org.bson.Document;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -61,7 +63,8 @@ public class TestPahoSubscriber {
 					String time = new Timestamp(System.currentTimeMillis()).toString();
 					String response = new String(message.getPayload());
 					System.out.println("\nReceived a Message!" + "\n\tTime:    " + time + "\n\tTopic:   " + topic
-							+ "\n\tMessage: " + response + "\n\tQoS:     " + message.getQos() + "\n");
+							+ "\n\tMessage: " + response + "\n\tQoS:     " + message.getQos() + "\n\tID:     "
+							+ message.getId() + "\n");
 					// latch.countDown(); // unblock main thread
 
 					try {
@@ -71,8 +74,12 @@ public class TestPahoSubscriber {
 						System.out.println(doc.get("cle"));
 					} catch (Exception e) {
 						System.err.println(e);
-					}
 
+						// OK to send a binary file (png here) :
+						// mosquitto_pub -h localhost -t TCA/ex -f
+						// pathToImage/test.png
+						FileUtils.writeByteArrayToFile(new File("c:/Temp/test.png"), message.getPayload());
+					}
 				}
 
 				public void connectionLost(Throwable cause) {
