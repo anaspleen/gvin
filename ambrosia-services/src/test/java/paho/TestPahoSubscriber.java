@@ -17,6 +17,13 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
+
 /**
  * http://www.jitendrazaa.com/blog/java/snmp/creating-snmp-agent-server-in-java-using-snmp4j/
  * http://www.jitendrazaa.com/blog/java/snmp/create-snmp-client-in-java-using-snmp4j/
@@ -28,7 +35,7 @@ public class TestPahoSubscriber {
 
 	public static void main(String[] args) throws IOException {
 		String topic = "TCA/ex";
-		String broker = "tcp://192.168.1.119:1883";
+		String broker = "tcp://192.168.1.83:1883";
 		String clientId = "JavaSample";
 		MemoryPersistence persistence = new MemoryPersistence();
 
@@ -72,6 +79,10 @@ public class TestPahoSubscriber {
 
 						System.out.println(doc);
 						System.out.println(doc.get("cle"));
+
+						// persist it in Mongo
+						persist(doc);
+
 					} catch (Exception e) {
 						System.err.println(e);
 
@@ -100,4 +111,29 @@ public class TestPahoSubscriber {
 			me.printStackTrace();
 		}
 	}
+
+	private static void persist(Document doc) {
+		MongoClient client = new MongoClient(new MongoClientURI("mongodb://192.168.1.83:27017"));
+		MongoDatabase database = client.getDatabase("test");
+
+		MongoCollection<Document> bouteille = database.getCollection("frommqtt");
+		bouteille.insertOne(doc);
+
+		client.close();
+
+		System.out.println("Doc : " + doc.get(ConstantesAMBROSIA.TAG_ID).toString() + " persisted");
+
+		// tester : si BD se plante, les messages sont quand même réenvoyés
+		// automatiquement par ce listener
+	}
+
+	// script sh : publishMessages.sh
+	// i=0
+	// max=100
+	// while [ $i -lt $max ]
+	// do
+	// echo $i
+	// mosquitto_pub -h localhost -t TCA/ex -m "{'cle':'valeur$i'}"
+	// true $(( i++ ))
+	// done
 }
