@@ -53,6 +53,8 @@ public class TestPahoSubscriber {
 		// logs de mosquitto :
 		// tail -1000f /var/log/mosquitto/mosquitto.log
 
+		MongoClient client = null;
+
 		try {
 			MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
 			MqttConnectOptions connOpts = new MqttConnectOptions();
@@ -62,6 +64,11 @@ public class TestPahoSubscriber {
 			sampleClient.subscribe(topic);
 
 			System.out.println("Connected to broker: " + broker);
+
+			client = new MongoClient(new MongoClientURI("mongodb://192.168.1.83:27017"));
+			MongoDatabase database = client.getDatabase("test");
+
+			MongoCollection<Document> collection = database.getCollection("frommqtt");
 
 			// listen to
 			sampleClient.setCallback(new MqttCallback() {
@@ -81,8 +88,8 @@ public class TestPahoSubscriber {
 						System.out.println(doc.get("cle"));
 
 						// persist it in Mongo
-						persist(doc);
-
+						collection.insertOne(doc);
+						System.out.println("Doc : " + doc.get(ConstantesAMBROSIA.TAG_ID).toString() + " persisted");
 					} catch (Exception e) {
 						System.err.println(e);
 
@@ -109,22 +116,10 @@ public class TestPahoSubscriber {
 			System.out.println("cause " + me.getCause());
 			System.out.println("excep " + me);
 			me.printStackTrace();
+		} finally {
+			// client.close();
+			System.out.println("locked : " + client.isLocked());
 		}
-	}
-
-	private static void persist(Document doc) {
-		MongoClient client = new MongoClient(new MongoClientURI("mongodb://192.168.1.83:27017"));
-		MongoDatabase database = client.getDatabase("test");
-
-		MongoCollection<Document> bouteille = database.getCollection("frommqtt");
-		bouteille.insertOne(doc);
-
-		client.close();
-
-		System.out.println("Doc : " + doc.get(ConstantesAMBROSIA.TAG_ID).toString() + " persisted");
-
-		// tester : si BD se plante, les messages sont quand même réenvoyés
-		// automatiquement par ce listener
 	}
 
 	// script sh : publishMessages.sh
