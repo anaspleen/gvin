@@ -1,0 +1,13 @@
+# alias
+alias ll='ls -al'
+alias lr='ll -rt'
+
+# grep
+alias grep='grep --color'
+
+# mvn
+alias mci='mvn clean install'
+alias mcid='mvn clean install deploy'
+
+echo "Alias chargés"
+

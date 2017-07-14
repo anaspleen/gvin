@@ -1,0 +1,19 @@
+#64 bits
+export JAVA_HOME=/products/java/jdk1.7.0_79
+
+# maven
+export M2_HOME=/products/maven/apache-maven-3.3.9
+
+# dans le path
+export M2=$M2_HOME/bin
+export PATH=$PATH:$M2
+
+# soap
+# export SOAP_HOME=/products/soap/soapui-4.5.1
+
+# perso
+export PATH=$PATH:/home/ddd/bin:$JAVA_HOME/bin
+
+echo "Variables chargées"
+
+
