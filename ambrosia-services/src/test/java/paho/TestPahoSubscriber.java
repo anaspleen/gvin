@@ -34,7 +34,8 @@ import fr.greeniot.ambrosia.utils.ConstantesAMBROSIA;
 public class TestPahoSubscriber {
 
 	public static void main(String[] args) throws IOException {
-		String topic = "TCA/ex";
+		String topic = "alarm";
+//		String topic = "marco";
 		String broker = "tcp://192.168.1.83:1883";
 		String clientId = "JavaSample";
 		MemoryPersistence persistence = new MemoryPersistence();
@@ -73,6 +74,8 @@ public class TestPahoSubscriber {
 			// listen to
 			sampleClient.setCallback(new MqttCallback() {
 
+				private int nbMessage;
+				
 				public void messageArrived(String topic, MqttMessage message) throws Exception {
 					String time = new Timestamp(System.currentTimeMillis()).toString();
 					String response = new String(message.getPayload());
@@ -90,6 +93,10 @@ public class TestPahoSubscriber {
 						// persist it in Mongo
 						collection.insertOne(doc);
 						System.out.println("Doc : " + doc.get(ConstantesAMBROSIA.TAG_ID).toString() + " persisted");
+
+						nbMessage++;
+
+						System.out.println("nbMessages : " + nbMessage);
 					} catch (Exception e) {
 						System.err.println(e);
 
