@@ -1,6 +1,6 @@
 [user]
 	name = anaspleen
-	email = thomas.caiati@gmail.com
+	email = nnnn@gmail.com
 [http]
 	postBuffer = 157286400
 [https]
@@ -8,7 +8,7 @@
 [core]
 # gestion des fins de ligne uniquement sur système windows
 autocrlf = true
-excludesfile = /home/tomey/.gitignore_global
+excludesfile = /home/nnnn/.gitignore_global
  
 [status]
 showUntrackedFiles = all
