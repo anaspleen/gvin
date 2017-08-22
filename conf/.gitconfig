@@ -1,0 +1,46 @@
+[user]
+	name = anaspleen
+	email = thomas.caiati@gmail.com
+[http]
+	postBuffer = 157286400
+[https]
+
+[core]
+# gestion des fins de ligne uniquement sur système windows
+autocrlf = true
+excludesfile = /home/tomey/.gitignore_global
+ 
+[status]
+showUntrackedFiles = all
+ 
+[pull]
+# forcer un rebase plutot qu'un merge sur les pull mais conserver les éventuels merge volontaires
+rebase = preserve
+ 
+[push]
+# pusher sur le branche configurée comme correspondante à notre branche locale
+default = upstream
+# pusher les tags en même temps que les commits
+followTags = true
+ 
+[log]
+# indiquer le SHA1 raccourci sur git log
+abbrevCommit = true
+       
+[alias]
+stage = add
+# supprime les modifs locales de l'index (mais les conserve dans la copie de travail)
+unstage = reset HEAD
+# supprime toutes les modifs locales (à jamais))
+rz = reset --hard HEAD
+# affiche un graph de l'historique en ligne de commande
+lol = log --graph --decorate --pretty=oneline --abbrev-commit
+lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+# history
+lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+lg = !"git lg1"
+
+# liste les alias
+aliases = "!git config --get-regexp 'alias\\..*' | sed 's/^alias\\.\\([^ ]\\+\\)/\\1 =/'"
+
