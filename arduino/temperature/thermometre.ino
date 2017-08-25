@@ -1,5 +1,3 @@
-// validé 20170823
-// p.hannhart@laposte.net
 // MQTT with temperature sensor
 // I2C with LM75A
 // LM75 pin 5 SDA
