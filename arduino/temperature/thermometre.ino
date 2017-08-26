@@ -39,7 +39,7 @@ const long ledOffTime = 15000;
 #define mqtt_password "duCompte" //idem
 
 #define temperature_topic "temperature"  //Topic température
-#define minute_topic "temperature"        //Topic minute
+#define minute_topic "temperature_min"        //Topic minute
 
 class LM75A {
   public:
