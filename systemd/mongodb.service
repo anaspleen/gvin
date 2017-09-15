@@ -1,0 +1,14 @@
+[Unit]
+Description=Mongo Daemon
+After=network.target
+
+[Service]
+#Type=forking
+ExecStart=/products/mongo/mongo/bin/mongod
+#ExecStop=/products/nexus/nexus-3.3.2-02/bin/nexus stop
+User=mongoUser
+#Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
