@@ -1,5 +1,5 @@
 1- Fichier :
-/lib/systemd/system/
+/lib/systemd/system/jenkins.service
 
 2-Le déclarer :
 systemctl daemon-reload
