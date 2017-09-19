@@ -8,6 +8,7 @@ ExecStart=/products/mongo/mongo/bin/mongod
 #ExecStop=/products/nexus/nexus-3.3.2-02/bin/nexus stop
 User=mongoUser
 #Restart=on-abort
+LimitNOFILE=49152
 
 [Install]
 WantedBy=multi-user.target
