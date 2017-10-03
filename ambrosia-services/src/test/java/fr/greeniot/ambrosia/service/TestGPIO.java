@@ -14,7 +14,7 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
 /**
- * @author Bull $Id$
+ * @author thomas
  */
 public class TestGPIO
 {

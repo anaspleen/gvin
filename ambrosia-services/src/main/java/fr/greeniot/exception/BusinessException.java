@@ -220,7 +220,7 @@ public class BusinessException extends Exception
    * <li>Message d'erreur fonctionnel
    * <li>Cause (ou complément d'information). Donne des indices sur ce qui peut cause ce type d'erreur en général.
    *
-   * @author Bull $ Id: $
+   * @author thomas
    */
   public enum BusinessExceptionEnum
   {
