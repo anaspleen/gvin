@@ -40,11 +40,6 @@
     </layout>
   </appender>
 
-  <!-- asynchrone -->
-  <appender name="ASYNCPROD_AMBROSIA_FILE_APPENDER" class="org.apache.log4j.AsyncAppender">
-    <appender-ref ref="AMBROSIA_FILE_APPENDER"/>
-  </appender>
-
   <!-- ********** LOGGERS DEFINITION (begin) ********** -->
   <!-- Activation log générale -->
   <logger name="fr.tic.gvin">
