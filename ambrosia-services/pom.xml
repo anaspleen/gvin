@@ -30,6 +30,11 @@
 			<artifactId>org.eclipse.jgit</artifactId>
 			<version>4.8.0.201706111038-r</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.davidmoten</groupId>
+			<artifactId>flatbuffers-java</artifactId>
+			<version>1.7.0.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.pi4j</groupId>
