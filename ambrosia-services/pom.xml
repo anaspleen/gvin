@@ -35,6 +35,11 @@
 			<artifactId>flatbuffers-java</artifactId>
 			<version>1.7.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.zeromq</groupId>
+			<artifactId>jeromq</artifactId>
+			<version>0.4.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.pi4j</groupId>
