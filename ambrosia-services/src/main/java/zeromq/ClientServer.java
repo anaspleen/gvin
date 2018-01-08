@@ -8,7 +8,6 @@ import java.util.Random;
 import org.zeromq.ZContext;
 import org.zeromq.ZFrame;
 import org.zeromq.ZMQ;
-import org.zeromq.ZMQ.Poller;
 import org.zeromq.ZMQ.Socket;
 import org.zeromq.ZMsg;
 
@@ -29,32 +28,35 @@ public class ClientServer {
 
 		@Override
 		public void run() {
-			ZContext ctx = new ZContext();
-			Socket client = ctx.createSocket(ZMQ.DEALER);
 
-			// Set random identity to make tracing easier
-			String identity = String.format("%04X-%04X", rand.nextInt(), rand.nextInt());
-			client.setIdentity(identity.getBytes(ZMQ.CHARSET));
-			client.connect("tcp://localhost:5570");
+			// FIXME only JeroMQ (pure Java)
 
-			Poller poller = ctx.createPoller(1);
-			poller.register(client, Poller.POLLIN);
-
-			int requestNbr = 0;
-			while (!Thread.currentThread().isInterrupted()) {
-				// Tick once per second, pulling in arriving messages
-				for (int centitick = 0; centitick < 100; centitick++) {
-					poller.poll(10);
-					if (poller.pollin(0)) {
-						ZMsg msg = ZMsg.recvMsg(client);
-						msg.getLast().print(identity);
-						msg.destroy();
-					}
-				}
-				// client.send(String.format("request #%d", ++requestNbr), 0);
-				client.send(String.format("{\"cle\":\"#%d\"}", ++requestNbr), 0);
-			}
-			ctx.close();
+			// ZContext ctx = new ZContext();
+			// Socket client = ctx.createSocket(ZMQ.DEALER);
+			//
+			// // Set random identity to make tracing easier
+			// String identity = String.format("%04X-%04X", rand.nextInt(), rand.nextInt());
+			// client.setIdentity(identity.getBytes(ZMQ.CHARSET));
+			// client.connect("tcp://localhost:5570");
+			//
+			// Poller poller = ctx.createPoller(1);
+			// poller.register(client, Poller.POLLIN);
+			//
+			// int requestNbr = 0;
+			// while (!Thread.currentThread().isInterrupted()) {
+			// // Tick once per second, pulling in arriving messages
+			// for (int centitick = 0; centitick < 100; centitick++) {
+			// poller.poll(10);
+			// if (poller.pollin(0)) {
+			// ZMsg msg = ZMsg.recvMsg(client);
+			// msg.getLast().print(identity);
+			// msg.destroy();
+			// }
+			// }
+			// // client.send(String.format("request #%d", ++requestNbr), 0);
+			// client.send(String.format("{\"cle\":\"#%d\"}", ++requestNbr), 0);
+			// }
+			// ctx.close();
 		}
 	}
 

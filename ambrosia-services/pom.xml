@@ -35,10 +35,19 @@
 			<artifactId>flatbuffers-java</artifactId>
 			<version>1.7.0.1</version>
 		</dependency>
+
+		<!-- ZeroMQ pur Java -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.zeromq</groupId> -->
+<!-- 			<artifactId>jeromq</artifactId> -->
+<!-- 			<version>0.4.2</version> -->
+<!-- 		</dependency> -->
+
+		<!-- ZMQ native via JNI -->
 		<dependency>
 			<groupId>org.zeromq</groupId>
-			<artifactId>jeromq</artifactId>
-			<version>0.4.2</version>
+			<artifactId>jzmq</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 
 		<dependency>
