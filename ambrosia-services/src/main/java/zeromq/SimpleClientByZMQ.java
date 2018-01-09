@@ -64,7 +64,10 @@ public class SimpleClientByZMQ implements Runnable {
 					msg.destroy();
 				}
 			}
-			client.send(String.format("request #%d", ++requestNbr), 0);
+			String message = String.format("request #%d", ++requestNbr);
+			System.out.println("message : " + message);
+			client.send(message, 0);
+			System.out.println("message sent");
 		}
 		ctx.destroy();
 		ctx.close();
