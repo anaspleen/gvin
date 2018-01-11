@@ -1,7 +1,7 @@
 /**
  * 
  */
-package zeromq;
+package zeromq.majordomo.client;
 
 import org.zeromq.ZMsg;
 
@@ -44,12 +44,15 @@ public class MdClientAPIMain {
 		boolean verbose = true;
 		MdClientAPI clientSession = new MdClientAPI("tcp://localhost:5555", verbose);
 
+		// to limit time to listening
+		// use in TestU
+		
 		int count;
-		for (count = 0; count < 100000; count++) {
+		for (count = 0; count < 10; count++) {
 			ZMsg request = new ZMsg();
 			request.addString("Hello world");
-//			ZMsg reply = clientSession.send("echo", request);
-			ZMsg reply = clientSession.send("mmi.echo", request);
+			 ZMsg reply = clientSession.send("echo", request);
+//			ZMsg reply = clientSession.send("mmi.echo", request);
 			System.out.println("message sent");
 			if (reply != null) {
 				reply.destroy();

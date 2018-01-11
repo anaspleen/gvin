@@ -1,7 +1,7 @@
 /**
  * 
  */
-package zeromq;
+package zeromq.majordomo.client;
 
 import java.util.Formatter;
 
@@ -9,6 +9,8 @@ import org.zeromq.ZContext;
 import org.zeromq.ZFrame;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMsg;
+
+import zeromq.MDP;
 
 /**
  * 
