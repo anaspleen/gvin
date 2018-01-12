@@ -20,7 +20,7 @@ public class PsEnvSub {
 		Context context = ZMQ.context(1);
 		Socket subscriber = context.socket(ZMQ.SUB);
 
-		subscriber.connect("tcp://localhost:5563");
+		subscriber.connect("tcp://localhost:5552");
 		subscriber.subscribe("B".getBytes());
 		while (!Thread.currentThread().isInterrupted()) {
 			// Read envelope with address

@@ -23,7 +23,7 @@ public class PsEnvPub {
 		Context context = ZMQ.context(1);
 		Socket publisher = context.socket(ZMQ.PUB);
 
-		publisher.bind("tcp://*:5563");
+		publisher.connect("tcp://localhost:5551");
 		while (!Thread.currentThread().isInterrupted()) {
 			// Write two messages, each with an envelope and content
 			publisher.sendMore("A");
